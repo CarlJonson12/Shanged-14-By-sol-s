@@ -109,4 +109,4 @@
   id: MobObserverCkeyPZAKusik
   components:
   - type: Sprite
-    sprite: _White/CustomGhosts/pzakusik-ghost.rsi
+    sprite: _White/Ghosts/ckey/pzakusik-ghost.rsi
