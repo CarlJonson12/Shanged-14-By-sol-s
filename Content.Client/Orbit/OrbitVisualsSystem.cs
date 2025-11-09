@@ -28,7 +28,9 @@ public sealed class OrbitVisualsSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _robustRandom = default!;
     [Dependency] private readonly AnimationPlayerSystem _animations = default!;
 
-    private readonly string _orbitAnimationKey = "orbiting";
+    // [Dependency] private readonly IGameTiming _timing = default!;
+    // [Dependency] private readonly SpriteSystem _sprite = default!;
+    private readonly string _orbitAnimationKey = "orbiting"; // Reserve edit: Port WWDP, CustomGhost
     private readonly string _orbitStopKey = "orbiting_stop";
 
     public override void Initialize()
@@ -37,7 +39,7 @@ public sealed class OrbitVisualsSystem : EntitySystem
 
         SubscribeLocalEvent<OrbitVisualsComponent, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<OrbitVisualsComponent, ComponentRemove>(OnComponentRemove);
-        SubscribeLocalEvent<OrbitVisualsComponent, AnimationCompletedEvent>(OnAnimationCompleted);
+        SubscribeLocalEvent<OrbitVisualsComponent, AnimationCompletedEvent>(OnAnimationCompleted); // Reserve edit: Port WWDP, CustomGhost
     }
 
     private void OnComponentInit(EntityUid uid, OrbitVisualsComponent component, ComponentInit args)
@@ -85,10 +87,8 @@ public sealed class OrbitVisualsSystem : EntitySystem
         {
             _animations.Play(uid, animationPlayer, GetStopAnimation(component, sprite), _orbitStopKey);
         }
-        // Reserve edit END: Port WWDP, CustomGhost
     }
 
-    // Reserve edit START: Port WWDP, CustomGhost
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
@@ -102,9 +102,6 @@ public sealed class OrbitVisualsSystem : EntitySystem
             sprite.Offset = vec;
         }
     }
-    // Reserve edit END: Port WWDP, CustomGhost
-
-    // Reserve edit START: Port WWDP, CustomGhost
     private void OnAnimationCompleted(EntityUid uid, OrbitVisualsComponent component, AnimationCompletedEvent args)
     {
         if (args.Key == _orbitAnimationKey && TryComp(uid, out AnimationPlayerComponent? animationPlayer))
