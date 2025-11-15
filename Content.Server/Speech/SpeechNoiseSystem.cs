@@ -11,7 +11,11 @@
 // SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 pheenty <fedorlukin2006@gmail.com>
+// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Kirill <kirill@example.com>
+// SPDX-FileCopyrightText: 2025 ReserveBot <211949879+ReserveBot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Svarshik <96281939+lexaSvarshik@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 nazrin <tikufaev@outlook.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -24,12 +28,6 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Random;
 
-// Goob Station
- using Content.Goobstation.Common.Barks;
-using Content.Goobstation.Common.CCVar;
-using Robust.Shared.Configuration;
-
-
 namespace Content.Server.Speech
 {
     public sealed class SpeechSoundSystem : EntitySystem
@@ -38,9 +36,6 @@ namespace Content.Server.Speech
         [Dependency] private readonly IPrototypeManager _protoManager = default!;
         [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly SharedAudioSystem _audio = default!;
-
-        // Goobs tation
-        [Dependency] private readonly IConfigurationManager _cfg = default!;
 
         public override void Initialize()
         {
@@ -94,13 +89,8 @@ namespace Content.Server.Speech
 
         private void OnEntitySpoke(EntityUid uid, SpeechComponent component, EntitySpokeEvent args)
         {
-            // Goob station - Barks
-            if (component.SpeechSounds == null
-                || !args.Language.SpeechOverride.RequireSpeech
-                || _cfg.GetCVar(GoobCVars.BarksEnabled) // Goob Station - Barks
-                && HasComp<SpeechSynthesisComponent>(uid))
+            if (component.SpeechSounds == null || !args.Language.SpeechOverride.RequireSpeech) // No noises for non-speech languages.
                 return;
-            // END
 
             var currentTime = _gameTiming.CurTime;
             var cooldown = TimeSpan.FromSeconds(component.SoundCooldownTime);

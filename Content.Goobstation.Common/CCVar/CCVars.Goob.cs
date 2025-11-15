@@ -5,15 +5,21 @@
 // SPDX-FileCopyrightText: 2025 August Eymann <august.eymann@gmail.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <93730715+Aviu00@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Aviu00 <aviu00@protonmail.com>
+// SPDX-FileCopyrightText: 2025 BombasterDS2 <bombasterds.github@mail.ru>
 // SPDX-FileCopyrightText: 2025 Conchelle <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 DrSmugleaf <10968691+DrSmugleaf@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 DrSmugleaf <drsmugleaf@gmail.com>
 // SPDX-FileCopyrightText: 2025 Ducks <97200673+TwoDucksOnnaPlane@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Eagle <lincoln.mcqueen@gmail.com>
 // SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
+// SPDX-FileCopyrightText: 2025 Hagvan <22118902+Hagvan@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Ichaie <167008606+Ichaie@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Ilya246 <57039557+Ilya246@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 JORJ949 <159719201+JORJ949@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 John Willis <143434770+CerberusWolfie@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 JohnJohn <189290423+JohnJJohn@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 João Fernandez <joaorbfernandez@gmail.com>
+// SPDX-FileCopyrightText: 2025 Kirill <kirill@example.com>
 // SPDX-FileCopyrightText: 2025 Misandry <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 MortalBaguette <169563638+MortalBaguette@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 NazrinNya <137837419+NazrinNya@users.noreply.github.com>
@@ -22,9 +28,11 @@
 // SPDX-FileCopyrightText: 2025 Poips <Hanakohashbrown@gmail.com>
 // SPDX-FileCopyrightText: 2025 PuroSlavKing <103608145+PuroSlavKing@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 ReserveBot <211949879+ReserveBot@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 Rouden <149893554+Roudenn@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <92227810+SX-7@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 // SPDX-FileCopyrightText: 2025 Sara Aldrete's Top Guy <mary@thughunt.ing>
+// SPDX-FileCopyrightText: 2025 ScarKy0 <106310278+ScarKy0@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 SolsticeOfTheWinter <solsticeofthewinter@gmail.com>
 // SPDX-FileCopyrightText: 2025 Steve <marlumpy@gmail.com>
@@ -49,6 +57,7 @@
 // SPDX-FileCopyrightText: 2025 shibe <95730644+shibechef@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 tetra <169831122+Foralemes@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 vanx <61917534+Vaaankas@users.noreply.github.com>
+// SPDX-FileCopyrightText: 2025 vitopigno <103512727+VitusVeit@users.noreply.github.com>
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
@@ -442,18 +451,6 @@ public sealed partial class GoobCVars
     /// </summary>
     public static readonly CVarDef<bool> CoalesceIdenticalMessages =
          CVarDef.Create("chat.coalesce_identical_messages", true, CVar.CLIENT | CVar.ARCHIVE | CVar.CLIENTONLY);
-
-    /// <summary>
-    /// Set to true to enable voice barks and disable default speech sounds.
-    /// </summary>
-    public static readonly CVarDef<bool> BarksEnabled =
-        CVarDef.Create("voice.barks_enabled", false, CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
-
-    /// <summary>
-    /// Client volume setting for barks.
-    /// </summary>
-    public static readonly CVarDef<float> BarksVolume =
-        CVarDef.Create("voice.barks_volume", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     #endregion
 
