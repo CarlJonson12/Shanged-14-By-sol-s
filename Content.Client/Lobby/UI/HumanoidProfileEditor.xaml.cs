@@ -198,8 +198,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Utility;
 using Direction = Robust.Shared.Maths.Direction;
-using Content.Goobstation.Common.CCVar; // Goob Station - Barks
-using Content.Goobstation.Common.Barks; // Goob Station - Barks
+
 namespace Content.Client.Lobby.UI
 {
     [GenerateTypedNameReferences]
@@ -385,17 +384,6 @@ namespace Content.Client.Lobby.UI
             };
 
             #endregion Gender
-
-            // Goob Station
-            #region Barks
-
-            if (configurationManager.GetCVar(GoobCVars.BarksEnabled))
-            {
-                BarksContainer.Visible = true;
-                InitializeBarkVoice();
-            }
-
-            #endregion
 
             RefreshSpecies();
 
@@ -980,7 +968,6 @@ namespace Content.Client.Lobby.UI
             UpdateEyePickers();
             UpdateSaveButton();
             UpdateMarkings();
-            UpdateBarkVoice(); // Goob Station - Barks
             UpdateHairPickers();
             UpdateCMarkingsHair();
             UpdateCMarkingsFacialHair();
@@ -1467,7 +1454,6 @@ namespace Content.Client.Lobby.UI
             UpdateSexControls(); // update sex for new species
             UpdateSpeciesGuidebookIcon();
             ReloadPreview();
-            UpdateBarkVoice(); // Goob Station - Barks
             // begin Goobstation: port EE height/width sliders
             // Changing species provides inaccurate sliders without these
             UpdateHeightWidthSliders();
@@ -1493,7 +1479,7 @@ namespace Content.Client.Lobby.UI
             SetDirty();
         }
 
-        // Goob Station - Start
+        // begin Goobstation: port EE height/width sliders
         private void SetProfileHeight(float height)
         {
             Profile = Profile?.WithHeight(height);
@@ -1507,12 +1493,7 @@ namespace Content.Client.Lobby.UI
             ReloadProfilePreview();
             IsDirty = true;
         }
-        private void SetBarkVoice(BarkPrototype newVoice)
-        {
-            Profile = Profile?.WithBarkVoice(newVoice);
-            IsDirty = true;
-        }
-        // Goob Station - End
+        // end Goobstation: port EE height/width sliders
 
         public bool IsDirty
         {
