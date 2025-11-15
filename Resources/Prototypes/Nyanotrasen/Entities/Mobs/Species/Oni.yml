@@ -22,7 +22,7 @@
   abstract: true
   components:
   - type: Speech
-    speechSounds: Baritone
+    # speechSounds: Baritone Reserve edit
     speechVerb: Oni
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:

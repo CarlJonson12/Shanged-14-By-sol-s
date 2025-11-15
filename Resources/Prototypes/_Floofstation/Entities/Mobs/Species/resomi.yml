@@ -61,7 +61,7 @@
     requiredLegs: 2
   - type: Speech
     speechVerb: Parrot
-    speechSounds: MaleAvali
+    # speechSounds: MaleAvali Reserve edit
     allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble'] #goob
   - type: Vocal
     sounds:

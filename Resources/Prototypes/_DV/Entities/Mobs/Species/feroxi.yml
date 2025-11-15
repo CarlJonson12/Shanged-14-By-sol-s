@@ -19,7 +19,7 @@
   - type: Body
     prototype: Feroxi
   - type: Speech
-    speechSounds: Tenor
+    # speechSounds: Tenor Reserve edit
     speechVerb: Feroxi
     allowedEmotes: [ "Gnash" ]
   - type: Vocal

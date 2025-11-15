@@ -96,7 +96,7 @@
   - type: ReplacementAccent
     accent: dwarf
   - type: Speech
-    speechSounds: Bass
+    # speechSounds: Bass Reserve edit
   - type: LanguageKnowledge # Einstein Engines - Languages
     speaks:
     - TauCetiBasic

@@ -57,7 +57,7 @@
     prototype: Rodentia
   - type: Speech
     speechVerb: Rodentia
-    speechSounds: Squeak
+    # speechSounds: Squeak Reserve edit
     allowedEmotes: ['Squeak']
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:

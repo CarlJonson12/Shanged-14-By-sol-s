@@ -156,7 +156,7 @@
       types:
         Piercing: 5
   - type: Speech
-    speechSounds: Harpy
+    # speechSounds: Harpy Reserve edit
     speechVerb: Harpy
     allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Mars']
   - type: Vocal

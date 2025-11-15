@@ -157,7 +157,7 @@
       amount: 5
   - type: LizardAccent
   - type: Speech
-    speechSounds: Lizard
+    # speechSounds: Lizard Reserve edit
     speechVerb: Reptilian
     allowedEmotes: ['Thump']
   - type: TypingIndicator

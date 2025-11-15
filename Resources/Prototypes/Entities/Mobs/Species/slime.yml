@@ -113,7 +113,7 @@
     species: SlimePerson
   - type: Speech
     speechVerb: Slime
-    speechSounds: Slime
+    # speechSounds: Slime Reserve edit
     allowedEmotes: ['Squish', 'Bubble', 'Pop'] # Imp: add Bubble, Pop
   - type: TypingIndicator
     proto: slime

@@ -68,7 +68,7 @@
     context: "human"
   - type: Speech
     speechVerb: Felinid
-    speechSounds: Alto
+    # speechSounds: Alto Reserve edit
   - type: LanguageKnowledge # Einstein Engines - Language
     speaks:
     - TauCetiBasic
