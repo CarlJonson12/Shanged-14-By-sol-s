@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: 2025 Kirill <kirill@example.com>
+# SPDX-FileCopyrightText: 2025 Kutosss <k65952443@gmail.com>
 # SPDX-FileCopyrightText: 2025 ReserveBot <211949879+ReserveBot@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 Svarshik <96281939+lexaSvarshik@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2025 XeliteXFXX <gamesvitalik20@gmail.com>
@@ -40,23 +42,23 @@
     sprite: _Reserve/Ghosts/svarshik-ghost.rsi
     color: "#999999"
 
-- type: customGhost
-  id: duga-ghost
-  category: personal
-  proto: MobObserverCkeyDuga
-  restrictions:
-  - !type:CkeyRestriction
-    ckey: [Duga]
-  name: Duga
-  desc: Порядок направлений сохранён намеренно. Это метаирония. Он наблюдает сквозь стены, но не туда.
+#- type: customGhost
+#  id: duga-ghost
+#  category: personal
+#  proto: MobObserverCkeyDuga
+#  restrictions:
+#  - !type:CkeyRestriction
+#    ckey: [Duga]
+#  name: Duga
+#  desc: Порядок направлений сохранён намеренно. Это метаирония. Он наблюдает сквозь стены, но не туда.
 
-- type: entity
-  parent: MobObserverCkey
-  id: MobObserverCkeyDuga
-  components:
-  - type: Sprite
-    sprite: _Reserve/Ghosts/duga-ghost.rsi
-    color: "#E6E6E6"
+#- type: entity
+#  parent: MobObserverCkey
+#  id: MobObserverCkeyDuga
+#  components:
+#  - type: Sprite
+#    sprite: _Reserve/Ghosts/duga-ghost.rsi
+#    color: "#E6E6E6"
 
 - type: customGhost
   id: fxx-ghost

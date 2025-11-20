@@ -1,3 +1,10 @@
+# SPDX-FileCopyrightText: 2025 Kirill <kirill@example.com>
+# SPDX-FileCopyrightText: 2025 Kutosss <k65952443@gmail.com>
+# SPDX-FileCopyrightText: 2025 RedFoxIV <38788538+RedFoxIV@users.noreply.github.com>
+# SPDX-FileCopyrightText: 2025 ReserveBot <211949879+ReserveBot@users.noreply.github.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 
 
 - type: customGhost
@@ -6,7 +13,7 @@
   proto: MobObserverCkeyPlaceholder
   restrictions:
   - !type:CkeyRestriction
-    ckey: [persikvin, reider207, nairsark, mapperian, dageff, RedFoxIV] # Reserve edit, сука редкокс добавил мой скей сюда
+    ckey: [Duga] # Reserve edit, сука редкокс добавил мой скей сюда
   name: custom-ghost-personal-placeholder-name
   desc: custom-ghost-personal-placeholder-desc
 
