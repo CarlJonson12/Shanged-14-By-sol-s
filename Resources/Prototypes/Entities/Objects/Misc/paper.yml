@@ -450,8 +450,8 @@
     price: 0
   - type: GuideHelp
     guides:
-    - CargoBounties
-    - Cargo
+    - CargoBountiesReserve # Reserve edit
+    - CargoReserve # Reserve edit
 
 - type: entity
   id: PaperSalvageJobLabel

@@ -30,7 +30,7 @@
   name: guide-entry-jobs
   text: "/ServerInfo/Guidebook/Jobs.xml"
   children:
-  - Cargo
+  - CargoReserve # Reserve edit
   - Command
   - Engineering
   - Medical

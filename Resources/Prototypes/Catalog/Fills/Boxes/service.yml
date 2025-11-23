@@ -46,7 +46,7 @@
   - type: GuideHelp
     guides:
     - Botanical
-    - Chemicals
+    - ChemicalsReserve # Reserve edit
 
 - type: entity
   parent: BoxLightbulb

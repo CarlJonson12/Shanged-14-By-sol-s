@@ -45,7 +45,7 @@
       state: catwalk_preview
   - type: GuideHelp
     guides:
-    - Cargo
+    - CargoReserve # Reserve edit
 
 - type: entity
   id: CargoPallet

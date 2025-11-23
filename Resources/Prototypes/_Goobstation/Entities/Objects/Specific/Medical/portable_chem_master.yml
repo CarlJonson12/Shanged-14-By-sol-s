@@ -108,7 +108,7 @@
     solution: buffer
   - type: GuideHelp
     guides:
-    - Chemicals
+    - ChemicalsReserve # Reserve edit
     - Chemist
   - type: StaticPrice
     price: 20

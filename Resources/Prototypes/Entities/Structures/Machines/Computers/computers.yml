@@ -1128,7 +1128,7 @@
       - OrderSender
   - type: GuideHelp
     guides:
-    - Cargo
+    - CargoReserve # Reserve edit
 
 # Request console variants.
 - type: entity
@@ -1333,8 +1333,8 @@
     access: [["Quartermaster"]]
   - type: GuideHelp
     guides:
-    - CargoBounties
-    - Cargo
+    - CargoBountiesReserve # Reserve edit
+    - CargoReserve # Reserve edit
 
 - type: entity
   parent: BaseComputerAiAccess
@@ -1633,7 +1633,7 @@
     color: "#b89f25"
   - type: GuideHelp
     guides:
-    - Cargo
+    - CargoReserve # Reserve edit
 
 - type: entity
   parent: BaseComputerAiAccess
