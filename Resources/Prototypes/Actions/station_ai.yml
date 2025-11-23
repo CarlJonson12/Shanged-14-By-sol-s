@@ -74,6 +74,10 @@
   name: Toggle floor bolts
   description: Toggle bolts, that keep you wrenched to the floor.
   components:
+  - type: Action # Reserve edit
+    icon:
+      sprite: Interface/Actions/actions_ai.rsi
+      state: bolt_door
   - type: InstantAction
     event: !type:AiToggleBoltsEvent
 # WD edit end
