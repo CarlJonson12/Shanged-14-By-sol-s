@@ -2647,7 +2647,7 @@
   - type: GuideHelp
     guides:
     - ChemicalsReserve # Reserve edit
-    - Chemist
+    - ChemistReserve # Reserve edit
 
 - type: entity
   parent: VendingMachineChemicals
