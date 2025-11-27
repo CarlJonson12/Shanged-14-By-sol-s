@@ -37,6 +37,7 @@
   - ZombiesReserve
   - RevolutionariesReserve
   - MinorAntagonistsReserve
+  - ConspiratorsReserve # Harmony - Conspirators
   - SpaceNinjaReserve
   - ThievesReserve
   - AbductorsReserve # Shitmed - Abductors
@@ -159,3 +160,10 @@
   id: CosmicCultDeconversionReserve
   name: guide-entry-cosmiccult-deconversion
   text: "/ServerInfo/_Reserve/Guidebook/Antagonist/CosmicCultDeconversion.xml"
+
+# Harmony
+
+- type: guideEntry
+  id: ConspiratorsReserve
+  name: guide-entry-conspirators
+  text: "/ServerInfo/_Reserve/Guidebook/Antagonist/Conspirators.xml"

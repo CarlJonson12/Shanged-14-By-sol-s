@@ -83,6 +83,7 @@
 
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server._DV.CosmicCult.Components; // DeltaV
+using Content.Server._Harmony.GameTicking.Rules.Components;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
@@ -112,9 +113,9 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultNukeOpRule = "LoneOpsSpawn";
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
-    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
-
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
+    private static readonly EntProtoId DefaultConspiratorRule = "Conspirators"; // Harmony
+    private static readonly ProtoId<StartingGearPrototype> PirateGearId = "PirateGear";
 
     // All antag verbs have names so invokeverb works.
     private void AddAntagVerbs(GetVerbsEvent<Verb> args)
@@ -310,5 +311,21 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(cosmiccult);
         // End DeltaV Additions
+	    // Harmony start
+        var conspiratorName = Loc.GetString("admin-verb-text-make-conspirator");
+        Verb conspirator = new()
+        {
+            Text = conspiratorName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/_Harmony/Interface/Misc/job_icons.rsi"), "Conspirator"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<ConspiratorRuleComponent>(targetPlayer, DefaultConspiratorRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", conspiratorName, Loc.GetString("admin-verb-make-conspirator")),
+        };
+        args.Verbs.Add(conspirator);
+        // Harmony end
     }
 }
