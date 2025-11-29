@@ -21,6 +21,8 @@ public sealed class PatronSupportUIController : UIController, IOnStateEntered<Lo
 
     public void OnStateEntered(LobbyState state)
     {
+        // Reserve edit: disable "Support Goob Station" popup
+        /*
         if (_hasShownThisSession)
             return;
 
@@ -39,6 +41,7 @@ public sealed class PatronSupportUIController : UIController, IOnStateEntered<Lo
 
         _hasShownThisSession = true;
         ShowSupportWindow();
+        */
     }
 
     public void OnStateExited(LobbyState state)
