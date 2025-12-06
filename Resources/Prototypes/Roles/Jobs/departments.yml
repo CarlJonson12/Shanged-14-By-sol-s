@@ -104,6 +104,7 @@
   name: department-Cargo
   description: department-Cargo-description
   color: "#A46106"
+  weight: 30 # Reserve-Edit
   buttonStyle: ButtonColorCargoDepartment # Reserve-Edit
   roles:
   - CargoTechnician
@@ -202,6 +203,7 @@
   name: department-Engineering
   description: department-Engineering-description
   color: "#EFB341"
+  weight: 40 # Reserve-Edit
   buttonStyle: ButtonColorEngineeringDepartment # Reserve-Edit
   roles:
   - AtmosphericTechnician
@@ -214,6 +216,7 @@
   name: department-Medical
   description: department-Medical-description
   color: "#52B4E9"
+  weight: 50 # Reserve-Edit
   buttonStyle: ButtonColorMedicalDepartment # Reserve-Edit
   roles:
   - Chemist
@@ -244,6 +247,7 @@
   name: department-Science
   description: department-Science-description
   color: "#D381C9"
+  weight: 60 # Reserve-Edit
   buttonStyle: ButtonColorScienceDepartment # Reserve-Edit
   roles:
   - ResearchDirector
@@ -256,6 +260,7 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
+  weight: 60 # Reserve-Edit
   buttonStyle: ButtonColorSiliconDepartment # Reserve-Edit
   roles:
   - Borg
