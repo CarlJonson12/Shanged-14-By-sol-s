@@ -314,6 +314,9 @@
   id: HEVSuit
 
 - type: Tag
+  id: Holosign
+
+- type: Tag
   id: HolyClaymore
 
 - type: Tag
@@ -706,6 +709,12 @@
 
 - type: Tag
   id: HolyChainsaw
-  
+
 - type: Tag
   id: ChaplainsHolster
+
+- type: Tag
+  id: ForkliftKeys
+
+- type: Tag
+  id: Crate
