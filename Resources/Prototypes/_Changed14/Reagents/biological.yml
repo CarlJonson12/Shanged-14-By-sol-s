@@ -1,0 +1,56 @@
+- type: reagent
+  id: FurryJuiceWhite
+  name: furry-juice-name
+  group: Toxins
+  desc: furry-juice-desc
+  physicalDesc: reagent-physical-desc-vibrant
+  flavor: salty
+  color: "#daddd9"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.25
+      effects:
+      - !type:Polymorph
+        prototype: FurryMorph
+        conditions:
+        # - !type:MetabolizerTypeCondition
+        #   type: [Animal]
+        #   inverted: true
+        - !type:ReagentCondition
+          reagent: FurryJuiceWhite
+          min: 1
+
+- type: reagent
+  id: FurryJuiceBlack
+  parent: FurryJuiceWhite
+  color: "#000000"
+
+- type: entity
+  parent: DrinkGlass
+  id: FurryJuiceWhiteGlass
+  name: Glass of furry juice
+  suffix: White
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: FurryJuiceWhite
+          Quantity: 30
+  - type: Icon
+    sprite: Objects/Consumable/Drinks/absintheglass.rsi
+    state: icon
+
+- type: entity
+  parent: FurryJuiceWhiteGlass
+  id: FurryJuiceBlackGlass
+  suffix: Black
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: FurryJuiceBlack
+          Quantity: 30

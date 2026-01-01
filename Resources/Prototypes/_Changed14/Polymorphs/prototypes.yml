@@ -1,0 +1,10 @@
+- type: polymorph
+  id: FurryMorph
+  name: FurryMorph
+  parent: AdminVulpSmite
+  configuration:
+    entity: Changed14MobVulpkanin
+    forced: true
+    transferName: true
+    inventory: Transfer
+    ignoreAllowRepeatedMorphs: true

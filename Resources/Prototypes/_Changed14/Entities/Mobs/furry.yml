@@ -1,0 +1,8 @@
+- type: entity
+  parent: MobVulpkanin
+  id: Changed14MobVulpkanin
+  name: Furry
+  suffix: Changed14
+  save: false
+  components:
+  - type: Furry
