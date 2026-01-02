@@ -12,7 +12,7 @@ public sealed partial class FuckableComponent : Component
     public SoundSpecifier FuckableCumSound = new SoundPathSpecifier("/Audio/Voice/Human/malescream_1.ogg");
 
     [DataField]
-    public SoundSpecifier FurryCumSound = new SoundPathSpecifier("/Audio/Voice/Vulpkanin/howl.ogg");
+    public SoundSpecifier FurryCumSound = new SoundPathSpecifier("/Audio/_DV/Voice/Vulpkanin/howl.ogg");
 
     [DataField, AutoNetworkedField]
     public ProtoId<ReagentPrototype> ReagentId = "FurryJuiceWhite";

@@ -1,0 +1,6 @@
+- type: emoteSounds
+  id: Furry
+  sound:
+    collection: FurryScreams
+    params:
+      variation: 0.125

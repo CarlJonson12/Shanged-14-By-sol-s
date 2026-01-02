@@ -126,6 +126,7 @@
     sprite: Mobs/Species/Human/parts.rsi
     state: full
   - type: Thirst
+  - type: Fuckable
   - type: Butcherable
     butcheringType: Spike
     spawned:

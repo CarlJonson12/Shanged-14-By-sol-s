@@ -16,9 +16,8 @@
         # - !type:MetabolizerTypeCondition
         #   type: [Animal]
         #   inverted: true
-        - !type:ReagentCondition
-          reagent: FurryJuiceWhite
-          min: 1
+        - !type:ReagentThreshold
+          min: 2
 
 - type: reagent
   id: FurryJuiceBlack
