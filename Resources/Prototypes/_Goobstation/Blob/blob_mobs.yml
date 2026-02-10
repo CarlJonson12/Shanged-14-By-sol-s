@@ -37,7 +37,7 @@
       damageModifierSet: BlobMob
     - type: Clothing
       quickEquip: false
-      sprite: _Goobstation/Blob/Mobs/blob_mobs.rsi
+      sprite: _Changed14/Mobs/blob_mobs.rsi
       equippedPrefix: blobPod
       slots:
         - HEAD
@@ -122,7 +122,7 @@
       baseSprintSpeed: 4
     - type: Sprite
       drawdepth: Mobs
-      sprite: _Goobstation/Blob/Mobs/blob_mobs.rsi
+      sprite: _Changed14/Mobs/blob_mobs.rsi
       state: blobpod
     - type: GuideHelp
       guides:
