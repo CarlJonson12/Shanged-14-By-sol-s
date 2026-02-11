@@ -1,19 +1,9 @@
+// TODO: update state for inserting and removing a disk, красивее ui, сообщение об уничтожении диска
 using Content.Server._Changed14.ResearchEvac.Components;
-using Content.Server.Power.EntitySystems;
-using Content.Server.Station.Components;
 using Content.Shared._Changed14.ResearchEvac;
-using Content.Shared.Radio;
-using Robust.Shared.Audio;
-using Content.Shared.Physics;
-using Robust.Shared.Map.Components;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
-using Content.Shared.Power;
 using Content.Shared.UserInterface;
 using Robust.Server.GameObjects;
 using Content.Server.Research.Systems;
-using Robust.Server.Audio;
-using Robust.Shared.Timing;
 using Content.Server.Chat.Systems;
 using Robust.Shared.Containers;
 using Content.Server.RoundEnd;
