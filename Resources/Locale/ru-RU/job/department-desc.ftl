@@ -5,6 +5,6 @@ department-CentralCommand-description = Руководите экипажем и
 department-Engineering-description = Поддерживайте наличие электроэнергии и целостность станции.
 department-Medical-description = Поддерживайте здоровье экипажа.
 department-Security-description = Поддерживайте порядок на станции.
-department-Science-description = Изучайте артефакты и аномалии, обеспечивайте членов экипажа новыми продвинутыми устройствами.
+department-Science-description = Изучайте артефакты,аномалии и латекс.
 department-Silicon-description = Соблюдайте свои законы, служите экипажу.
 department-Specific-description = Должности, которые есть не на всех станциях.

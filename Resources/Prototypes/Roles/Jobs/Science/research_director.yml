@@ -177,6 +177,7 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  - !type:FurryMarkingsSpecial
 
 - type: startingGear
   id: ResearchDirectorGear

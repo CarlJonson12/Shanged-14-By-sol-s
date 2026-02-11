@@ -1,0 +1,52 @@
+
+- type: entity
+  id: Cartridge12mm
+  name: патрон (12 мм)
+  parent: BaseCartridgeHeavyRifle
+  suffix: WH40K
+  components:
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge12mm
+
+- type: entity
+  id: Cartridge10mm
+  name: патрон (10 мм)
+  parent: BaseCartridgePistol
+  suffix: WH40K
+  components:
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge10mm
+
+- type: entity
+  id: Cartridge825mmLong
+  name: патрон (8,25 мм удлинённый)
+  parent: BaseCartridgeLightRifle
+  suffix: WH40K
+  components:
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge825mmLong
+
+- type: entity
+  id: Cartridge10mmLong
+  name: патрон (10 мм удлинённый)
+  parent: BaseCartridgePistol
+  suffix: WH40K
+  components:
+  - type: CartridgeAmmo
+    deleteOnSpawn: true
+  - type: Tag
+    tags:
+    - Cartridge
+    - Cartridge10mmLong

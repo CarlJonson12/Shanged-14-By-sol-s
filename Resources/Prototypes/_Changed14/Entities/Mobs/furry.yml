@@ -6,3 +6,4 @@
   save: false
   components:
   - type: Furry
+  - type: WeakToHoly

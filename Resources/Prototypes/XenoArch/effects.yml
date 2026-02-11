@@ -125,6 +125,18 @@
       weight: 4.0
     - id: XenoArtifactEffectCreationGasCarbonDioxide
       weight: 4.0
+# CHANGED14 START
+    - id: XenoArtifactAddFurryMarkings
+      weight: 5.0
+
+- type: entity
+  id: XenoArtifactAddFurryMarkings
+  parent: BaseXenoArtifactEffect
+  description: Mutation
+  components:
+  - type: XAEAddFurryMarkings
+    furryMarkings: FurryMarkings
+# CHANGED14 END
 
 - type: entityTable
   id: XenoArtifactEffectsHandheldOnlyTable

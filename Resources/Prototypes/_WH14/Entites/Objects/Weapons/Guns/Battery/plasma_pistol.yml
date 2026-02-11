@@ -1,0 +1,34 @@
+- type: entity
+  name: плазма-пистолет
+  parent: WeaponLaserWH40KEnergy
+  id: WeaponLaserPlasmaPistol
+  description: Уменьшенная версия плазменной винтовки, не смотря на размер не потерял в мощности, чего не скажешь о размере его топливного бака. Прекрасное личное оружие офицеров по всему империуму.
+  suffix: WH40K
+  components:
+  - type: Sprite
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/plasmapistol.rsi
+  - type: Gun
+    fireRate: 1
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_WH40K/Weapons/Guns/Gunshots/plasmapist.wav
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmPistolPowerCell
+        whitelist:
+          tags:
+            - PlasmPowerCellPistol
+  - type: Item
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/plasmapistol.rsi
+    size: Small
+  - type: Tag
+    tags:
+    - Sidearm
+  - type: Clothing
+    sprite: Objects/Weapons/Guns/Pistols/viper.rsi
+    slots:
+    - Belt

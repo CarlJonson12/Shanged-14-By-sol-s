@@ -25,6 +25,16 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
+- files: ["music.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Music 1by Ktotamovich"
+  source: "discord"
+
+- files: ["music_1.ogg"]
+  license: "CC-BY-NC-SA-3.0"
+  copyright: "Music 2 by Ktotamovich"
+  source: "discord"
+
 - files: ["thunderdome.ogg"]
   license: "CC-BY-NC-SA-3.0"
   copyright: "-Sector11 by MashedByMachines. Converted from MP3 to OGG."

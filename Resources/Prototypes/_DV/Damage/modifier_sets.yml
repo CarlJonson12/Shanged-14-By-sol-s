@@ -21,6 +21,7 @@
   id: Vulpkanin
   coefficients:
     Heat: 1.15
+    Holy: 1.15
   ignoreArmorPierceFlags: All # Goobstation
 
 - type: damageModifierSet

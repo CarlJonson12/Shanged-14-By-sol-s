@@ -1,0 +1,35 @@
+- type: entity
+  name: мельта-винтовка
+  parent: [WeaponLaserWH40KEnergy, BaseGunWieldable]
+  id: WeaponLaserMeltagun
+  description: Оружие, использующее реакцию термоядерного синтеза для уничтожения противника. Крайне смертоносно.
+  suffix: WH40K
+  components:
+  - type: Sprite
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/meltagun.rsi
+  - type: GunRequiresWield
+  - type: Gun
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/_WH40K/Weapons/Guns/Gunshots/meltagun.ogg
+  - type: MagazineAmmoProvider
+    proto: RedMeltaLaser
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: MeltPowerCell
+        whitelist:
+          tags:
+            - MeltPowerCell
+  - type: Clothing
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/meltagun_in-hands.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/meltagun_in-hands.rsi

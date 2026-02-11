@@ -1,0 +1,30 @@
+- type: entity
+  name: плазма-винтовка
+  parent: [WeaponLaserPlasmaPistol, BaseGunWieldable]
+  id: WeaponLaserPlasmagun
+  description: Пожалуй, самое известное и эффективное оружие Империума, встречающееся во всех его войсках.
+  suffix: WH40K
+  components:
+  - type: Item
+    size: Huge
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/plasmagun_in-hands.rsi
+  - type: GunRequiresWield
+  - type: Sprite
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/plasmagun.rsi
+  - type: Clothing
+    sprite: _WH40K/Objects/Weapons/Guns/Battery/plasmagun_in-hands.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+  - type: Gun
+    soundGunshot:
+      path: /Audio/_WH40K/Weapons/Guns/Gunshots/plasmagun.wav
+  - type: ItemSlots
+    slots:
+      gun_magazine:
+        name: Magazine
+        startingItem: PlasmGunPowerCell
+        whitelist:
+          tags:
+            - PlasmPowerCellGun

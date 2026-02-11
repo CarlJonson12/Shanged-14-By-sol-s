@@ -1,0 +1,92 @@
+- type: entity
+  id: WHBulletPlasmaPistol
+  name: Снаряд плазмы
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Plasma
+    maxIntensity: 3 # max 30 per tile
+    intensitySlope: 1
+    totalIntensity: 4 # 60 total damage to distribute over tiles
+    maxTileBreak: 1
+  - type: TimedDespawn
+    lifetime: 0.65 # Примерно 17 тайлов
+  - type: PointLight
+    radius: 3.5
+    color: Blue
+    energy: 0.5
+
+- type: entity
+  id: WHBulletPlasmaRifle
+  name: Снаряд плазмы
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles_tg.rsi
+    layers:
+    - state: omnilaser
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Plasma
+    maxIntensity: 3 # max 30 per tile
+    intensitySlope: 1
+    totalIntensity: 4 # 60 total damage to distribute over tiles
+    maxTileBreak: 1
+  - type: TimedDespawn
+    lifetime: 1.3 # Примерно 34 тайлов
+  - type: PointLight
+    radius: 3.5
+    color: Blue
+    energy: 0.5
+
+- type: entity
+  id: BulletBolter
+  name: пуля болтера
+  parent: BaseBulletTrigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 60
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    maxIntensity: 0.5
+    intensitySlope: 0.5
+    totalIntensity: 0.5
+    maxTileBreak: 0
+
+- type: entity
+  id: BulletRadCarabin
+  name: bullet uranium
+  parent: BaseBullet
+  categories: [ HideSpawnMenu ]
+  suffix: WH40K, АдМехи
+  components:
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles2.rsi
+    layers:
+    - state: uranium
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 7
+        Radiation: 15
+  - type: PointLight
+    enabled: true
+    color: "#38c24f"
+    radius: 3.0
+    energy: 7.0
+  - type: RadiationSource
+    intensity: 6
+    slope: 0.3

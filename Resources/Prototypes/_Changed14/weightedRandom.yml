@@ -1,0 +1,6 @@
+- type: weightedRandom
+  id: FurryMarkings
+  weights:
+    FelinidFluffyTail: 1
+    VulpEar: 1
+    VulpTailLong: 1
