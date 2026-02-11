@@ -2,6 +2,7 @@
   id: ResearchEvacConsole
   name: research evac console
   parent: BaseComputer
+  suffix: Changed14
   components:
   - type: ResearchEvacConsole
   - type: UserInterface
@@ -10,3 +11,19 @@
         type: ResearchEvacConsoleBoundUserInterface
   - type: ActivatableUI
     key: enum.ResearchEvacConsoleUiKey.Key
+  - type: ItemSlots
+    slots:
+      evac_disk:
+        name: Диск с исследованиями
+        whitelist:
+          tags:
+          - ChangedEvacDisk
+        insertSound:
+          path: /Audio/Weapons/click.ogg
+          params:
+            volume: -3
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+      evac_disk: !type:ContainerSlot

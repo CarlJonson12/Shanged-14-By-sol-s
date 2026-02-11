@@ -10,7 +10,7 @@
                   Margin="10 10 10 10">
         <PanelContainer Margin="0 10 0 0" VerticalExpand="True">
             <BoxContainer Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True" VerticalAlignment="Center">
-                <Label Name="Description" Text="{Loc 'Введите диск с исследованиями'}" HorizontalAlignment="Center"/>
+                <Label Name="Description" HorizontalAlignment="Center"/>
                 <BoxContainer MinHeight="20"></BoxContainer>
                 <Button Name="CallEvacButton" Text="{Loc 'Отправить данные'}" MaxWidth="300" HorizontalAlignment="Center" VerticalExpand="False"/>
             </BoxContainer>

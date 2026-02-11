@@ -25,7 +25,19 @@ public sealed partial class ResearchEvacWindow : FancyWindow
     }
     public void Update(ResearchEvacConsoleBoundUserInterfaceState state)
     {
-        CallEvacButton.Disabled = state.CanCall;
+        CallEvacButton.Disabled = !state.CanCall;
+
+        if (state.CanCall)
+        {
+            Description.FontColorOverride = Color.Green;
+            Description.Text = Loc.GetString("Диск вставлен");
+//  Text="{Loc 'Вставьте диск с исследованиями'}"
+        }
+        else
+        {
+            Description.FontColorOverride = Color.White;
+            Description.Text = Loc.GetString("Вставьте диск с исследованиями");
+        }
     }
 
 }
