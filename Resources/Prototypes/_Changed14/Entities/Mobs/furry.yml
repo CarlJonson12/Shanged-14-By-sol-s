@@ -7,3 +7,18 @@
   components:
   - type: Furry
   - type: WeakToHoly
+  - type: HTN
+    rootTask:
+      task: Changed14MobVulpkaninCompound
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: MeleeWeapon
+    hidden: true
+    damage:
+      groups:
+        Brute: 10
+  # - type: NPCFuckable
+  #   enabled: true
+  #   actionDelay: 5.0
+  #   maxDistance: 1.0
