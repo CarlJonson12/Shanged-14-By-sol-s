@@ -1,11 +1,6 @@
 - type: htnCompound
   id: Changed14MobVulpkaninCompound
   branches:
-    # - tasks:
-    #     - !type:HTNPrimitiveTask
-    #       operator: !type:FuckableOperator
-    #         targetKey: FuckableTarget
-    #         range: 10.0
     - tasks:
         - !type:HTNCompoundTask
           task: MeleeCombatCompound
@@ -33,6 +28,3 @@
           operator: !type:FurryFuckOperator
             targetKey: FuckableTarget
 
-        # - !type:HTNPrimitiveTask
-        #   operator: !type:WaitOperator
-        #     key: IdleTime

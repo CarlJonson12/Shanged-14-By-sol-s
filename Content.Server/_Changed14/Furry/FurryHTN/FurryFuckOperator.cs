@@ -1,14 +1,6 @@
-using Content.Server.Chat.Systems;
-using Content.Shared.Chat; // Einstein Engines - Languages
 using Content.Shared.NPC.Components;
-using Content.Shared.Chemistry.EntitySystems;
-using Content.Shared.Damage;
-using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
-using Content.Shared.Silicons.Bots;
-using Robust.Shared.Audio.Systems;
 using Content.Server.Changed14.Fuckable;
 using Content.Server.Changed14.Furry;
 using Content.Shared.Changed14.Fuckable;
@@ -19,12 +11,7 @@ namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 public sealed partial class FurryFuckOperator : HTNOperator
 {
     [Dependency] private readonly IEntityManager _entMan = default!;
-    private ChatSystem _chat = default!;
-    private MedibotSystem _medibot = default!;
-    private SharedAudioSystem _audio = default!;
-    private SharedInteractionSystem _interaction = default!;
-    private SharedPopupSystem _popup = default!;
-    private SharedSolutionContainerSystem _solutionContainer = default!;
+
     private FuckableSystem _fuckable = default!;
     private FurrySystem _furry = default!;
 
@@ -37,12 +24,6 @@ public sealed partial class FurryFuckOperator : HTNOperator
     public override void Initialize(IEntitySystemManager sysManager)
     {
         base.Initialize(sysManager);
-        _chat = sysManager.GetEntitySystem<ChatSystem>();
-        _medibot = sysManager.GetEntitySystem<MedibotSystem>();
-        _audio = sysManager.GetEntitySystem<SharedAudioSystem>();
-        _interaction = sysManager.GetEntitySystem<SharedInteractionSystem>();
-        _popup = sysManager.GetEntitySystem<SharedPopupSystem>();
-        _solutionContainer = sysManager.GetEntitySystem<SharedSolutionContainerSystem>();
         _fuckable = sysManager.GetEntitySystem<FuckableSystem>();
         _furry = sysManager.GetEntitySystem<FurrySystem>();
 ;
@@ -65,10 +46,9 @@ public sealed partial class FurryFuckOperator : HTNOperator
         if (!_entMan.TryGetComponent<FurryComponent>(owner, out var botComp))
             return HTNOperatorStatus.Failed;
 
-        if (!_fuckable.CheckFuckable((owner, botComp), target) || !_fuckable.TryFuck((owner, botComp), target))
+        if (!_fuckable.TryFuck((owner, botComp), target))
             return HTNOperatorStatus.Failed;
 
-        // _chat.TrySendInGameICMessage(owner, Loc.GetString("medibot-finish-inject"), InGameICChatType.Speak, hideChat: true, hideLog: true);
 
         return HTNOperatorStatus.Finished;
     }

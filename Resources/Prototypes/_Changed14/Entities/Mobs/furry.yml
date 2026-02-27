@@ -1,3 +1,4 @@
+# TODO: френдли фаер
 - type: entity
   parent: MobVulpkanin
   id: Changed14MobVulpkanin
@@ -18,7 +19,3 @@
     damage:
       groups:
         Brute: 10
-  # - type: NPCFuckable
-  #   enabled: true
-  #   actionDelay: 5.0
-  #   maxDistance: 1.0

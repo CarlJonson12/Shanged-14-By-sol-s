@@ -1,3 +1,4 @@
+# TODO: перенос инвентаря не работает
 - type: polymorph
   id: FurryMorph
   name: FurryMorph

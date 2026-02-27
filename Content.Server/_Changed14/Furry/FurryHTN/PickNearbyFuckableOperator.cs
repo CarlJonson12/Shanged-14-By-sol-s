@@ -1,17 +1,14 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Content.Shared.NPC.Components;
-using Content.Server.NPC.Pathfinding;
-using Content.Shared.Chemistry.Components.SolutionManager;
-using Content.Shared.Damage;
-using Content.Shared.Interaction;
-using Content.Shared.Mobs.Components;
-using Content.Shared.Silicons.Bots;
-using Content.Shared.Stealth.Components; // Goobstation
 using Content.Server.Changed14.Fuckable;
 using Content.Server.Changed14.Furry;
+using Content.Server.NPC.Pathfinding;
 using Content.Shared.Changed14.Fuckable;
 using Content.Shared.Changed14.Furry;
+using Content.Shared.Interaction;
+using Content.Shared.Mobs.Components;
+using Content.Shared.NPC.Components;
+using Content.Shared.Stealth.Components;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Content.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 
@@ -19,7 +16,6 @@ public sealed partial class PickNearbyFuckableOperator : HTNOperator
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
     private EntityLookupSystem _lookup = default!;
-    private MedibotSystem _medibot = default!;
     private PathfindingSystem _pathfinding = default!;
 
     [DataField("rangeKey")] public string RangeKey = NPCBlackboard.MedibotInjectRange;
@@ -40,7 +36,6 @@ public sealed partial class PickNearbyFuckableOperator : HTNOperator
     {
         base.Initialize(sysManager);
         _lookup = sysManager.GetEntitySystem<EntityLookupSystem>();
-        _medibot = sysManager.GetEntitySystem<MedibotSystem>();
         _pathfinding = sysManager.GetEntitySystem<PathfindingSystem>();
     }
 
@@ -49,7 +44,7 @@ public sealed partial class PickNearbyFuckableOperator : HTNOperator
     {
         var owner = blackboard.GetValue<EntityUid>(NPCBlackboard.Owner);
         var mobState = _entManager.GetEntityQuery<MobStateComponent>();
-        var stealthQuery = _entManager.GetEntityQuery<StealthComponent>(); // Goobstation
+        var stealthQuery = _entManager.GetEntityQuery<StealthComponent>();
         var furryQuery = _entManager.GetEntityQuery<FurryComponent>();
         var fuckableQuery = _entManager.GetEntityQuery<FuckableComponent>();
 
@@ -63,13 +58,9 @@ public sealed partial class PickNearbyFuckableOperator : HTNOperator
         {
             if (mobState.TryGetComponent(entity, out var state) &&
                 fuckableQuery.TryGetComponent(entity, out var fuckable) &&
-                !(stealthQuery.TryGetComponent(entity, out var stealth) && stealth.Enabled)) // Goobstation - stealth check
+                !(stealthQuery.TryGetComponent(entity, out var stealth) && stealth.Enabled))
             {
-                // // no treating dead bodies
-                // if (!_medibot.TryGetTreatment(medibot, state.CurrentState, out var treatment))
-                //     continue;
 
-                //Needed to make sure it doesn't sometimes stop right outside it's interaction range
                 var pathRange = SharedInteractionSystem.InteractionRange - 1f;
                 var path = await _pathfinding.GetPath(owner, entity, pathRange, cancelToken);
 
