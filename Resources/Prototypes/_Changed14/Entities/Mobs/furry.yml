@@ -1,3 +1,4 @@
+# TODO: френдли фаер
 - type: entity
   parent: MobVulpkanin
   id: Changed14MobVulpkanin
@@ -7,3 +8,14 @@
   components:
   - type: Furry
   - type: WeakToHoly
+  - type: HTN
+    rootTask:
+      task: Changed14MobVulpkaninCompound
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: MeleeWeapon
+    hidden: true
+    damage:
+      groups:
+        Brute: 10

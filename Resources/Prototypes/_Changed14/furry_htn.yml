@@ -1,0 +1,30 @@
+- type: htnCompound
+  id: Changed14MobVulpkaninCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: MeleeCombatCompound
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FuckNearbyCrit
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
+  id: FuckNearbyCrit
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:PickNearbyFuckableOperator
+            targetKey: FuckableTarget
+            targetMoveKey: TargetCoordinates
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+
+        - !type:HTNPrimitiveTask
+          operator: !type:FurryFuckOperator
+            targetKey: FuckableTarget
+

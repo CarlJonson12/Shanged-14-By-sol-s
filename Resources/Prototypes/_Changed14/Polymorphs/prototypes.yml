@@ -1,3 +1,4 @@
+# TODO: перенос инвентаря не работает
 - type: polymorph
   id: FurryMorph
   name: FurryMorph
@@ -12,6 +13,7 @@
     revertOnCrit: false
     polymorphSound: !type:SoundPathSpecifier
       path: /Audio/_Changed14/Effects/Antag/transfur.ogg
+    transferDamage: false
 
 - type: polymorph
   id: AdminVulpSmite
