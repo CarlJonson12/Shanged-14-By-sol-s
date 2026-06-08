@@ -1,9 +1,12 @@
 ent-CrateFunClownCarUplink = ящик для клоунской машины
     .desc = Содержит один автомобиль, клоун в комплект не входит
-    .suffix = Элемент восходящей линии связи
-ent-CrateFunClownCarCargo = ящик для клоунской машины
-    .desc = Содержит один автомобиль, клоун в комплект не входит
+    .suffix = Аплинк
+ent-CrateFunClownCarCargo = { ent-CrateFunClownCarUplink }
+    .desc = { ent-CrateFunClownCarUplink.desc }
     .suffix = Заказ груза
-ent-CrateFunClownCarTesting = ящик для клоунской машины
+ent-CrateFunClownCarTesting = { ent-CrateFunClownCarUplink }
     .desc = для проклятого клоуна
     .suffix = для тестирования
+ent-CrateFunClownCarNukieUplink = { ent-CrateFunClownCarUplink }
+    .desc = { ent-CrateFunClownCarUplink.desc }
+    .suffix = Аплинк, Ядерные оперативники

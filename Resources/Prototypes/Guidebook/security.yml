@@ -19,29 +19,33 @@
 
 - type: guideEntry
   id: Security
-  abstract: true #Reserve guidebook
   name: guide-entry-security
   text: "/ServerInfo/Guidebook/Security/Security.xml"
+  localizedText:
+    ru-RU: "/ServerInfo/_Reserve/Guidebook/Security/Security.xml"
   children:
   - Forensics
   - Defusal
   - CriminalRecords
-  - SpaceLaw # Goobstation
+  - SpaceLawReserve # Reserve guidebook
 
 - type: guideEntry
   id: Forensics
-  abstract: true #Reserve guidebook
   name: guide-entry-forensics
   text: "/ServerInfo/Guidebook/Security/Forensics.xml"
+  localizedText:
+    ru-RU: "/ServerInfo/_Reserve/Guidebook/Security/Forensics.xml"
 
 - type: guideEntry
   id: Defusal
-  abstract: true #Reserve guidebook
   name: guide-entry-defusal
   text: "/ServerInfo/Guidebook/Security/Defusal.xml"
+  localizedText:
+    ru-RU: "/ServerInfo/_Reserve/Guidebook/Security/Defusal.xml"
 
 - type: guideEntry
   id: CriminalRecords
-  abstract: true #Reserve guidebook
   name: guide-entry-criminal-records
   text: "/ServerInfo/Guidebook/Security/CriminalRecords.xml"
+  localizedText:
+    ru-RU: "/ServerInfo/_Reserve/Guidebook/Security/CriminalRecords.xml"

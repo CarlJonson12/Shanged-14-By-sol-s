@@ -11,6 +11,8 @@ namespace Content.Goobstation.Client.Polls;
 
 public sealed class PollUIController : UIController, IOnStateExited<GameplayState>, IOnStateExited<LobbyState>
 {
+    [Dependency] private readonly PollManager _polls = default!;
+
     private PollVotingWindow? _window;
 
 
@@ -39,6 +41,7 @@ public sealed class PollUIController : UIController, IOnStateExited<GameplayStat
             _window = UIManager.CreateWindow<PollVotingWindow>();
             _window.OnClose += () => _window = null;
             _window.OpenCentered();
+            _polls.MarkAllSeen();
         }
     }
 

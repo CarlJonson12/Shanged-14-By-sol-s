@@ -61,6 +61,8 @@
   tier: 1
   cost: 5000
   recipeUnlocks:
+  - SlimeScannerXenobio
+  - XenobiologyBountyComputerCircuitboard
   - SlimeGrinderMachineCircuitboard
   - ClothingBackpackXenoBioTank
   position: -3,3
@@ -98,8 +100,8 @@
   - AdvancedAnomalyResearch
 
 - type: technology
-  id: XenoBiology # :trollface:
-  name: research-technology-xeno-biology
+  id: XenoCompatibility
+  name: research-technology-xeno-compatibility
   icon:
     sprite: _White/Mobs/Aliens/Xenomorphs/drone.rsi
     state: xenomorph
@@ -111,3 +113,18 @@
   position: -5,0
   technologyPrerequisites:
   - ExperimentalScience
+
+- type: technology
+  id: XenobagHolding
+  name: research-technology-xenobag-holding
+  icon:
+    sprite: _Goobstation/Clothing/Belt/xenobag_holding.rsi
+    state: icon
+  discipline: Experimental
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - ClothingBeltChemBagXenobiologyHolding
+  position: -4,3
+  technologyPrerequisites:
+  - Xenobiology

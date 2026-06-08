@@ -1,4 +1,4 @@
-ent-DrinkVisualizerTestCut = solution container vis cut-out
-    .desc = A stainless steel insulated pitcher. Everyone's best friend in the morning.
-ent-DrinkVisualizerTestNot = solution container vis cut-not
-    .desc = A stainless steel insulated pitcher. Everyone's best friend in the morning.
+ent-DrinkVisualizerTestCut = { ent-Pitcher } арбузного сока
+    .desc = { ent-Pitcher.desc }
+ent-DrinkVisualizerTestNot = { ent-Pitcher } с ахроматическим зазором
+    .desc = { ent-Pitcher.desc } У этого есть зазор, показывающий только уровень жидкости.

@@ -28,5 +28,17 @@
     ClothingHeadBandBotany: 3
     ClothingHeadsetService: 2
     ClothingOuterWinterHydro: 2
+    # Reserve edit start: Orchid's Barmania - Service Heaven
+    ClothingHandsGlovesLeather: 1
+    ClothingBeltPlant: 1
+    # Reserve edit end: Orchid's Barmania - Service Heaven
   contrabandInventory:
+    # Reserve edit start: Orchid's Barmania - Service Heaven
+    ClothingEyesGogglesBotanistAdvanced: 1
+    ClothingMaskBreathBotanistAdvanced: 1
+    ClothingOuterApronBotanistAdvanced: 1
+    ClothingHandsGlovesBotanistAdvanced: 1
+    ClothingHeadHatBeretSeniorBotanist: 1
+    ClothingUniformJumpsuitMilitaryHydroponics: 1
+    # Reserve edit end: Orchid's Barmania - Service Heaven
     ToyFigurineBotanist: 1

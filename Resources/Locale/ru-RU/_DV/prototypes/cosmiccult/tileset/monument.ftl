@@ -1,8 +1,8 @@
 ent-MonumentCollider = { ent-BaseStructure }
-    .suffix = Дебаг, НЕ МАППИТЬ
+    .suffix = DEBUG, НЕ МАППИТЬ
     .desc = { ent-BaseStructure.desc }
 ent-MonumentSlowZone = { "" }
-    .suffix = Дебаг, НЕ МАППИТЬ
+    .suffix = DEBUG, НЕ МАППИТЬ
     .desc = { "" }
 ent-MonumentCosmicCult1 = { ent-MonumentCosmicCultBase }
     .suffix = База, НЕ МАППИТЬ

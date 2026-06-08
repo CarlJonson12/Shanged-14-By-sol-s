@@ -42,7 +42,7 @@
   - BorgModuleAdvancedSurgery # Shitmed
   technologyPrerequisites:
   - AdvancedEntertainment
-  position: -2,4
+  position: -3,5  # Reserve edit: Orchid's Barmania - Service Heaven
 
 - type: technology
   id: BasicCybernetics
@@ -66,7 +66,7 @@
   - BasicCyberneticHeart
   - BasicCyberneticLungs
   - BasicCyberneticLiver
-  position: -2,5
+  position: -4,5  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - AdvancedTreatment
   - BasicRobotics
@@ -82,7 +82,7 @@
   cost: 10000
   recipeUnlocks:
   - AutodocCircuitboard
-  position: -2,6
+  position: -4,6  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - BasicCybernetics
 
@@ -95,7 +95,7 @@
   discipline: CivilianServices
   tier: 2
   cost: 5000
-  position: -5,6
+  position: -5,5  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - BasicCybernetics
   recipeUnlocks:
@@ -111,7 +111,7 @@
   discipline: CivilianServices
   tier: 2
   cost: 10000
-  position: -5,7
+  position: -5,6  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - BasicAugmentation
   recipeUnlocks:
@@ -130,7 +130,7 @@
   discipline: CivilianServices
   tier: 2
   cost: 10000
-  position: -6,7
+  position: -6,5  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - BasicAugmentation
   recipeUnlocks:
@@ -160,7 +160,7 @@
   - DiagnosticCyberneticEyes
   - SecurityCyberneticEyes
   - MedicalCyberneticEyes
-  position: -2,7
+  position: -4,7  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - Autodoc
 
@@ -178,4 +178,4 @@
   - AutodocUpgradeKitBluespace # Goobstation
   technologyPrerequisites:
   - AdvancedCybernetics
-  position: -2,9
+  position: -4,8  # Reserve edit: Orchid's Barmania - Service Heaven

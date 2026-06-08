@@ -1,5 +1,5 @@
-#Goob start
-#Central Command
+# Goob start
+# Central Command
 highlights-nanotrasen-representative = Представитель Nanotrasen, "Центральное командование", "ПНТ", "НТ", "Центком", Мостик, "Командование"
 highlights-blueshield-officer = Офицер Синий Щит, "Центральное Командование", "ОСЩ", "Центком", Мостик, "Командование"
 
@@ -12,7 +12,7 @@ highlights-chief-medical-officer = Главный врач, "ГВ", Медици
 highlights-head-of-security = Глава службы безопасности, "ГСБ", Служба безопасности, "СБ", Мостик, "Командование"
 highlights-quartermaster = Квартирмейстер, "КМ", Карго, Мостик, "Командование"
 highlights-research-director = Научный руководитель, "НР", Научный, "РНД", Мостик, "Командование"
-#Goob end
+# Goob end
 
 # Security
 highlights-detective = Детектив, "Дек", Служба безопасности, "СБ"

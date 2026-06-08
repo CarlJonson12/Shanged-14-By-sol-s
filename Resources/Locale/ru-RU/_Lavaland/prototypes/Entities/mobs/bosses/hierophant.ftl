@@ -8,3 +8,5 @@ ent-LavalandHierophantDamageField = { "" }
 ent-LavalandHierophantChaser = охотник иерофанта
     .suffix = НЕ МАППИТЬ
     .desc = { "" }
+ent-MobHierophant = иерофант
+    .desc = Огромный металлический клуб, словно повисший в воздухе в ожидании. Он заставит вас танцевать в такт его ритму.

@@ -73,3 +73,5 @@ ent-FoodPacketStickTrash = палочка
     .desc = { ent-FoodPacketLunacakeTrash.desc }
 ent-FoodPacketProteinbarTrash = обёртка от протеинового батончика
     .desc = { ent-FoodPacketLunacakeTrash.desc }
+ent-FoodSnackMothdog = мольдог
+    .desc = Проживает свои лучшие годы.

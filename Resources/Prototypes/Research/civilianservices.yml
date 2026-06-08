@@ -54,21 +54,22 @@
   id: Hydroponics
   name: research-technology-basic-hydroponics
   icon:
-    sprite: Structures/Machines/seed_extractor.rsi
-    state: seedextractor
+    sprite: _Reserve/Objects/Specific/Hydroponics/plant_analyzer.rsi  # Reserve edit: Orchid's Barmania - Service Heaven
+    state: icon
   discipline: CivilianServices
   tier: 1
   cost: 7500 # Delta Price. 5000 is pre-adjustment.
   recipeUnlocks:
-  - PlantBagOfHolding #DeltaV
+  # - PlantBagOfHolding #DeltaV  # Reserve edit: Orchid's Barmania - Service Heaven - moved to BluespaceHydroponics
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
   - PlantAnalyzer # Reserve add
+  - WateringCan  # Reserve edit: Orchid's Barmania - Service Heaven
   # Goobstation R&D Console rework start
-  position: -3,4
+  position: -1,8  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
-  - AdvancedEntertainment
+  - BasicRobotics  # Reserve edit: Orchid's Barmania - Service Heaven
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -137,6 +138,7 @@
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
     - BorgModuleLollypop # Goobstation
+    - CrayonRainbowLarge # Goobstation
   position: 0,2
 
 - type: technology
@@ -153,9 +155,9 @@
   - BiofabricatorMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: -3,5
+  position: 1,8  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
-  - Hydroponics
+  - Cooking  # Reserve edit: Orchid's Barmania - Service Heaven
   # Goobstation R&D Console rework end
 
 # Tier 2
@@ -177,7 +179,7 @@
   - FauxTileAstroSnow
   - FauxTileAstroAsteroidSand
   # Goobstation R&D Console rework start
-  position: 1,5
+  position: 1,6  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - AudioVisualCommunication
   # Goobstation R&D Console rework end
@@ -237,7 +239,7 @@
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
   # Goobstation R&D Console rework start
-  position: -1,4
+  position: -2,6  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - AdvancedEntertainment
   - BasicRobotics
@@ -266,7 +268,7 @@
   position: 0,6
   technologyPrerequisites:
   - PushHorn
-  - RipleyAPLU
+  # - RipleyAPLU  # Reserve edit: Orchid's Barmania - Service Heaven: RipleyAPLU is already required for CritterMechs, which is required for PushHorn.
   # Goobstation R&D Console rework end
 
 - type: technology
@@ -282,7 +284,7 @@
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
   # Goobstation R&D Console rework start
-  position: -1,6
+  position: -3,6  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - AdvancedCleaning
   # Goobstation R&D Console rework end
@@ -299,7 +301,7 @@
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
   # Goobstation R&D Console rework start
-  position: 1,8
+  position: 1,7  # Reserve edit: Orchid's Barmania - Service Heaven
   technologyPrerequisites:
   - MeatManipulation
   - FauxAstroTiles
@@ -316,11 +318,29 @@
   cost: 4000
   recipeUnlocks:
   - PushHorn
+  # - BorgModuleAdvancedClowning # goobedit
   # Goobstation R&D Console rework start
   position: 0,5
   technologyPrerequisites:
   - CritterMechs
   # Goobstation R&D Console rework end
+
+# Reserve edit: Orchid's Barmania - Service Heaven: Merged to AdvancedCooking
+# - type: technology  # Goobstation
+#   id: ServiceBluespaceChemistry
+#   name: research-technology-service-energy-chem
+#   icon:
+#     sprite: _Goobstation/Structures/Machines/service_dispenser.rsi
+#     state: industrial
+#   discipline: CivilianServices
+#   tier: 2
+#   cost: 7500
+#   recipeUnlocks:
+#   - ServiceEnergyChemMachineCircuitboard
+#   position: -4,7
+#   technologyPrerequisites:
+#   - MeatManipulation
+# Reserve edit end: Orchid's Barmania - Service Heaven
 
 # Tier 3
 
@@ -361,3 +381,4 @@
   technologyPrerequisites:
   - BiochemicalStasis
   # Goobstation R&D Console rework end
+

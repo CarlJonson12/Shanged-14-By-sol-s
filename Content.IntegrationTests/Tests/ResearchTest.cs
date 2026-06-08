@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Shared.Lathe;
 using Content.Shared.Research.Prototypes;
+using Content.Shared.Nyanotrasen.ReverseEngineering;
 using Robust.Shared.GameObjects;
 using Robust.Shared.Prototypes;
 
@@ -75,6 +76,7 @@ public sealed class ResearchTest
         {
             var allEnts = protoManager.EnumeratePrototypes<EntityPrototype>();
             var latheTechs = new HashSet<ProtoId<LatheRecipePrototype>>();
+            var unlockedTechs = new HashSet<ProtoId<LatheRecipePrototype>>();
             foreach (var proto in allEnts)
             {
                 if (proto.Abstract)
@@ -82,6 +84,9 @@ public sealed class ResearchTest
 
                 if (pair.IsTestPrototype(proto))
                     continue;
+
+                if (proto.TryGetComponent<ReverseEngineeringComponent>(out var reverseEngineering, compFact) && reverseEngineering.Recipes != null) //reserve: nyano port
+                    unlockedTechs.UnionWith(reverseEngineering.Recipes);
 
                 if (!proto.TryGetComponent<LatheComponent>(out var lathe, compFact))
                     continue;
@@ -95,7 +100,6 @@ public sealed class ResearchTest
             Assert.Multiple(() =>
             {
                 // check that every recipe a tech adds can be made on some lathe
-                var unlockedTechs = new HashSet<ProtoId<LatheRecipePrototype>>();
                 foreach (var tech in protoManager.EnumeratePrototypes<TechnologyPrototype>())
                 {
                     unlockedTechs.UnionWith(tech.RecipeUnlocks);

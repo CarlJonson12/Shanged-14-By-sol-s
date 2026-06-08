@@ -1,6 +1,9 @@
 ent-WardrobePrisonFilled = { ent-WardrobePrison }
     .desc = Содержит коллекцию красивой оранжевой одежды для людей, наслаждающихся пребыванием в бриге.
     .suffix = Заполненный
+ent-ClosetWallWardrobePrisonFilled = { ent-ClosetWallOrange }
+    .desc = { ent-ClosetWallOrange.desc }
+    .suffix = Заполненный
 ent-WardrobeRoboticsFilled = { ent-WardrobeRobotics }
     .desc = Из такого шкафчика можно собрать робота.
     .suffix = Заполненный
@@ -39,4 +42,7 @@ ent-WardrobeAtmosphericsFilled = { ent-WardrobeAtmospherics }
     .suffix = Заполненный
 ent-WardrobeEngineeringFilled = { ent-WardrobeEngineering }
     .desc = В этом шкафчике хранится форма для инженеров и социальной инженерии.
+    .suffix = Заполненный
+ent-ClosetWallWardrobeAtmosphericsFilled = { ent-ClosetWallAtmospherics }
+    .desc = { ent-ClosetWallAtmospherics.desc }
     .suffix = Заполненный

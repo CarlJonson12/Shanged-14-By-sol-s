@@ -1,4 +1,4 @@
-ent-BaseTargetCircle = { "" }
+ent-BaseTargetCircle = маркер лазерного указателя
     .desc = Подождите, это должно быть здесь?
 ent-BaseSupplyPodTargetCircle = { ent-BaseTargetCircle }
     .suffix = Пустой, По умолчанию

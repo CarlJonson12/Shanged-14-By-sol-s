@@ -46,3 +46,6 @@ ent-BaseUplinkRadio60TC = { ent-BaseUplinkRadio }
 ent-BaseUplinkRadioDebug = { ent-BaseUplinkRadio }
     .suffix = DEBUG
     .desc = { ent-BaseUplinkRadio.desc }
+ent-BaseUplinkContractor = аплинк контрактника
+    .suffix = Синдикат
+    .desc = Портативный терминал, обеспечивающий доступ к магазину Гильдии и доске заказов.

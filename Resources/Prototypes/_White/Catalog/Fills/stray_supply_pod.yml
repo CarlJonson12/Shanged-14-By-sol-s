@@ -273,7 +273,7 @@
       - !type:GroupSelector
         children:
         - !type:EntSelector
-          id: CrateFunToyBox
+          id: CrateFunToyBoxRandom  # Reserve edit: Orchid's Barmania - Service Heaven
           weight: 1
       - !type:GroupSelector
         children:
@@ -629,7 +629,7 @@
       - !type:GroupSelector
         children:
         - !type:EntSelector
-          id: LavalandCrateNecropolisCultArmor #bruh
+          id: CrateSecurityArmor
           weight: 1
         # Cargo - Medical
       - !type:GroupSelector

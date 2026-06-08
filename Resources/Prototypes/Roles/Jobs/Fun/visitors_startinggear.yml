@@ -16,7 +16,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCaptain
     shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesCommand # Reserve-CommandHUD
+    eyes: ClothingEyesGlassesCommand
     gloves: ClothingHandsGlovesCaptain
     head: ClothingHeadHatCaptain
     neck: ClothingNeckCloakCap
@@ -32,7 +32,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCapFormal
     shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesCommand # Reserve-CommandHUD
+    eyes: ClothingEyesGlassesCommand
     gloves: ClothingHandsGlovesCaptain
     head: ClothingHeadHatCapcap
     neck: ClothingNeckMantleCap
@@ -49,7 +49,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckCloakCe
+    neck: ClothingNeckCloakWhiteCe
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackDuffelEngineering
@@ -64,7 +64,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckMantleCE
+    neck: ClothingNeckMantleWhiteCE
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackSatchelEngineering
@@ -78,13 +78,13 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCMO
     shoes: ClothingShoesColorBrown
+    eyes: ClothingEyesGlassesMedChemFlash #omu
     gloves: ClothingHandsGlovesLatex
     head: ClothingHeadMirror
     neck: ClothingCloakCmo
     id: VisitorPDA
     back: ClothingBackpackMedical
     ears: ClothingHeadsetAltMedical # Goobstation
-    eyes: ClothingEyesGlassesMedicalCommand # Reserve-CommandHUD
     belt: ClothingBeltMedicalFilled
     outerClothing: ClothingOuterCoatLabCmo
     pocket1: WeaponDisabler
@@ -94,13 +94,13 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitCMOTurtle
     shoes: ClothingShoesColorBrown
+    eyes: ClothingEyesGlassesMedChemFlash #omu
     gloves: ClothingHandsGlovesNitrile
     head: ClothingHeadHatBeretCmo
     neck: ClothingNeckMantleCMO
     id: VisitorPDA
     back: ClothingBackpackSatchelMedical
     ears: ClothingHeadsetAltMedical # Goobstation
-    eyes: ClothingEyesGlassesMedicalCommand # Reserve-CommandHUD
     belt: ClothingBeltMedicalFilled
     outerClothing: ClothingOuterCoatLabCmo
     pocket1: WeaponDisabler
@@ -1708,7 +1708,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckCloakCe
+    neck: ClothingNeckCloakWhiteCe
     id: VisitorPDA
     #belt: ClothingBeltChiefEngineerFilled # probably too strong?
     back: ClothingBackpackDuffelEngineering
@@ -1722,7 +1722,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineerTurtle
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatBeretEngineering
-    neck: ClothingNeckMantleCE
+    neck: ClothingNeckMantleWhiteCE
     id: VisitorPDA
     belt: ClothingBeltChiefEngineerFilled
     back: ClothingBackpackSatchelEngineering

@@ -96,8 +96,9 @@ using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Components;
 using Content.Server.Mind;
+using Content.Server.Preferences.Managers;
 using Content.Server.Roles.Jobs;
-using Content.Server.Warps;
+using Content.Shared._White.CustomGhostSystem;
 using Content.Shared.Actions;
 using Content.Shared.CCVar;
 using Content.Shared.Damage;
@@ -121,11 +122,10 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared._White.Xenomorphs.Infection;
 using Robust.Server.GameObjects;
-using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
+using Robust.Shared.Network;
+using Robust.Shared.Physics.Components;using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -144,6 +144,7 @@ using Content.Shared.Roles;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Silicons.Laws.Components;
 using Content.Shared.SSDIndicator;
+using Content.Shared.Warps;
 using Robust.Shared.Utility;
 
 namespace Content.Server.Ghost
@@ -177,6 +178,7 @@ namespace Content.Server.Ghost
         [Dependency] private readonly NameModifierSystem _nameMod = default!;
         [Dependency] private readonly GhostVisibilitySystem _ghostVisibility = default!;
         [Dependency] private readonly SharedBodySystem _bodySystem = default!; // Shitmed Change
+        [Dependency] private readonly IServerPreferencesManager _prefs = default!; // WWDP
 
         private EntityQuery<GhostComponent> _ghostQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -584,7 +586,7 @@ namespace Content.Server.Ghost
             foreach (var antagonist in EntityQuery<GlobalAntagonistComponent>())
             {
                 var entity = antagonist.Owner;
-                
+
                 if (!_prototypeManager.TryIndex<AntagonistPrototype>(antagonist.AntagonistPrototype ?? "globalAntagonistUnknown", out var prototype))
                     continue;
 
@@ -698,16 +700,34 @@ namespace Content.Server.Ghost
                 return null;
             }
 
-            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
+//            var ghost = SpawnAtPosition(GameTicker.ObserverPrototypeName, spawnPosition.Value);
+            // WWDP-Start
+            CustomGhostPrototype? customGhost = null;
+            if (mind.Comp.UserId is NetUserId userId && _prefs.GetPreferencesOrNull(userId) is {} prefs)
+                customGhost = _prototypeManager.Index(prefs.CustomGhost);
+
+            var ghost = SpawnAtPosition(customGhost?.GhostEntityPrototype ?? GameTicker.ObserverPrototypeName, spawnPosition.Value);
+            // WWDP-End
             var ghostComponent = Comp<GhostComponent>(ghost);
 
             // Try setting the ghost entity name to either the character name or the player name.
             // If all else fails, it'll default to the default entity prototype name, "observer".
             // However, that should rarely happen.
+/* // WWDP-Edit: Removed
             if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
                 _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
             else if (mind.Comp.UserId is { } userId && _player.TryGetSessionById(userId, out var session))
                 _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
+*/
+            // WWDP-Start
+            if (mind.Comp.UserId is NetUserId userUid && _player.TryGetSessionById(userUid, out var session))
+            {
+                if (!string.IsNullOrWhiteSpace(mind.Comp.CharacterName))
+                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(mind.Comp.CharacterName)); // Goob Sanitize Text
+                else
+                    _metaData.SetEntityName(ghost, FormattedMessage.EscapeText(session.Name)); // Goob Sanitize Text
+            }
+            // WWDP-End
 
             if (mind.Comp.TimeOfDeath.HasValue)
             {

@@ -1,14 +1,16 @@
 ent-BaseSMES = СМЭС
     .desc = Сверхпроводящая Магнитная Энергонакопительная Станция (СМЭС) большой ёмкости.
+
 ent-SMESBasic = { ent-BaseSMES }
-    .suffix = Базовая, 8МДж
     .desc = { ent-BaseSMES.desc }
+    .suffix = 8МДж
 ent-SMESBasicEmpty = { ent-SMESBasic }
-    .suffix = Пустой
     .desc = { ent-SMESBasic.desc }
-ent-SMESAdvanced = усовершенствованный СМЭС
+    .suffix = Пустой
+
+ent-SMESAdvanced = продвинутый СМЭС
     .desc = Еще более мощный сверхпроводящий накопитель магнитной энергии (СМЭС).
-    .suffix = Advanced, 16MJ
+    .suffix = 16МДж
 ent-SMESAdvancedEmpty = { ent-SMESAdvanced }
-    .suffix = Empty
     .desc = { ent-SMESAdvanced.desc }
+    .suffix = Пустой

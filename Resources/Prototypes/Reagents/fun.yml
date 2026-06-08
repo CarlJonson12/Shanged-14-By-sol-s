@@ -216,7 +216,7 @@
           types:
             Shock: 4
       - !type:Electrocute
-        probability: 0.15 # DeltaV - was 0.35, this should not be guaranteed for a cheaper chem
+        probability: 0.15 #goob edit
 
 - type: reagent
   id: Razorium
