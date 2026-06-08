@@ -116,9 +116,9 @@
   supervisors: job-supervisors-centcom
   canBeAntag: false
   guides:
-  - NanotrasenRep SOP
+  - NanotrasenRepSOP
   - SOP
-  - SpaceLaw
+  - SpaceLawReserve # Reserve guidebook
   - Writing
   goobcoins: 40
   access:

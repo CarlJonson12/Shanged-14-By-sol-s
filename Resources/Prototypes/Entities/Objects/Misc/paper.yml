@@ -259,6 +259,8 @@
       SheetPrinter: 100
   - type: Material
   # Corvax-Printer-End
+  - type: StationAiWhitelist
+
 
 - type: entity
   name: paper scrap
@@ -450,8 +452,8 @@
     price: 0
   - type: GuideHelp
     guides:
-    - CargoBountiesReserve # Reserve edit
-    - CargoReserve # Reserve edit
+    - CargoBounties
+    - Cargo
 
 - type: entity
   id: PaperSalvageJobLabel
@@ -638,3 +640,4 @@
       - !type:EmptyAllContainersBehaviour
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
+  - type: StationAiWhitelist

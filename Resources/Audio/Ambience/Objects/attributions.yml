@@ -70,3 +70,8 @@
   license: "CC-BY-4.0"
   copyright: "Taken and edited from source"
   source: "https://freesound.org/people/juskiddink/sounds/215658/"
+
+- files: ["revMachine_ambience.ogg"]
+  license: "CC0-1.0"
+  copyright: "Welding_3_continious.wav by ivolipa. Shrill_Scraping.wav by mickyman5000. Wheelchair Hydraulic 1.wav by maxlaclaria"
+  source: "https://freesound.org/people/ivolipa/sounds/385995/" #https://freesound.org/people/maxlacaria/sounds/557323/ https://freesound.org/people/mickyman5000/sounds/340719/"

@@ -30,4 +30,10 @@
     ClothingHeadsetMedical: 2
     ClothingOuterWinterChem: 2
   contrabandInventory:
+    # Reserve edit start: Orchid's Barmania - Service Heaven
+    ClothingHandsGlovesMittsChemist: 1
+    ClothingHandsGlovesChemistAdvanced: 1
+    ClothingMaskBreathChemist: 1
+    ClothingOuterApronChemist: 1
+    # Reserve edit end: Orchid's Barmania - Service Heaven
     ToyFigurineChemist: 1

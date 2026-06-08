@@ -11,3 +11,6 @@ ent-ClothingEyesThermalVisionGoggles = очки теплового видени�
 ent-ClothingEyesThermalVisionGogglesSyndie = { ent-ClothingEyesThermalVisionGoggles }
     .suffix = Хамелеон
     .desc = { ent-ClothingEyesThermalVisionGoggles.desc }
+ent-ClothingEyesThermalVisionGogglesNukie = { ent-ClothingEyesThermalVisionGogglesSyndie }
+    .suffix = Хамелеон, Ядерные оперативники
+    .desc = { ent-ClothingEyesThermalVisionGogglesSyndie.desc }

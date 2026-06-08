@@ -115,6 +115,7 @@ public sealed partial class GuidebookWindow : FancyWindow, ILinkClickHandler
 {
     [Dependency] private readonly DocumentParsingManager _parsingMan = default!;
     [Dependency] private readonly IResourceManager _resourceManager = default!;
+    [Dependency] private readonly GuidebookLocalizationManager _localization = default!;
 
     private Dictionary<ProtoId<GuideEntryPrototype>, GuideEntry> _entries = new();
 
@@ -179,7 +180,18 @@ public sealed partial class GuidebookWindow : FancyWindow, ILinkClickHandler
         EntryContainer.Visible = true;
         SearchBar.Text = "";
         EntryContainer.RemoveAllChildren();
-        using var file = _resourceManager.ContentFileReadText(entry.Text);
+        // using var file = _resourceManager.ContentFileReadText(entry.Text); // Reserve localized guidebook begin
+        // Get localized path
+        var textPath = entry.GetLocalizedTextPath(_localization.GetCurrentCultureName());
+
+        if (textPath == default)
+        {
+            _sawmill.Error($"Guide entry {entry.Id} has no valid text path!");
+            return;
+        }
+
+        using var file = _resourceManager.ContentFileReadText(textPath);
+        // Reserve localized guidebook end
 
         SearchContainer.Visible = entry.FilterEnabled;
 

@@ -179,7 +179,7 @@
     - id: MalignRiftSpawn # DeltaV
     - id: FloorGoblinMidRound # Goobstation
     - id: ClownGoblinMigration # Goobstation - New Midrounds
-    - id: SantaClausSpawn # Goobstation, remove after new year
+    # - id: SantaClausSpawn # Goobstation, remove after new year
 
 - type: entityTable
   id: BasicAntagEventsTable
@@ -192,8 +192,6 @@
     - id: ParadoxCloneSpawn
     #- id: RevenantSpawn  # GoobStation - removed till rework
     - id: SleeperAgents
-    - id: HereticMidround # Goob
-    - id: ChangelingMidround # Goob
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
     - id: DerelictCyborgSpawn
@@ -203,16 +201,17 @@
     - id: BingleSpawn #Goobstation - Bingle
     - id: SlaughterDemonMidround # Goobstation - Slaughter Demon
     - id: XenomorphsInfestation # WD EDIT
-    #- id: GreyTideAntagMidround # Goobstation - New Midrounds
-    #- id: SingulothKnightsMidround # Goobstation - New Midrounds
+    - id: SlasherSpawn # Goobstation - The Slasher
+    - id: SpacePirates # Goobstation - you probably can read whom this rule spawns
+    - id: GreyTideAntagMidround # Goobstation - New Midrounds
+    - id: SingulothKnightsMidround # Goobstation - New Midrounds
     #- id: DarkLordMidround # Goobstation - New Midrounds
-    #- id: MimeAssassinMidround # Goobstation - New Midrounds
-    #- id: DarkPriestMidround # Goobstation - New Midrounds
-    #- id: VoxRaidersMidround # Goobstation - New Midrounds
-    #- id: TunnelClownMidround # Goobstation
+    - id: MimeAssassinMidround # Goobstation - New Midrounds
+    - id: DarkPriestMidround # Goobstation - New Midrounds
+    - id: VoxRaidersMidround # Goobstation - New Midrounds
+    - id: TunnelClownMidround # Goobstation
     #- id: WraithMidround # Goobstation - Wraith
     #TODO when midrounds are "reviewed" by the chudmins add them back
-    #TODO When Slasher is Ready - id: SlasherSpawn # Goobstation - The Slasher
 
 - type: entity
   id: BaseStationEvent
@@ -361,6 +360,7 @@
     chaosScore: 60
   - type: RandomEntityStorageSpawnRule
     prototype: MobSkeletonCloset
+  - type: GhostPingRule # Reserve
 
 - type: entity
   parent: BaseGameRule
@@ -401,6 +401,7 @@
       pickPlayer: false
       mindRoles:
       - MindRoleDragon
+  - type: GhostPingRule # Harmony change
 
 - type: entity
   parent: BaseGameRule
@@ -472,6 +473,7 @@
         nameFormat: name-format-ninja
       mindRoles:
       - MindRoleNinja
+  - type: GhostPingRule # Harmony change
 
 - type: entity
   parent: BaseGameRule
@@ -495,7 +497,6 @@
       components:
       - BorgBrain # No copying the AI or borgs.
       - AntagImmune # No copying people who are immune to antags. (Gemini Hologram, Ghost bar, etcetera.)
-
   - type: AntagObjectives
     objectives:
     - ParadoxCloneKillObjective
@@ -518,6 +519,7 @@
         sound: /Audio/Misc/paradox_clone_greeting.ogg
       mindRoles:
       - MindRoleParadoxClone
+  - type: GhostPingRule # Reserve
 
 #- type: entity   Goobstaion start - disabled until rework
 #  parent: BaseGameRule
@@ -579,6 +581,7 @@
 #        - NamesWizardLast
 #      mindRoles:
 #      - MindRoleWizard
+#  - type: GhostPingRule # Harmony change
 
 # disabled until event is rewritten to be more interesting
 #- type: entity
@@ -701,6 +704,10 @@
   - type: GameRule
     chaosScore: 70
   - type: VentClogRule
+    weakReagents:
+    - Slime
+    - SpaceGlue
+    - SpaceLube
 
 - type: entity
   id: SlimesSpawn
@@ -849,7 +856,7 @@
     earliestStart: 35
     weight: 2.5 # Goobstation - was 5.5
     minimumPlayers: 50 # Goobstation - was 20
-    duration: 1
+    duration: 720 # Goobstation - required for custom nuke music. 720s to ensure loneop can hear the music and still have space for other midrounds incase of failure
     chaos: # Goobstation
       Hostile: 200
       Medical: 200
@@ -862,6 +869,7 @@
   - type: LoadMapRule
     gridPath: /Maps/Shuttles/ShuttleEvent/striker.yml
   - type: NukeopsRule
+    localePrefix: "loneop-" #Goobstation
     roundEndBehavior: Nothing
   - type: AntagSelection
     definitions:
@@ -888,6 +896,7 @@
   - type: AntagLoadProfileRule # Goobstation
     speciesOverride: Human
     alwaysUseSpeciesOverride: true
+  - type: GhostPingRule # Harmony change
 
 - type: entity
   parent: BaseTraitorRule
@@ -1050,3 +1059,4 @@
       min: 1
       max: 1
       pickPlayer: false
+  - type: GhostPingRule # Reserve

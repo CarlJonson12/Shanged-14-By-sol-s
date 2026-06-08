@@ -128,6 +128,9 @@
 
 - type: loadout
   id: MedicalBeret
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MedicalHeadMirrorTimer
   equipment:
     head: ClothingHeadHatBeretMedic
 
@@ -205,6 +208,9 @@
 
 - type: loadout # goob
   id: MedicMJ
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MedicalHeadMirrorTimer
   equipment:
     jumpsuit: ClothingUniformJumpsuitMilitaryMedicalDoctor
 
@@ -228,6 +234,9 @@
 # OuterClothing
 - type: loadout
   id: MedicalDoctorWintercoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: AdvancedDoctor
   equipment:
     outerClothing: ClothingOuterWinterMed
 
@@ -242,6 +251,9 @@
 # Shoes
 - type: loadout
   id: MedicalWinterBoots
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: AdvancedDoctor
   equipment:
     shoes: ClothingShoesBootsWinterMed
 
@@ -275,10 +287,16 @@
 #Eyewear
 - type: loadout
   id: MedicalHud
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: AdvancedDoctor
   equipment:
     eyes: ClothingEyesHudMedical
 
 - type: loadout
   id: MedicalEyePatchHud
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: AdvancedDoctor
   equipment:
     eyes: ClothingEyesEyepatchHudMedical

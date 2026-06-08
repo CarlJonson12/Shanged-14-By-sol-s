@@ -1,6 +1,6 @@
 ent-CardBaseNanotrasen = карта
     .desc = { ent-CardBase.desc }
-ent-CardBoxNanotrasen = коробка с колодой карт НаноТрейзен
+ent-CardBoxNanotrasen = коробка с колодой карт NanoTrasen
     .desc = { ent-CardBoxBase.desc }
 ent-CardDeckNanotrasen = колода карт
     .desc = { ent-CardDeckBase.desc }

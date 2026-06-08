@@ -33,6 +33,10 @@
   - type: Tag
     tags:
     - QuantumSpinInverter
+  - type: ReverseEngineering # reserve: nyano port
+    difficulty: 4
+    recipes:
+      - DeviceQuantumSpinInverter
   - type: PhysicalComposition #Goobstation - Recycle update
     materialComposition:
       Steel: 175

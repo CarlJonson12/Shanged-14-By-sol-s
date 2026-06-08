@@ -54,11 +54,11 @@
 - type: reagent
   id: MilkChoco
   name: reagent-name-milk-choco
-  #group: Drinks - Goob: Drinks guidebook split
+  group: NonAlcoholicDrinks #- Goob: Drinks guidebook split
   desc: reagent-desc-milk-choco
   physicalDesc: reagent-physical-desc-opaque
   flavor: chocolate
-  color: "#664300"
+  color: "#a67350"  # Reserve: Orchid's Barmania - Vendichaos
   recognizable: true
   plantMetabolism:
     - !type:PlantAdjustNutrition

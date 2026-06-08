@@ -69,6 +69,7 @@ loadout-group-chef-head = Chef head
 loadout-group-chef-mask = Chef mask
 loadout-group-chef-jumpsuit = Chef jumpsuit
 loadout-group-chef-outerclothing = Chef outer clothing
+loadout-group-chef-gloves = Chef gloves
 
 loadout-group-librarian-jumpsuit = Librarian jumpsuit
 
@@ -91,6 +92,9 @@ loadout-group-botanist-head = Botanist head
 loadout-group-botanist-jumpsuit = Botanist jumpsuit
 loadout-group-botanist-backpack = Botanist backpack
 loadout-group-botanist-outerclothing = Botanist outer clothing
+loadout-group-botanist-gloves = Botanist gloves
+loadout-group-botanist-goggles = Botanist goggles
+loadout-group-botanist-masks = Botanist masks
 
 loadout-group-clown-head = Clown head
 loadout-group-clown-jumpsuit = Clown jumpsuit
@@ -193,6 +197,7 @@ loadout-group-security-star = Security Star
 
 # Medical
 loadout-group-medical-gloves = Medical gloves
+loadout-group-medical-glasses = Medical glasses
 loadout-group-medical-mask = Medical mask
 
 loadout-group-chief-medical-officer-head = Chief Medical Officer head
@@ -213,13 +218,14 @@ loadout-group-medical-intern-jumpsuit = Medical intern jumpsuit
 loadout-group-chemist-jumpsuit = Chemist jumpsuit
 loadout-group-chemist-outerclothing = Chemist outer clothing
 loadout-group-chemist-backpack = Chemist backpack
+loadout-group-chemist-gloves = Chemist gloves
+loadout-group-chemist-goggles = Chemist goggles
+loadout-group-chemist-masks = Chemist masks
 
 loadout-group-paramedic-head = Paramedic head
 loadout-group-paramedic-jumpsuit = Paramedic jumpsuit
 loadout-group-paramedic-outerclothing = Paramedic outer clothing
 loadout-group-paramedic-shoes = Paramedic shoes
-
-loadout-group-medical-glasses = Medical glasses
 
 # Wildcards
 loadout-group-reporter-jumpsuit = Reporter jumpsuit
