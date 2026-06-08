@@ -78,6 +78,7 @@
   - NodeScanner
   - AnalysisComputerCircuitboard
   - ArtifactAnalyzerMachineCircuitboard
+  - ReverseEngineeringMachineCircuitboard #reserve: nyano port
   # Goobstation R&D Console rework start
   position: -2,2
   technologyPrerequisites:

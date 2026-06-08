@@ -137,7 +137,8 @@ namespace Content.Server.GameTicking
                         await _discord.CreateMessage(identifier, payload);
                     }
                     // ADT-Tweak-end
-                    RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
+                    if (session.Channel.IsConnected)  // Reserve edit: Flaky test fixes
+                        RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 
                     if (firstConnection && _cfg.GetCVar(CCVars.AdminNewPlayerJoinSound))
                         _audio.PlayGlobal(new SoundPathSpecifier("/Audio/Effects/newplayerping.ogg"),
@@ -193,14 +194,18 @@ namespace Content.Server.GameTicking
 
                 case SessionStatus.Disconnected:
                 {
+                    // Moffstation - Start - Ready Manifest
+                    if (_playerGameStatuses.TryGetValue(session.UserId, out var status) &&
+                        status == PlayerGameStatus.ReadyToPlay)
+                        ToggleReady(session, false);
+                    // Moffstation - End
                     _chatManager.SendAdminAnnouncement(Loc.GetString("player-leave-message", ("name", args.Session.Name)));
                     if (mindId != null)
                     {
                         _pvsOverride.RemoveSessionOverride(mindId.Value, session);
                     }
 
-                    if (_playerGameStatuses.ContainsKey(session.UserId)) // Goobstation - Queue
-                        _userDb.ClientDisconnected(session);
+                    _userDb.ClientDisconnected(session);
                     break;
                 }
             }
@@ -270,7 +275,8 @@ namespace Content.Server.GameTicking
                 }
             }
 
-            RaiseNetworkEvent(new TickerJoinGameEvent(), session.Channel);
+            if (session.Channel.IsConnected)  // Reserve edit: Flaky test fixes
+                RaiseNetworkEvent(new TickerJoinGameEvent(), session.Channel);
         }
 
         private void PlayerJoinLobby(ICommonSession session)
@@ -279,9 +285,12 @@ namespace Content.Server.GameTicking
             _db.AddRoundPlayers(RoundId, session.UserId);
 
             var client = session.Channel;
-            RaiseNetworkEvent(new TickerJoinLobbyEvent(), client);
-            RaiseNetworkEvent(GetStatusMsg(session), client);
-            RaiseNetworkEvent(GetInfoMsg(), client);
+            if (client.IsConnected)  // Reserve edit: Flaky test fixes
+            {
+                RaiseNetworkEvent(new TickerJoinLobbyEvent(), client);
+                RaiseNetworkEvent(GetStatusMsg(session), client);
+                RaiseNetworkEvent(GetInfoMsg(), client);
+            }
             RaiseLocalEvent(new PlayerJoinedLobbyEvent(session));
         }
 

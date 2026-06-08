@@ -95,6 +95,11 @@
           False: {state: icon}
   - type: StaticPrice
     price: 100
+  - type: ReverseEngineering # reserve: nyano port
+    generic: true
+    difficulty: 3
+    recipes:
+    - JetpackBlue
 
 - type: entity
   parent: BaseAction
@@ -242,6 +247,10 @@
       outputPressure: 42.6
       air:
         volume: 1.5
+    - type: ReverseEngineering # reserve: nyano port
+      difficulty: 2
+      recipes:
+        - JetpackMini
 
 # Filled mini
 - type: entity

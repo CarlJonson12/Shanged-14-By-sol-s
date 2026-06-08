@@ -120,9 +120,7 @@
 // SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
 // SPDX-FileCopyrightText: 2025 Sara Aldrete's Top Guy <mary@thughunt.ing>
 // SPDX-FileCopyrightText: 2025 Solstice <solsticeofthewinter@gmail.com>
-// SPDX-FileCopyrightText: 2025 Svarshik <96281939+lexaSvarshik@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 Whisper <121047731+QuietlyWhisper@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 YotaXP <yotaxp@gmail.com>
 // SPDX-FileCopyrightText: 2025 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 blobadoodle <me@bloba.dev>
 // SPDX-FileCopyrightText: 2025 coderabbitai[bot] <136622811+coderabbitai[bot]@users.noreply.github.com>
@@ -132,7 +130,6 @@
 // SPDX-FileCopyrightText: 2025 gluesniffler <159397573+gluesniffler@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 kamkoi <poiiiple1@gmail.com>
 // SPDX-FileCopyrightText: 2025 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 nazrin <tikufaev@outlook.com>
 // SPDX-FileCopyrightText: 2025 shibe <95730644+shibechef@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2025 tetra <169831122+Foralemes@users.noreply.github.com>
 //
@@ -439,7 +436,6 @@ namespace Content.Server.Database
                     markings
                 ),
                 spawnPriority,
-                (UplinkPreference) profile.Uplink,
                 jobs,
                 (PreferenceUnavailableMode) profile.PreferenceUnavailable,
                 antags.ToHashSet(),
@@ -486,7 +482,6 @@ namespace Content.Server.Database
             profile.FacialHairColor = appearance.FacialHairColor.ToHex();
             profile.EyeColor = appearance.EyeColor.ToHex();
             profile.SkinColor = appearance.SkinColor.ToHex();
-            profile.Uplink = (int) humanoid.UplinkPreference;
             profile.SpawnPriority = (int) humanoid.SpawnPriority;
             profile.Markings = markings;
             profile.Slot = slot;
@@ -2356,6 +2351,46 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .GroupBy(v => v.PollOptionId)
                 .Select(g => new { OptionId = g.Key, Count = g.Count() })
                 .ToDictionaryAsync(x => x.OptionId, x => x.Count, cancel);
+        }
+
+        public async Task<bool> MarkPollSeenAsync(int pollId, NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var existing = await db.DbContext.PollSeen
+                .AnyAsync(s => s.PollId == pollId && s.PlayerUserId == userId.UserId, cancel);
+
+            if (existing)
+                return false;
+
+            db.DbContext.PollSeen.Add(new PollSeen
+            {
+                PollId = pollId,
+                PlayerUserId = userId.UserId,
+                SeenAt = DateTime.UtcNow,
+            });
+            await db.DbContext.SaveChangesAsync(cancel);
+            return true;
+        }
+
+        public async Task<HashSet<int>> GetSeenPollIdsAsync(NetUserId userId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            var ids = await db.DbContext.PollSeen
+                .Where(s => s.PlayerUserId == userId.UserId)
+                .Select(s => s.PollId)
+                .ToListAsync(cancel);
+
+            return [..ids];
+        }
+
+        public async Task<int> GetPollSeenCountAsync(int pollId, CancellationToken cancel = default)
+        {
+            await using var db = await GetDb(cancel);
+
+            return await db.DbContext.PollSeen
+                .CountAsync(s => s.PollId == pollId, cancel);
         }
 
         #endregion

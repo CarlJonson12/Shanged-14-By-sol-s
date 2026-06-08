@@ -1,11 +1,17 @@
 guide-entry-space-law = Космический закон
 guide-entry-medpatches = Медицинские пластыри
+guide-entry-virology = Вирусология
 guide-entry-rules-nrp = НРП правила
+guide-entry-sm = Двигатель Суперматерии
+guide-entry-automation = Автоматизация
+guide-entry-plumbing = Водопровод
+
+guide-entry-alcoholic-drinks = Алкогольные напитки
+guide-entry-non-alcoholic-drinks = Безалкогольные напитки
+guide-entry-enchanting = Зачарование
 # Goob SOP
 # - Основные справочники
 guide-entry-sop = СРП
-guide-entry-sm = Двигатель Суперматерии
-guide-entry-automation = Автоматизация
 guide-entry-sop-alert-levels = Коды станции
 guide-entry-sop-emergencies = Чрезвычайные ситуации
 guide-entry-sop-jobs = Профессии
@@ -52,6 +58,7 @@ guide-entry-sop-searches = Обыски
 # - Груз
 guide-entry-sop-cargotech = Грузчик
 guide-entry-sop-salvage = Утилизатор
+guide-entry-sop-shaft-miner = Шахтер
 # - Командование
 guide-entry-sop-ntr = ПНТ
 guide-entry-sop-bso = Офицер "Синий Щит"

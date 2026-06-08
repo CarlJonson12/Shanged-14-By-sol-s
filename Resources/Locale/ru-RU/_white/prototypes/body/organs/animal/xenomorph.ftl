@@ -25,7 +25,7 @@ ent-OrganXenomorphNeurotoxinGland = нейротоксиновая железа
 ent-OrganXenomorphEggSack = мешок для яиц
    .desc = Предназначен для производства и хранения яиц, содержащих лицехватов. Огромные размеры органа позволяют Королеве ксеноморфов откладывать тысячи яиц в течение короткого периода времени.
 
-ent-OrganXenomorphResinSpinner = cмоляной прядильщик
+ent-OrganXenomorphResinSpinner = смоляной прядильщик
    .desc = Предназначен для производства и выделения смолоподобного биополимера.
 
 ent-OrganXenomorphHiveNode = узел улья

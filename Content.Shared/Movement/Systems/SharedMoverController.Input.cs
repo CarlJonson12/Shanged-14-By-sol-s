@@ -164,7 +164,7 @@ namespace Content.Shared.Movement.Systems
             // Reset
             entity.Comp.LastInputTick = GameTick.Zero;
             entity.Comp.LastInputSubTick = 0;
-             // Shitmed Change Start
+            // Shitmed Change Start
             Vector2 vector2 = DirVecForButtons(entity.Comp.HeldMoveButtons);
             Vector2i vector2i = new Vector2i((int) vector2.X, (int) vector2.Y);
             Direction dir = (vector2i == Vector2i.Zero) ? Direction.Invalid : vector2i.AsDirection();
@@ -182,10 +182,11 @@ namespace Content.Shared.Movement.Systems
 
         private void OnMoverGetState(Entity<InputMoverComponent> entity, ref ComponentGetState args)
         {
+            TryGetNetEntity(entity.Comp.RelativeEntity, out var relativeEntity);  // Reserve edit: Flaky test fixes
             args.State = new InputMoverComponentState()
             {
                 CanMove = entity.Comp.CanMove,
-                RelativeEntity = GetNetEntity(entity.Comp.RelativeEntity),
+                RelativeEntity = relativeEntity,  // Reserve edit: Flaky test fixes
                 LerpTarget = entity.Comp.LerpTarget,
                 HeldMoveButtons = entity.Comp.HeldMoveButtons,
                 RelativeRotation = entity.Comp.RelativeRotation,
@@ -201,7 +202,7 @@ namespace Content.Shared.Movement.Systems
 
         public bool DiagonalMovementEnabled { get; private set; }
 
-        protected virtual void HandleShuttleInput(EntityUid uid, ShuttleButtons button, ushort subTick, bool state) {}
+        protected virtual void HandleShuttleInput(EntityUid uid, ShuttleButtons button, ushort subTick, bool state) { }
 
         public void RotateCamera(EntityUid uid, Angle angle)
         {

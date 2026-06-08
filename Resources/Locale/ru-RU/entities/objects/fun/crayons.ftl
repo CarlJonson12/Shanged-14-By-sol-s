@@ -22,3 +22,5 @@ ent-CrayonPurple = фиолетовый мелок
     .desc = { ent-Crayon.desc }
 ent-CrayonBox = коробка для мелков
     .desc = Это коробка с мелками.
+ent-CrayonRainbowLarge = плазменный радужный мелок
+    .desc = Красочный мелок. Теперь бесконечный! (почти)

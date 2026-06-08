@@ -49,6 +49,11 @@
   - DeviceQuantumSpinInverter
   - DeviceDesynchronizer
   - ClothingBackpackHarmpack
+  #reserve: nyanotrasen port start
+  - EncryptionKeySyndie
+  - JetpackBlue
+  - JetpackMini
+  #reserve: nyanotrasen port end
 
 - type: latheRecipePack
   id: ScienceClothing
@@ -109,6 +114,7 @@
   - APECircuitboard
   - ArtifactAnalyzerMachineCircuitboard
   - ArtifactCrusherMachineCircuitboard
+  - ReverseEngineeringMachineCircuitboard #reserve: nyano port
 
 - type: latheRecipePack
   id: CameraBoards

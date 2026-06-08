@@ -36,6 +36,9 @@
       tags:
       - DroneUsable # Goobstation
       - FirelockElectronics
+    - type: ReverseEngineering # reserve: nyano port
+      recipes:
+        - FirelockElectronics
     - type: StaticPrice
       price: 61
     - type: PhysicalComposition

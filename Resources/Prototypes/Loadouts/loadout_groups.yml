@@ -203,11 +203,20 @@
   - ClothingNeckGenderfluidPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
-  - CardBoxBlack # GoobStation
-  - CardBoxNanotrasen # GoobStation
-  - FoodSnackLollypopWrapped # Goobstation
-  - FoodSnackLollypopWrappedRainbow # Goobstation
-  - FoodSnackLollypopWrappedCarp # Goobstation
+  - ClothingNeckGoldAutismPin
+  - OffsetCane
+  - OffsetCaneWood
+  - OffsetCaneClown
+  - OffsetCaneMime
+  - OffsetCaneNT
+  - Cane
+  # GoobStation Start
+  - CardBoxBlack
+  - CardBoxNanotrasen
+  - FoodSnackLollypopWrapped
+  - FoodSnackLollypopWrappedRainbow
+  - FoodSnackLollypopWrappedCarp
+  # Goobstation End
   - TowelColorBlack
   - TowelColorDarkBlue
   - TowelColorDarkGreen
@@ -311,6 +320,7 @@
   loadouts:
   - CaptainHead
   - CaptainCap
+  - CaptainCapcapSenior # goob
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -332,6 +342,7 @@
   - CaptainCloakFormal
   - CaptainMantle
   - VeteranCaptainCloak # goob
+  - CaptainEnsemble # goob
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -373,6 +384,7 @@
   loadouts:
   - HoPCloak
   - HoPMantle
+  - HeadOfPersonnelEnsemble # goob
 
 - type: loadoutGroup
   id: HoPBackpack
@@ -402,6 +414,7 @@
   - AncientJumpsuit
   - RainbowJumpsuit
   - RainbowJumpskirt
+  - OverallsJumpsuit
  # goob changes start
   - GreyMJ
   - BlackMJ
@@ -674,6 +687,7 @@
   minLimit: 0
   loadouts:
   - BotanistApron
+  - BotanistApronAdvanced  # Reserve edit: Orchid's Barmania - Service Heaven
   - BotanistWintercoat
 
 - type: loadoutGroup
@@ -871,6 +885,7 @@
   loadouts:
   - QuartermasterCloak
   - QuartermasterMantle
+  - QuartermasterEnsemble # goob
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
@@ -900,6 +915,7 @@
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
+  - CargoTechnicianOveralls #Goob
   - CargoTechnicianJumpsuitMail # Goob/DeltaV - Mail
   - CargoTechnicianJumpskirtMail # Goob/DeltaV - Mail
   - CargoTechMJ # goob
@@ -976,8 +992,12 @@
   name: loadout-group-chief-engineer-neck
   minLimit: 0
   loadouts:
-  - ChiefEngineerCloak
-  - ChiefEngineerMantle
+  - ClothingNeckCloakWhiteCe # goob
+  - ClothingNeckCloakGreenCe # goob
+  - ClothingNeckMantleWhiteCE # goob
+  - ClothingNeckMantleOrangeCE # goob
+  - ClothingNeckEnsembleChiefEngineerWhite # goob
+  - ClothingNeckEnsembleChiefEngineerGreen # goob
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
@@ -1123,13 +1143,16 @@
   loadouts:
   - ResearchDirectorMantle
   - ResearchDirectorCloak
+  - ResearchDirectorEnsemble # goob
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
   name: loadout-group-research-director-jumpsuit
   loadouts:
   - ResearchDirectorJumpsuit
+  - ResearchDirectorJumpsuitAlt # goob
   - ResearchDirectorJumpskirt
+  - ResearchDirectorJumpskirtAlt # goob
   - ResearchDirectorMJ # goob
   - RDSummerShirt # goob
 
@@ -1260,6 +1283,7 @@
   - HeadofSecurityCloak
   - HeadofSecurityMantle
   - Bodycam # Goobstation - Body cameras
+  - HeadOfSecurityEnsemble # goob
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
@@ -1315,6 +1339,7 @@
   - SeniorOfficerJumpsuit
   - SeniorOfficerJumpskirt
   - TrooperUniform
+  - VeteranOfficerBlackJumpsuit # Goobstation
 
 - type: loadoutGroup
   id: SecurityBackpack
@@ -1341,6 +1366,7 @@
   - ArmorVestSlim
   - SecurityOfficerWintercoat
   - WinterCoatSeniorSecArmored # Goobstation
+  - VeteranOfficerArmor # Goobstation
 
 - type: loadoutGroup
   id: SecurityShoes
@@ -1453,6 +1479,7 @@
   loadouts:
   - ChiefMedicalOfficerCloak
   - ChiefMedicalOfficerMantle
+  - ChiefMedicalOfficerEnsemble # goob
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
@@ -1559,6 +1586,7 @@
   loadouts:
   - RegularLabCoat
   - ChemistLabCoat
+  - ChemistApronAdvanced  # Reserve edit: Orchid's Barmania - Service Heaven
   - ChemistWintercoat
   - SeniorPhysicianLabCoat # Goobstation
 
@@ -1614,6 +1642,10 @@
   loadouts:
   - MedicalHud
   - MedicalEyePatchHud
+  - ChemistMedicGoggles  # Reserve edit: Orchid's Barmania - Service Heaven
+  - ChemistMedicGogglesAdvanced  # Reserve edit: Orchid's Barmania - Service Heaven
+  - RoboticistMedicGoggles  # Reserve edit: Orchid's Barmania - Service Heaven
+  - RoboticistMedicGogglesAdvanced  # Reserve edit: Orchid's Barmania - Service Heaven
   - Glasses
   - GlassesJamjar
   - GlassesJensen

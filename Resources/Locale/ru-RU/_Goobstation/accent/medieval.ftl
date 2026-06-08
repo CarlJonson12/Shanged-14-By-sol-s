@@ -1,9 +1,3 @@
-# SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-# SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-# SPDX-FileCopyrightText: 2025 smudge <138918973+Cerise-Cattowo@users.noreply.github.com>
-#
-# SPDX-License-Identifier: AGPL-3.0-or-later
-
 accent-medieval-prefix-1 = Ах,
 accent-medieval-prefix-2 = Увы,
 accent-medieval-prefix-3 = Достопочтенный,
@@ -271,7 +265,7 @@ accent-medieval-words-112 = нуки
 accent-medieval-words-replace-112 = предвестник разрушения
 accent-medieval-words-113 = ядерное оружие
 accent-medieval-words-replace-113 = предвестники смерти
-accent-medieval-words-114 = адмеме
+accent-medieval-words-114 = адмем
 accent-medieval-words-replace-114 = бог из машины
 accent-medieval-words-115 = административная шина
 accent-medieval-words-replace-115 = бог из машины

@@ -138,9 +138,12 @@
     - !type:RoleTimeRequirement
       role: JobSecurityOfficer
       time: 18000 #5 hrs
+    - !type:RoleTimeRequirement
+      role: JobBrigmedic
+      time: 18000 #5 hrs
     - !type:DepartmentTimeRequirement
       department: Security
-      time: 36000 #10 hrs
+      time: 36000 # 10 hrs
     - !type:SpeciesRequirement # Goob - None Felinid
       inverted: true
       species:
@@ -151,10 +154,10 @@
   supervisors: job-supervisors-hos
   canBeAntag: false
   guides: # goobstation
-  - SpaceLaw
-  - Legal SOP
+  - SpaceLawReserve # Reserve guidebook
+  - LegalSOP
   - Security
-  - Warden SOP
+  - WardenSOP
   - KravMaga
   goobcoins: 35 #Goob content
   access:

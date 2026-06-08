@@ -33,3 +33,7 @@
       interfaces:
         enum.NodeScannerUiKey.Key:
           type: NodeScannerBoundUserInterface
+    - type: ReverseEngineering # reserve: nyano port
+      difficulty: 2
+      recipes:
+        - NodeScanner

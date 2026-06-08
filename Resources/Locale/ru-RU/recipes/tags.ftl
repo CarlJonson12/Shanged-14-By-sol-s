@@ -16,7 +16,7 @@ construction-graph-tag-mime-meal = обед хэппи хонк в стиле м
 # crayon
 construction-graph-tag-purple-crayon = фиолетовый мелок
 construction-graph-tag-red-crayon = красный мелок
-construction-graph-tag-yellow-crayon = желтый мелок
+construction-graph-tag-yellow-crayon = жёлтый мелок
 construction-graph-tag-black-crayon = черный мелок
 
 # eva
@@ -80,7 +80,7 @@ construction-graph-tag-lizard-plushie = плюшевая ящерица
 construction-graph-tag-black-carpet = черный ковер
 construction-graph-tag-blue-carpet = синий ковер
 construction-graph-tag-cyan-carpet = бирюзовый ковер
-construction-graph-tag-green-carpet = зеленый ковер
+construction-graph-tag-green-carpet = зелёный ковер
 construction-graph-tag-orange-carpet = оранжевый ковер
 construction-graph-tag-pink-carpet = розовый ковер
 construction-graph-tag-purple-carpet = фиолетовый ковер
@@ -129,8 +129,8 @@ construction-graph-tag-blue-crystal-shard = синий осколок крист
 construction-graph-tag-pink-crystal-shard = розовый осколок кристалла
 construction-graph-tag-orange-crystal-shard = оранжевый осколок кристалла
 construction-graph-tag-red-crystal-shard = красный осколок кристалла
-construction-graph-tag-green-crystal-shard = зеленый осколок кристалла
-construction-graph-tag-yellow-crystal-shard = желтый осколок кристалла
+construction-graph-tag-green-crystal-shard = зелёный осколок кристалла
+construction-graph-tag-yellow-crystal-shard = жёлтый осколок кристалла
 construction-graph-tag-black-crystal-shard = черный осколок кристалла
 
 # unknown

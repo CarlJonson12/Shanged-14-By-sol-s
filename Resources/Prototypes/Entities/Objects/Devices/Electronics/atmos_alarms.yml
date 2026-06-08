@@ -96,6 +96,9 @@
     tags:
       - AirAlarmElectronics
       - DroneUsable # Goobstation
+  - type: ReverseEngineering # reserve: nyano port
+    recipes:
+      - AirAlarmElectronics
   - type: StaticPrice
     price: 61
 
@@ -114,5 +117,8 @@
     tags:
       - FireAlarmElectronics
       - DroneUsable # Goobstation
+  - type: ReverseEngineering # reserve: nyano port
+    recipes:
+      - FireAlarmElectronics
   - type: StaticPrice
     price: 61

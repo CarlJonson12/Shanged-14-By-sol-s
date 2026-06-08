@@ -130,7 +130,7 @@
 
 - type: cargoBounty
   id: BountyCrayon
-  reward: 4000
+  reward: 1200  # Reserve edit: Orchid's Barmania - Service Heaven: These only cost ~1500 to buy in cargo.
   description: bounty-description-crayon
   entries:
   - name: bounty-item-crayon

@@ -90,5 +90,8 @@
     tags:
       - DroneUsable # Goobstation
       - IntercomElectronics
+  - type: ReverseEngineering # reserve: nyano port
+    recipes:
+      - IntercomElectronics
   - type: StaticPrice
     price: 55

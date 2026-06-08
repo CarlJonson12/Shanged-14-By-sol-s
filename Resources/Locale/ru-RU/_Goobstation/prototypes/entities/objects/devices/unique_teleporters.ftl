@@ -1,11 +1,11 @@
 ent-BaseLockerTeleporter = телепортатор специального оборудования
     .desc = Устройство, позволяющее вам запросить доставку специального оборудования.
-ent-BlueshieldOfficerLockerTeleporter = телепортер шкафа ОСЩ
+ent-BlueshieldOfficerLockerTeleporter = телепортер шкафа офицера Синего Щита
     .desc = Устройство, позволяющее запросить доставку шкафа ОСЩ.
 ent-UniqueBlueshieldOfficerLockerTeleporter = { ent-BlueshieldOfficerLockerTeleporter }
     .suffix = Уникальный
     .desc = { ent-BlueshieldOfficerLockerTeleporter.desc }
-ent-NanorepLockerTeleporter = телепортер шкафа ПНТ
+ent-NanorepLockerTeleporter = телепортер шкафа представителя NanoTrasen
     .desc = Устройство, позволяющее запросить доставку шкафа ПНТ.
 ent-UniqueNanorepLockerTeleporter = { ent-NanorepLockerTeleporter }
     .suffix = Уникальный

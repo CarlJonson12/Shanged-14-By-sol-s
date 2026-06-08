@@ -83,6 +83,13 @@
     tags:
     - Apron
     - WhitelistChameleon
+  # Reserve edit start: Orchid's Barmania - Service Heaven
+  - type: Armor
+    modifiers:
+      coefficients:
+        Slash: 0.95
+        Caustic: 0.95
+  # Reserve edit end: Orchid's Barmania - Service Heaven
 
 - type: entity
   parent: ClothingOuterStorageBase

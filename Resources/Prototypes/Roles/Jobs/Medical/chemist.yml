@@ -94,7 +94,7 @@
     ears: ClothingHeadsetMedical
     belt: ChemBagFilled
     pocket1: HandLabeler
-    eyes: ClothingEyesGlassesChemical
+    # eyes: ClothingEyesGlassesChemical  # Reserve edit: Orchid's Barmania - Service Heaven
   #storage:
     #back:
     #- Stuff

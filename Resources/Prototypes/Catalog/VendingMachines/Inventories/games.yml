@@ -32,7 +32,11 @@
     BooksBag: 3
     CardBoxBlack: 3 # GoobStation
     BoxPlaysetEvacPod: 1 # WD EDIT
+    PokerChips100: 6 # GoobStation
   contrabandInventory:
     Basketball: 1
     FoodSnackBoritos: 3
-    DrinkSpaceMountainWindCan: 3
+    DrinkPwrGameCan: 3  # Reserve: Orchid's Barmania - Vendichaos
+  emaggedInventory: #Goob
+    CardBoxSyndicate: 1
+    ToyFigurineNukieElite: 1  # Reserve: Orchid's Barmania - Vendichaos

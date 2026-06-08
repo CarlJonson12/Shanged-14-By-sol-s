@@ -1,9 +1,13 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   parent: BaseGameRule
   id: XenomorphsInfestation
   components:
   - type: StationEvent
-    weight: 3 # Goobstation - was 7.5
+    weight: 1.5 # Goobstation - was 7.5
     duration: null
     minimumPlayers: 50 # Goobstation - was 20
     earliestStart: 30 # Goobstation
@@ -20,6 +24,9 @@
   - type: AntagSpawner
     prototype: MobXenomorphLarva
   - type: XenomorphsRule
+    xenomorphInfestationSound:
+      collection: xeno_start #Goobstation
+      volume: -2
   - type: AntagObjectives
     objectives:
     - XenomorphSurviveObjective
@@ -35,3 +42,4 @@
         color: "#8c3986"
       mindRoles:
       - MindRoleXenomorph
+  - type: GhostPingRule # Reserve

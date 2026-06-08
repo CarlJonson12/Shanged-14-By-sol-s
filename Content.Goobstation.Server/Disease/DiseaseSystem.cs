@@ -12,12 +12,16 @@ using System.Linq;
 using System.Numerics;
 using Content.Goobstation.Shared.Disease.Components;
 using Content.Goobstation.Shared.Disease.Systems;
+using Content.Goobstation.Shared.EntityEffects.Disease;
+using Content.Shared.EntityEffects;
+using Robust.Server.Containers;
 
 namespace Content.Goobstation.Server.Disease;
 
 public sealed partial class DiseaseSystem : SharedDiseaseSystem
 {
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
 
     public override void Initialize()
     {
@@ -27,6 +31,8 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
         SubscribeLocalEvent<GrantDiseaseComponent, MapInitEvent>(OnGrantDiseaseInit);
         // SubscribeLocalEvent<InternalsComponent, DiseaseIncomingSpreadAttemptEvent>(OnInternalsIncomingSpread); // TODO: fix
         SubscribeLocalEvent<DiseaseCarrierComponent, RejuvenateEvent>(OnRejuvenate);
+        SubscribeLocalEvent<DiseaseCarrierComponent, DiseaseProgressChange>(OnDiseaseProgressChange);
+        SubscribeLocalEvent<DiseaseCarrierComponent, MutateDiseases>(OnDiseaseMutate);
     }
 
     private void OnClonedInto(Entity<DiseaseComponent> ent, ref DiseaseCloneEvent args)
@@ -146,10 +152,8 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
             return false;
 
         if (TryComp<DiseaseComponent>(disease, out var diseaseComp))
-        {
             foreach (var effect in diseaseComp.Effects.ContainedEntities)
                 CleanupEffect((disease, diseaseComp), effect);
-        }
 
         QueueDel(disease);
         Dirty(ent);
@@ -164,9 +168,9 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 
-        while (ent.Comp.Diseases.Count != 0)
+        foreach (var disease in ent.Comp.Diseases.ContainedEntities.ToList())
         {
-            if (!TryCure((ent, ent.Comp), ent.Comp.Diseases.ContainedEntities[0]))
+            if (!TryCure((ent, ent.Comp), disease))
                 return false;
         }
 
@@ -198,4 +202,44 @@ public sealed partial class DiseaseSystem : SharedDiseaseSystem
 
     #endregion
 
+    #region EntityEffect stuff
+
+    private void OnDiseaseProgressChange(EntityUid uid, DiseaseCarrierComponent carrier, DiseaseProgressChange args)
+    {
+        foreach (var diseaseUid in carrier.Diseases.ContainedEntities)
+        {
+            if (!EntityManager.TryGetComponent<DiseaseComponent>(diseaseUid, out var disease)
+                || disease.DiseaseType != args.AffectedType)
+                continue;
+
+            var amt = args.ProgressModifier;
+            if (args.Scaled)
+            {
+                amt *= args.Scale;
+                amt *= args.Quantity;
+            }
+
+            EntityManager.System<DiseaseSystem>().ChangeInfectionProgress((diseaseUid, disease), amt);
+        }
+    }
+
+    private void OnDiseaseMutate(EntityUid uid, DiseaseCarrierComponent carrier, MutateDiseases args)
+    {
+        foreach (var diseaseUid in carrier.Diseases.ContainedEntities)
+        {
+
+            if (!EntityManager.TryGetComponent<DiseaseComponent>(diseaseUid, out var disease))
+                continue;
+
+            var amt = 1f;
+            if (args.Scaled)
+            {
+                amt *= args.Quantity;
+                amt *= args.Scale;
+            }
+
+            EntityManager.System<DiseaseSystem>().MutateDisease((diseaseUid, disease), args.MutationRate * amt);
+        }
+    }
+    #endregion
 }

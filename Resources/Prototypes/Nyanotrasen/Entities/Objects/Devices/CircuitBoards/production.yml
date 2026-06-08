@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
+- type: entity
+  id: ReverseEngineeringMachineCircuitboard
+  parent: BaseMachineCircuitboard
+  name: reverse engineering machine machine board
+  description: A machine printed circuit board for a reverse engineering machine
+  components:
+    - type: Sprite
+      state: engineering
+    - type: MachineBoard
+      prototype: ReverseEngineeringMachine
+      stackRequirements:
+        Cable: 1
+        PlasmaGlass: 5
+        Manipulator: 2
+      tagRequirements:
+        BorgArm:
+          amount: 3
+          defaultPrototype: LeftArmBorg
+    - type: ReverseEngineering
+      difficulty: 3
+      recipes:
+        - ReverseEngineeringMachineCircuitboard
