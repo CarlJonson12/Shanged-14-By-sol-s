@@ -1,0 +1,6 @@
+- type: entity
+  parent: MantisBlade
+  id: FemboyThing
+  name: фембой
+  components:
+  - type: FemboyPhrase

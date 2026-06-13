@@ -1,0 +1,6 @@
+- type: entity
+  id: NukeToy1
+  parent: MantisBlade
+  name: Залупка
+  components:
+  - type: NukeSay
