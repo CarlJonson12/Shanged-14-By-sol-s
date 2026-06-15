@@ -1,0 +1,79 @@
+- type: entity
+  name: fuck-machine-name
+  id: FuckMachine
+  parent: BaseStructure
+  description: fuck-machine-desc
+  components:
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.05"
+        density: 190
+        mask:
+        - TableMask
+  - type: Sprite
+    sprite: _Changed14/Structures/Misc/Fun/FuckMachine.rsi
+    layers:
+      - state: idle
+        map: [ "idle" ]
+        shader: unshaded
+        visible: true
+      - state: fuckmachine
+        map: [ "enum.ToggleableVisuals.Layer" ]
+        shader: unshaded
+        visible: false
+    noRot: true
+  - type: ItemToggle
+  - type: Appearance
+  - type: FuckMachine
+  - type: GenericVisualizer
+    visuals:
+      enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
+          True: { visible: true }
+          False: { visible: false }
+        idle:
+          True: { visible: false }
+          False: { visible: true }
+  # - type: ApcPowerReceiver
+  #   powerLoad: 1000
+  - type: Strap
+    position: Down
+    rotation: -90
+    buckleOffset: 0.6, -0.1
+    buckleDoafterTime: 3
+    unBuckleDoafterTime: 3
+  - type: Hands
+  # - type: Construction
+  #   graph: bed
+  #   node: bed
+  - type: PlaceableSurface
+    placeCentered: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 20
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 2
+  - type: Transform
+    anchored: true
+    noRot: true
+  - type: Anchorable
+  - type: Pullable
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3
+    baseSprintSpeed : 4

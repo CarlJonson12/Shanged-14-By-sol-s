@@ -28,3 +28,29 @@
           operator: !type:FurryFuckOperator
             targetKey: FuckableTarget
 
+- type: htnCompound
+  id: Changed14FuckMachineCompound
+  branches:
+    - tasks:
+        - !type:HTNCompoundTask
+          task: FuckNearbyAlive
+    - tasks:
+        - !type:HTNCompoundTask
+          task: IdleCompound
+
+- type: htnCompound
+  id: FuckNearbyAlive
+  branches:
+    - tasks:
+        - !type:HTNPrimitiveTask
+          operator: !type:PickNearbyFuckableOperator
+            targetKey: FuckableTarget
+            targetMoveKey: TargetCoordinates
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MoveToOperator
+            pathfindInPlanning: false
+
+        - !type:HTNPrimitiveTask
+          operator: !type:MachineFuckOperator
+            targetKey: FuckableTarget

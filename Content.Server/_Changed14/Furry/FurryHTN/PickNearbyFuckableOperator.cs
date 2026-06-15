@@ -51,8 +51,8 @@ public sealed partial class PickNearbyFuckableOperator : HTNOperator
         if (!blackboard.TryGetValue<float>(RangeKey, out var range, _entManager))
             return (false, null);
 
-        if (!_entManager.TryGetComponent<FurryComponent>(owner, out var furry))
-            return (false, null);
+        // if (!_entManager.TryGetComponent<FurryComponent>(owner, out var furry))
+        //     return (false, null);
 
         foreach (var entity in _lookup.GetEntitiesInRange(owner, range))
         {
