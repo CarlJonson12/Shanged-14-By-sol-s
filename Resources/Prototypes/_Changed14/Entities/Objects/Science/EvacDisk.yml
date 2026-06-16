@@ -25,3 +25,11 @@
   - type: Tag
     tags:
       - ChangedEvacDisk
+
+- type: entity
+  parent: ChangedDisk
+  id: GenderCheck
+  name: Gendercheck
+  suffix: Changed14
+  components:
+  - type: GenderCheck

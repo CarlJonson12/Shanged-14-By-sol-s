@@ -53,3 +53,49 @@
         reagents:
         - ReagentId: FurryJuiceBlack
           Quantity: 30
+
+- type: reagent
+  id: Cum
+  name: cum-name
+  group: Toxins
+  desc: cum-desc
+  physicalDesc: reagent-physical-desc-gloopy
+  flavor: Salty
+  color: "#ffffff"
+
+- type: reagent
+  id: OrangeCum
+  name: orange-cum-name
+  group: Toxins
+  desc: orange-cum-desc
+  physicalDesc: reagent-physical-desc-gloopy
+  flavor: OrangeCum
+  color: "#e28822"
+
+- type: entity
+  parent: FurryJuiceWhiteGlass
+  name: cum-glass-name
+  id: CumGlass
+  suffix: Cum
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Cum
+          Quantity: 30
+
+- type: entity
+  parent: FurryJuiceWhiteGlass
+  id: OrangeCumGlass
+  name: orange-cum-glass-name
+  suffix: OrangeCum
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: OrangeCum
+          Quantity: 30

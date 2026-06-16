@@ -1,0 +1,9 @@
+- type: reaction
+  id: OrangeCum
+  reactants:
+    Cum:
+      amount: 1
+    JuiceOrange:
+      amount: 1
+  products:
+    OrangeCum: 1
