@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: entity
   name: cd disk
   description: A cd disk, usually contains ads.
@@ -28,6 +32,11 @@
   - type: Tag
     tags:
     - CD
+  # Reserve edit start: Better Recycling
+  - type: PhysicalComposition
+    materialComposition:
+      Plastic: 50
+  # Reserve edit end: Better Recycling
 
 - type: entity
   parent: BaseCdDisk
@@ -61,6 +70,8 @@
   name: cd disk (Cargonia)
   id: CdDiskCargonia
   components:
+  - type: Sprite
+    color: "#ffc833"  # Reserve edit: Better trinket loadout
   - type: Vinyl
     song:
       path: /Audio/_Goobstation/RadioStation/ads/Cargonia.ogg
@@ -133,6 +144,8 @@
   name: cd disk (security psa)
   id: CdDiskSecurityPsa
   components:
+  - type: Sprite
+    color: "#ff4833"  # Reserve edit: Better trinket loadout
   - type: Vinyl
     song:
       path: /Audio/_Goobstation/RadioStation/ads/security_psa.ogg

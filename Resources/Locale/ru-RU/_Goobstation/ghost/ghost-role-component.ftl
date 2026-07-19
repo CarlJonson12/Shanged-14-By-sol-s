@@ -1,3 +1,5 @@
+# Синдикат
+
 ghost-role-information-nukie-reinforcement-name = Ядерный оперативник
 ghost-role-information-nukie-reinforcement-description = Ядерным оперативникам нужно подкрепление. Вы, резервный агент, поможете им.
 ghost-role-information-nukie-reinforcement-rules = Вы являетесь [color=red][bold]командным антагонистом[/bold][/color] с вызвавшими вас ядерными оперативниками.
@@ -6,18 +8,24 @@ ghost-role-information-SyndiRoach-name = СиндиЛичинка
 ghost-role-information-SyndiRoach-description = Вы - верный дрессированный питомец ядерных оперативников с микробомбой. Служите своему хозяину до смерти!
 ghost-role-information-SyndiRoach-rules = Вы являетесь [color=red][bold]командным антагонистом[/bold][/color] с агентом, который вас вызвал.
 
+ghost-role-information-contractor-name = Контрактник Синдиката
+ghost-role-information-contractor-token = Контрактник Синдиката (Токен)
+ghost-role-information-contractor-description = ДОСТАНЬТЕ ЭТОГО... ассистента..?
+contractor-role-greeting = Вы [color=#611b2b]контрактник Синдиката[/color], охотник за головами, перед вами стоит задача вывести цели со станции, живыми или мертвыми.
+
+ghost-role-information-derelict-cyborg-syndicate-name = Старый киборг Синдиката
+ghost-role-information-derelict-cyborg-syndicate-description = Вы потерялись во время нападения на станцию. После многих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+
+# Нейтральные роли
+
 ghost-role-information-skibidi-toilet-name = Скибиди Туалет
 ghost-role-information-skibidi-toilet-description = Уничтожайте людей своими лазерами из глаз.
 ghost-role-information-skibidi-toilet-rules = Вы - [color=red][bold]Антагонист[/bold][/color], цель которого - лишить жизни как можно больше людей.
 
-ghost-role-information-Hecu-name = Оперативник HECU
-ghost-role-information-Hecu-description = Центральному командованию нужно кое-что сделать.
-ghost-role-information-Hecu-rules = Вы обязаны подчиняться приказам своего начальника, вы фактически являетесь его [color=#6495ed][bold]Агентом[/bold][/color].
-
-ghost-role-information-lootbug-name = Лут-Жук
+ghost-role-information-lootbug-name = Жук-сборщик
 ghost-role-information-lootbug-description = Постарайтесь не быть зарезанным тайдерами.
 
-ghost-role-information-homunculus-name = гомункул
+ghost-role-information-homunculus-name = Гомункул
 ghost-role-information-homunculus-description = Повинуйся тому, кто создал тебя, и если его нигде не найти, делай, что хочешь.
 
 ghost-role-information-huborg-name = Урист МакБорг
@@ -26,8 +34,27 @@ ghost-role-information-huborg-description = Ты - отвратительный 
 ghost-role-information-c4-name = С-4
 ghost-role-information-c4-description = Помогите пользователю с бомбометанием.
 
-ghost-role-information-derelict-cyborg-syndicate-name = Старый киборг Синдиката
-ghost-role-information-derelict-cyborg-syndicate-description = Вы потерялись во время нападения на станцию. После многих лет воздействия ионных бурь вы оказываетесь рядом с космической станцией.
+ghost-role-information-greytider-name = Грейтайдер
+ghost-role-information-greytider-description = Будь робастным.
+
+ghost-role-information-sentient-shark-name = Разумная акула
+
+ghost-role-information-trevor-name = Тревор
+ghost-role-information-trevor-description = Надёжный боевой конь службы безопасности.
+
+ghost-role-information-santa-name = Санта Клаус
+ghost-role-information-santa-description = Распространите рождественское приветствие по всей станции!
+
+ghost-role-information-fillbot-name = Клешнебот
+ghost-role-information-fillbot-description = Подчиняйтесь создателю. Если его нет — действуйте по своей воле.
+
+ghost-role-information-sentientanimal-rules = Вы — [color={ role-type-sentient-animal-color }][bold]{ role-type-sentient-animal-name }[/bold][/color]. Нейтральное животное,
+    способное действовать в целях самообороны, но в остальном не должны причинять вред экипажу.
+    Вы не помните ничего из своей прошлой жизни, и не помните ничего, что могли увидеть в виде призрака.
+    Вам разрешено помнить общие знания об игре. Например, как готовить, использовать предметы и т.п.
+    Вам категорически [color=red]ЗАПРЕЩЕНО[/color] помнить имя, внешний вид, и прочее своего прошлого персонажа.
+
+# Морской флот
 
 ghost-role-information-navy-captain-name = Капитан флота
 ghost-role-information-navy-captain-description = Засекречено.
@@ -45,21 +72,26 @@ ghost-role-information-navy-officer-undercover-name = Офицер флота п
 ghost-role-information-navy-officer-undercover-description = Завершите поставленные перед вами задачи и устраните поставленные цели. Удачи.
 ghost-role-information-navy-officer-undercover-rules = Следуйте указаниям [color=#yellow][bold]Капитана флота[/bold][/color], или другого должностного лица Центрального Командования.
 
-ghost-role-information-diplomat-name = Дипломат
+# ЦентКом
+
+ghost-role-information-diplomat-name = Дипломат ЦентКом
 ghost-role-information-diplomat-description = Представляет собой интересы Центрального Командования, управляет отношениями с группировками на борту станции. Устраните проблемы, которые, вероятно, были вызваны капитаном.
 
-ghost-role-information-inspector-name = Аудитор Центрального Командования
+ghost-role-information-inspector-name = Аудитор ЦентКом
 ghost-role-information-inspector-description = Проведите инспекцию имущества станции и ее экипажа. Возможно, вы погибнете в результате ужасного несчастного случая, и будет вызван эскадрон смерти.
 
-ghost-role-information-greytider-name = Грейтайдер
-ghost-role-information-greytider-description = Будь робастным.
+ghost-role-intern-name = Интерн ЦентКом
+ghost-role-intern-desc = Вы — стажёр ЦК, плохо оплачиваемый, голодный, с большой студенческой задолженностью, но других вариантов нет, так что лучше слушайтесь!
+ghost-role-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищайте командование, слушайтесь Главу стажёров.
 
-ghost-role-information-sentient-shark-name = Разумная акула
-ghost-role-information-plague-mouse-name = Чумная мышь
-ghost-role-information-plague-mouse-description = Голодная и озорная мышь. Эта мышь переносит болезнь и будет распространять её при укусе.
+ghost-role-lead-intern-name = Глава интернов ЦентКом
+ghost-role-lead-intern-rules = Следуйте приказам, данными вами [color=yellow][bold]Представителем NanoTrasen[/bold][/color] и ЦК. Защищай командование, отдавайте приказы другим стажёрам.
 
-ghost-role-information-trevor-name = Тревор
-ghost-role-information-trevor-description = Надёжный боевой конь службы безопасности.
+ghost-role-nerd-intern-name = Интерн-заучка ЦентКом
+
+ghost-role-information-bsd-name = Офицер Синего Щита
+ghost-role-information-bsd-description = Вас вызвал на станцию Представитель NanoTrasen. Подчиняйтесь ему, защищайте командование, следуйте Корпоративному Закону.
+ghost-role-information-bsd-rules = Следуйте приказам, данными вам [color=yellow][bold]Представителем NanoTrasen[/bold][/color], защищайте командование.
 
 # Халфлайф
 
@@ -67,7 +99,12 @@ ghost-role-information-Gman-name = G-Man
 ghost-role-information-Gman-description = Правильный человек, оказавшийся в неподходящем месте, может изменить мир к лучшему.
 ghost-role-information-Gman-rules = Вы не подчиняетесь никаким правилам или границам. Смерть не может удержать вас, как и Нанотрейзен.
 
-# cargo bingle
+ghost-role-information-Hecu-name = Оперативник HECU
+ghost-role-information-Hecu-description = Центральному командованию нужно кое-что сделать.
+ghost-role-information-Hecu-rules = Вы обязаны подчиняться приказам своего начальника, вы фактически являетесь его [color=#6495ed][bold]Агентом[/bold][/color].
+
+# Карго бингл
+
 ghost-role-cargo-bingle-name = Бингл снабжения
 ghost-role-cargo-bingle-desc = Служите представителю Nanotrasen и его интересам, не кусайте экипаж, помогайте отделу снабжения.
 
@@ -118,6 +155,7 @@ roles-slaughter-demon-name-token = Демон резни (Токен)
 roles-laughter-demon-name-token = Демон смеха (Токен)
 ghost-role-information-ancient-rogue-king-name-token = Древний король ксено-отступник (Токен)
 ghost-role-information-slasher-token = Мясник (Токен)
+ghost-role-information-wraith-name-token = Фантом (Токен)
 
 # Misc-Midround antags
 
@@ -165,10 +203,5 @@ vox-raider-role-greeting = Вы [color=#7851A9]Вокс-рейдер[/color], в
 ghost-role-information-clown-goblin-name = Клоун-гоблин
 ghost-role-information-clown-goblin-description = Ужасное существо, вышедшее из ада.
 
-ghost-role-information-santa-name = Санта Клаус
-ghost-role-information-santa-description = Распространите рождественское приветствие по всей станции!
-
-ghost-role-information-contractor-name = Контрактник Синдиката
-ghost-role-information-contractor-token = Контрактник Синдиката (Токен)
-ghost-role-information-contractor-description = ЗАПОЛУЧИТЕ ЭТОГО... ассистента..?
-contractor-role-greeting = Вы [color=#611b2b]контрактник Синдиката[/color], охотник за головами, перед вами стоит задача вывести цели со станции, живыми или мертвыми.
+ghost-role-information-plague-mouse-name = Чумная мышь
+ghost-role-information-plague-mouse-description = Голодная и озорная мышь. Эта мышь переносит болезнь и будет распространять её при укусе.

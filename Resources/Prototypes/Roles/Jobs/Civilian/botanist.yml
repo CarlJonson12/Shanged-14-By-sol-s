@@ -89,6 +89,8 @@
   alternateTitles: # Reserve - alternate titles
   - BotanistHydroponicsSpecialist
   - BotanistHerbologist
+  - BotanistGardener
+  - BotanistAgronomist
 
 - type: startingGear
   id: BotanistGear
@@ -119,3 +121,11 @@
 - type: jobAlternateTitle
   id: BotanistHerbologist
   name: job-name-alt-botanist-2
+
+- type: jobAlternateTitle
+  id: BotanistGardener
+  name: job-name-alt-botanist-3
+
+- type: jobAlternateTitle
+  id: BotanistAgronomist
+  name: job-name-alt-botanist-4

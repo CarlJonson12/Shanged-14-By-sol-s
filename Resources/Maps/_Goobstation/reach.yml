@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 meta:
   format: 7
   category: Map
@@ -14054,6 +14058,8 @@ entities:
     - type: Transform
       pos: -0.5,15.5
       parent: 2
+- proto: SpawnPointShaftMiner  # Reserve edit: Bring back salvagers
+  entities:
   - uid: 1941
     components:
     - type: Transform

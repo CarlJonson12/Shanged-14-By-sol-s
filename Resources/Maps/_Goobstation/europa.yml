@@ -64488,6 +64488,8 @@ entities:
     - type: Transform
       pos: -9.5,33.5
       parent: 1
+- proto: SpawnPointShaftMiner  # Reserve edit: Bring back salvagers
+  entities:
   - uid: 1159
     components:
     - type: Transform

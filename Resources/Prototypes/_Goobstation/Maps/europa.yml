@@ -150,7 +150,8 @@
             #supply
             CargoTechnician: [ 3, 3 ]
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ 5, 5 ]
+            SalvageSpecialist: [ 3, 3 ]  # Reserve edit: Bring back salvagers
+            ShaftMiner: [ 4, 4 ]  # Reserve edit: Bring back salvagers
             #civilian
             Passenger: [ -1, -1 ]
             Clown: [ 1, 1 ]

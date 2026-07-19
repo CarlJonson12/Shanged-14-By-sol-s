@@ -230,29 +230,12 @@
 # Balloons Factions Edit:
 - type: npcFaction
   id: Balloon
-  hostile:
   # Balloons can't attack
-  - Wizard
-  - Xenoborg
 
 - type: npcFaction
   id: Monkey
   hostile:
   - Balloon     # Custom faction specifically for attacking bloons
-  - NanoTrasen
-  - Dragon
-  - Mouse
-  - Passive
-  - PetsNT
-  - SimpleHostile
-  - SimpleNeutral
-  - Syndicate
-  - Xeno
-  - Zombie
-  - Revolutionary
-  - AllHostile
-  - Xenoborg
-  - BloodBrother # Harmony
 
 - type: npcFaction
   id: Xenoborg

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Basically a reskin of salvage specialist
 - type: job
   id: ShaftMiner
@@ -20,6 +24,9 @@
   - Salvage
   - Maintenance
   - External
+  alternateTitles: # Reserve - alternate titles
+  - ShaftMinerGeologist
+  - ShaftMinerVulcanologist
 
 - type: startingGear
   id: ShaftMinerGear
@@ -41,3 +48,11 @@
     outerClothing: ClothingOuterWinterMiner
     neck: ClothingNeckScarfStripedBrown
     gloves: ClothingHandsGlovesColorBlack
+
+- type: jobAlternateTitle
+  id: ShaftMinerGeologist
+  name: job-name-alt-miner-1
+
+- type: jobAlternateTitle
+  id: ShaftMinerVulcanologist
+  name: job-name-alt-miner-2

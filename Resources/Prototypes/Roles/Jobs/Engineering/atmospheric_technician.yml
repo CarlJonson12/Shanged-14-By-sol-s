@@ -88,6 +88,7 @@
     - type: EngineeringStaff
   alternateTitles: # Reserve - alternate titles
   - AtmosphericTechnicianFirefighter
+  - AtmosphericTechnicianGasSpecialist
 
 - type: startingGear
   id: AtmosphericTechnicianGear
@@ -113,3 +114,7 @@
 - type: jobAlternateTitle
   id: AtmosphericTechnicianFirefighter
   name: job-name-alt-atmos-1
+
+- type: jobAlternateTitle
+  id: AtmosphericTechnicianGasSpecialist
+  name: job-name-alt-atmos-2

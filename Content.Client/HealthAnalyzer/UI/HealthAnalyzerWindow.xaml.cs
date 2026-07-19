@@ -300,6 +300,15 @@ namespace Content.Client.HealthAnalyzer.UI
 
             ConditionsListContainer.RemoveAllChildren();
 
+            // Goob start - low blood alert
+            if (msg.BloodLevelLow)
+                ConditionsListContainer.AddChild(new RichTextLabel
+                {
+                    Text = Loc.GetString("condition-body-low-blood", ("entity", Identity.Name(_target.Value, _entityManager))),
+                    Margin = new Thickness(0, 4),
+                });
+            // Goob end
+
             if (msg.Unrevivable == true)
                 ConditionsListContainer.AddChild(new RichTextLabel
                 {
@@ -555,15 +564,28 @@ namespace Content.Client.HealthAnalyzer.UI
             GroupsContainer.AddChild(groupContainer);
         }
 
+        // Reserve edit start: localization-fix
+        private static string GetLocalizedSolutionName(string? name)
+        {
+            if (string.IsNullOrEmpty(name))
+                return Loc.GetString("group-solution-unknown");
+
+            var key = $"health-analyzer-solution-{name}";
+            return Loc.TryGetString(key, out var localized) ? localized : name;
+        }
+        // Reserve edit end: localization-fix
+
         private void DrawSolutionDiagnostics(Dictionary<NetEntity, Solution> solutions)
         {
-            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
+            // Reserve edit start: localization-fix
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
             foreach (var (ent, data) in solutions)
             {
                 var groupTitleText = $"{Loc.GetString(
                     "group-solution-name",
-                    ("solution", data.Name ?? Loc.GetString("group-solution-unknown"))
+                    ("solution", GetLocalizedSolutionName(data.Name))
                 )}";
+            // Reserve edit end: localization-fix
 
                 var groupContainer = new BoxContainer
                 {

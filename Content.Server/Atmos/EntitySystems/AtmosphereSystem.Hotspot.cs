@@ -15,6 +15,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+using Content.Server._Funkystation.Atmos.Events; // Funky
 using Content.Server.Atmos.Components;
 using Content.Server.Decals;
 using Content.Shared.Atmos;
@@ -170,6 +171,11 @@ namespace Content.Server.Atmos.EntitySystems
 
                 return;
             }
+
+            // Funky start
+            var ev = new TileExposedEvent(tile.GridIndices, exposedTemperature, exposedVolume, sparkSourceUid);
+            RaiseLocalEvent(gridAtmosphere.Owner, ref ev);
+            // Funky end
 
             if ((exposedTemperature > Atmospherics.PlasmaMinimumBurnTemperature) && (plasma > 0.5f || tritium > 0.5f))
             {

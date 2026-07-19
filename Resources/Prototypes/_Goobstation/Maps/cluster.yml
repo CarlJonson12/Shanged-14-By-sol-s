@@ -89,7 +89,8 @@
             Brigmedic: [ 1, 1 ]
             #supply
             Quartermaster: [ 1, 1 ]
-            SalvageSpecialist: [ -1, -1 ]
+            SalvageSpecialist: [ 2, 2 ]  # Reserve edit: Bring back salvagers
+            ShaftMiner: [ -1, -1 ]  # Reserve edit: Bring back salvagers
             CargoTechnician: [ 2, 2 ]
             #civillian
             Passenger: [ -1, -1 ]

@@ -20,10 +20,10 @@ chat-manager-server-wrap-message = [bold]{ $message }[/bold]
 chat-manager-sender-announcement = Центральное командование
 chat-manager-sender-announcement-wrap-message = [font size=14][bold]Объявление { $sender }:[/font][font size=12]
     { $message }[/bold][/font]
-chat-manager-entity-say-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize } ]"[BubbleContent]{ $message }[/BubbleContent]"[/font]
-chat-manager-entity-say-bold-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize }]"[BubbleContent][bold]{ $message }[/bold][/BubbleContent]"[/font]
-chat-manager-entity-whisper-wrap-message = [font size=11][italic][BubbleHeader][Name]{ $entityName }[/Name][/BubbleHeader] шепчет,"[BubbleContent]{ $message }[/BubbleContent]"[/italic][/font]
-chat-manager-entity-whisper-unknown-wrap-message = [font size=11][italic][BubbleHeader]Кто-то[/BubbleHeader] шепчет, "[BubbleContent]{ $message }[/BubbleContent]"[/italic][/font]
+chat-manager-entity-say-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize }]"[BubbleContent][font="{ $fontType }" size={ $fontSize }][color={ $color }]{ $message }[/color][/font][/BubbleContent]"[/font]
+chat-manager-entity-say-bold-wrap-message = [BubbleHeader][bold][Name]{ $entityName }[/Name][/bold][/BubbleHeader] { $verb }, [font={ $fontType } size={ $fontSize }]"[BubbleContent][font="{ $fontType }" size={ $fontSize }][bold][color={ $color }]{ $message }[/color][/bold][/font][/BubbleContent]"[/font]
+chat-manager-entity-whisper-wrap-message = [font size=11][italic][BubbleHeader][Name]{ $entityName }[/Name][/BubbleHeader] шепчет, "[BubbleContent][color={ $color }][font="{ $fontType }"]{ $message }[/font][/color][/BubbleContent]"[/italic][/font]
+chat-manager-entity-whisper-unknown-wrap-message = [font size=11][italic][BubbleHeader]Кто-то[/BubbleHeader] шепчет, "[BubbleContent][color={ $color }][font="{ $fontType }"]{ $message }[/font][/color][/BubbleContent]"[/italic][/font]
 chat-manager-entity-me-wrap-message = [italic]{ CAPITALIZE($entityName) } { $message }[/italic]
 chat-manager-entity-looc-wrap-message = LOOC: [bold]{ $entityName }:[/bold] { $message }
 chat-manager-send-ooc-wrap-message = OOC: [bold]{ $playerName }:[/bold] { $message }
@@ -124,3 +124,13 @@ chat-speech-verb-wawa-1 = интонирует
 chat-speech-verb-wawa-2 = утверждает
 chat-speech-verb-wawa-3 = обьявляет
 chat-speech-verb-wawa-4 = размышляет
+
+chat-manager-send-ooc-patron-wrap-message-no-icon = OOC: [bold][color={ $patronColor }]{ $playerName }[/color]:[/bold] { $message }
+
+chat-speech-verb-goat-1 = блеет
+
+chat-speech-verb-goat-2 = кряхтит
+
+chat-speech-verb-goat-3 = кричит
+
+chat-speech-verb-name-goat = Коза

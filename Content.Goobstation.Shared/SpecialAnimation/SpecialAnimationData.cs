@@ -5,6 +5,7 @@
 
 using System.Numerics;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Goobstation.Shared.SpecialAnimation;
 
@@ -95,20 +96,22 @@ public sealed partial class SpecialAnimationData
 
     #endregion
 
+    // Reserve edit start: Fix special animation for cards
+
     /// <summary>
     /// Entity to use for a sprite.
     /// Animation will fail to play if entity doesn't exist on client on its start.
     /// </summary>
     [ViewVariables]
-    public NetEntity Source;
+    public NetEntity? Source;
+
+    // Reserve edit end: Fix special animation for cards
 
     /// <summary>
-    /// Entity that is used to draw a sprite from. Copies SpriteComponent from
-    /// the Source and then uses it, so it won't break when Source leaves our PVS range.
+    /// The sprite to use for an animation.
     /// </summary>
     [ViewVariables]
-    [NonSerialized]
-    public EntityUid? AnimationEntity;
+    public SpriteSpecifier Sprite;
 
     /// <summary>
     /// How long this animation has been playing for.
@@ -158,7 +161,7 @@ public sealed partial class SpecialAnimationData
         TextOverrideColor = Color.White,
         TextPosition = new Vector2(-250, 100),
         TextFontSize = 26,
-        TextFontPath = "/Fonts/NotoSans/NotoSans-Bold.ttf", // Bald.
+        TextFontPath = "/Fonts/NotoSans/NotoSans-Bold.ttf",
     };
 
     /// <summary>
@@ -169,6 +172,8 @@ public sealed partial class SpecialAnimationData
         Text = text;
         return this;
     }
+
+    // Reserve edit start: Fix special animation for cards
 
     /// <summary>
     /// Sets some sprite source to the animation.
@@ -182,4 +187,6 @@ public sealed partial class SpecialAnimationData
         Source = source;
         return this;
     }
+
+    // Reserve edit end: Fix special animation for cards
 }

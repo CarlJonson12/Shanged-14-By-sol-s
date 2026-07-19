@@ -310,9 +310,10 @@ SPDX-License-Identifier: AGPL-3.0-or-later
                     VerticalExpand="True"
                     HorizontalExpand="True"
                     Orientation="Vertical">
+                    <!-- Reserve edit: localization-fix -->
                     <RichTextLabel
                         Name="ConditionsLabel"
-                        Text="Conditions"
+                        Text="{Loc health-analyzer-window-conditions-text}"
                         HorizontalAlignment="Left"
                         VerticalAlignment="Center"
                         HorizontalExpand="True"/>

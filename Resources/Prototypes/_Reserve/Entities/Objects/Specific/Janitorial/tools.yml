@@ -28,6 +28,8 @@
     difficulty: 4
     recipes:
       - BluespaceBucket
+  - type: StaticPrice  # Upstream 2706 fix
+    price: 100
 
 # endregion
 
