@@ -38,7 +38,7 @@ admin-smite-reptilian-species-swap-name = Сделать унатхом
 admin-smite-locker-stuff-name = Сунуть в шкаф
 admin-smite-headstand-name = Стойка на голове
 admin-smite-become-mouse-name = Сделать мышью
-admin-smite-maid-name = Мейдочка
+admin-smite-maid-name = Уборщик
 admin-smite-zoom-in-name = Зум +
 admin-smite-flip-eye-name = Перевернуть глаза
 admin-smite-run-walk-swap-name = Шаг вместо бега
@@ -85,7 +85,7 @@ admin-smite-reptilian-species-swap-description = Меняет расу на Ун
 admin-smite-locker-stuff-description = Помещает цель в (заваренный) шкафчик.
 admin-smite-headstand-description = Переворачивает спрайт по вертикали.
 admin-smite-become-mouse-description = Цель станет мышью. Скуик.
-admin-smite-maid-description = Насильно превращает цель в кошко-служанку уборщицу. Это настоящая пытка для некоторых игроков, используйте её с умом.
+admin-smite-maid-description = Насильно превращает цель в уборщика. Это настоящая пытка для некоторых игроков, используйте её с умом.
 admin-smite-zoom-in-description = Увеличивает зум так, что цель перестаёт видеть окружение.
 admin-smite-flip-eye-description = Переворачивает их обзор, фактически меняя управление и делая игру раздражающей.
 admin-smite-run-walk-swap-description = Меняет местами бег и ходьбу, заставляя цель держать Shift, чтобы двигаться быстро.
@@ -137,3 +137,7 @@ admin-trick-minigun-fire-description = Заставляет целевое ор�
 admin-trick-set-bullet-amount-description = Быстро устанавливает значение количества незаспавненных патронов в оружии.
 admin-trick-make-animate-description = Анимирует предмет и делает его враждебным на 60 секунд.
 admin-trick-make-inanimate-description = Деанимирует предмет.
+
+admin-smite-crawler-description = Заставляет цель упасть и лишает возможности подняться. Для лучшего эффекта также удаляет руки!
+
+admin-smite-crawler-name = Ползунчик

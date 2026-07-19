@@ -1,4 +1,8 @@
-﻿using Robust.Shared.Configuration;
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
+using Robust.Shared.Configuration;
 
 namespace Content.Shared._Reserve.CCCVars;
 
@@ -14,4 +18,7 @@ public sealed class CCCVars
     /// </summary>
     public static readonly CVarDef<bool> PeacefulRoundEnd =
         CVarDef.Create("game.peaceful_end", true, CVar.SERVERONLY);
+
+    public static readonly CVarDef<bool> GhostTrailsEnabled =
+        CVarDef.Create("ghost.trails_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

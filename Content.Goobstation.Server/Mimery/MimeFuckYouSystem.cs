@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Goob Station Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using Content.Goobstation.Shared.MisandryBox.Smites;
 using Content.Server._EinsteinEngines.Language;
 using Content.Server.Administration.Components;
@@ -6,6 +10,7 @@ using Content.Server.Stunnable;
 using Content.Shared.Abilities.Mime;
 using Content.Shared.Popups;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Muting;
 
 namespace Content.Goobstation.Server.Mimery;
 
@@ -25,6 +30,9 @@ public sealed class MimeFuckYouSystem : EntitySystem
 
     private void OnSpeakAttempt(Entity<MimePowersComponent> ent, ref SpeakAttemptEvent args)
     {
+        if (ent.Comp.VowBroken)
+            return;
+
         var language = _languages.GetLanguage(ent.Owner);
         if (language.SpeechOverride.RequireSpeech) // handled in MutingSystem
             return;

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 Goob Station Contributors
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 - type: job
   id: Virologist
   name: job-name-virologist
@@ -16,6 +20,7 @@
   - Medical
   - Medicine
   - Virology
+  - Surgery
   access:
   - Medical
   - Maintenance
@@ -26,6 +31,8 @@
     components:
     - type: SurgerySpeedModifier
       speedModifier: 1.75
+  alternateTitles: # Reserve - alternate titles
+  - VirologistPandemologist
 
 
 - type: startingGear
@@ -44,3 +51,7 @@
     ears: ClothingHeadsetMedical
     eyes: ClothingEyesHudViro
     belt: ClothingBeltMedicalFilled #No request and still medical so uh delete if want them with no belt I guess
+
+- type: jobAlternateTitle
+  id: VirologistPandemologist
+  name: job-name-alt-virologist-1

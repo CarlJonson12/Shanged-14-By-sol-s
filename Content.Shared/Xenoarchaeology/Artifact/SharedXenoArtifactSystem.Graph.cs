@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2026 Space Station 14 Contributors
+//
+// SPDX-License-Identifier: AGPL-3.0-or-later
+
 using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.Prototypes;
@@ -71,8 +75,8 @@ public abstract partial class SharedXenoArtifactSystem
         if (index < 0 || index >= ent.Comp.NodeVertices.Length)
             return false;
 
-        if (ent.Comp.NodeVertices[index] is { } netUid && GetEntity(netUid) is var uid)
-            node = (uid, XenoArtifactNode(uid));
+        if (ent.Comp.NodeVertices[index] is { } netUid && GetEntity(netUid) is var uid && _nodeQuery.TryComp(uid, out var nodeComp))
+            node = (uid, nodeComp);
 
         return node != null;
     }

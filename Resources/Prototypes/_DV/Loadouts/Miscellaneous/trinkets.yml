@@ -10,24 +10,28 @@
   storage:
     back:
     - GoldRing
+  groupBy: "rings"  # Reserve edit: Better trinket loadout
 
 - type: loadout
   id: SilverRing
   storage:
     back:
     - SilverRing
+  groupBy: "rings"  # Reserve edit: Better trinket loadout
 
 - type: loadout
   id: WhiteCane
   storage:
     back:
     - WhiteCane
+  groupBy: "canes"  # Reserve edit: Better trinket loadout
 
 - type: loadout
   id: TapeRecorder
   storage:
     back:
     - TapeRecorderFilled
+  groupBy: "audio"  # Reserve edit: Better trinket loadout
 
 - type: loadout
   id: DrinkOniGourd
@@ -38,3 +42,4 @@
   storage:
     back:
     - DrinkOniGourd
+  groupBy: "species"  # Reserve edit: Better trinket loadout

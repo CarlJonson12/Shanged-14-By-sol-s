@@ -150,6 +150,7 @@ guide-entry-references = Tables & References
 guide-entry-chemicals = Chemicals
 guide-entry-drinks = Drinks
 guide-entry-foodrecipes = Food Recipes
+guide-entry-ingredient-recipes = Ingredients
 
 guide-entry-elements = Elements
 guide-entry-medicine = Medicine
@@ -163,6 +164,8 @@ guide-entry-special = Special
 guide-entry-others = Others
 
 guide-entry-pizza-recipes = Pizzas
+guide-entry-burger-recipes = Burgers
+guide-entry-fastfood-recipes = Fastfood
 guide-entry-savory-recipes = Savory Foods
 guide-entry-bread-recipes = Breads
 guide-entry-breakfast-recipes = Breakfast Foods

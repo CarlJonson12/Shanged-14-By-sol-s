@@ -4,12 +4,12 @@ language-FloorGoblin-description =
 
 chat-language-FloorGoblin-name = Гоблинский
 
-chat-speech-verb-name-floor-goblin = Floor Goblin
+chat-speech-verb-name-floor-goblin = Гоблин-тапкокрад
 chat-speech-verb-floor-goblin-1 = борможет
 chat-speech-verb-floor-goblin-2 = визжит
 chat-speech-verb-floor-goblin-3 = вопит
 
-ghost-role-information-floor-goblin-name = Floor Goblin
+ghost-role-information-floor-goblin-name = Гоблин-тапкокрад
 ghost-role-information-floor-goblin-description = Кради обувь, кусай колени, убегай от ассистентов с ломами.
 
 crawl-under-floor-toggle-on = {$name} пролез под пол.
