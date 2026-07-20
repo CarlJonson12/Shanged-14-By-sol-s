@@ -172,7 +172,6 @@ namespace Content.IntegrationTests.Tests
         {
             "/Maps/centcomm.yml",
             "/Maps/bagel.yml", // Contains mime's rubber stamp --> Either fix this, remove the category, or remove this comment if intentional.
-            "/Maps/gate.yml", // Contains positronic brain and LSE-1200c "Perforator"
             "/Maps/meta.yml", // Contains warden's rubber stamp
             "/Maps/reach.yml", // Contains handheld crew monitor
             "/Maps/Shuttles/ShuttleEvent/cruiser.yml", // Contains LSE-1200c "Perforator"
@@ -190,7 +189,6 @@ namespace Content.IntegrationTests.Tests
             "/Maps/_Goobstation/Nonstations/wizden.yml", // Obviously
             "/Maps/_Lavaland/Lavaland/ruin_toyshop.yml", // I think we might want to glob these, idk
             "/Maps/_Goobstation/loop.yml",
-            "/Maps/_Goobstation/gate.yml",
             "/Maps/_Goobstation/Shuttles/consul.yml", // Contains HEINOUS amounts of centcomm contraband. Obviously.
             "/Maps/_Goobstation/Shuttles/retort_assault.yml", // ERT ships
             "/Maps/_Goobstation/Shuttles/retort_medical.yml",
@@ -222,7 +220,6 @@ namespace Content.IntegrationTests.Tests
             "Europa",         // Not in pool.
             "Fland",
             "FlandHighPop",
-            "Gate",
             "Kettle",
             "Lambda",         // Not in pool
             "Lavatest",       // Dev map
@@ -238,6 +235,7 @@ namespace Content.IntegrationTests.Tests
             "OriginHighPop",  // Not in pool
             "Packed",
             "Reach",
+            "ReserveReach",       // Reserve Station
             "ReserveSillyIsland", // Reserve Station
             "Saltern",
             "Serpentcrest",
@@ -265,7 +263,6 @@ namespace Content.IntegrationTests.Tests
             //"Europa",         // Not in pool.
               "Fland",
               "FlandHighPop",
-              "Gate",
               "Kettle",
             //"Lambda",         // Not in pool
               "Lavatest",       //Dev map
@@ -282,7 +279,7 @@ namespace Content.IntegrationTests.Tests
               "TestTeg",        //Dev map
             //"Train",          //Not in pool
               "Packed",
-              "Reach",
+              "ReserveReach",   // Reserve Station
               "ReserveSillyIsland", // Reserve Station
               "Saltern",
               "Serpentcrest"

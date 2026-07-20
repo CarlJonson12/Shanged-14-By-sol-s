@@ -8,3 +8,4 @@ department-Security = Служба безопасности
 department-Science = Биомедицинский отдел
 department-Silicon = Синтетики
 department-Specific = На определённых станциях
+department-Unknown = Неизвестно

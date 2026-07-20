@@ -137,8 +137,11 @@
     - Trash
     - Skewer
   - type: Food
+  - type: Edible  # Reserve edit: Fix burgers, tacos and skewers
     trash:
     - FoodKebabSkewer
+  - type: FlavorProfile  # Reserve edit: Fix burgers, tacos and skewers
+    flavors: []
   - type: SolutionContainerManager
     solutions:
       food:

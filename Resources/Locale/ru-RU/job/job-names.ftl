@@ -34,7 +34,7 @@ job-name-chaplain = Священник
 job-name-botanist = Ботаник
 job-name-bartender = Бармен
 job-name-passenger = Ассистент
-job-name-salvagespec = Шахтёр
+job-name-salvagespec = Утилизатор
 job-name-station-ai = Станционный ИИ
 job-name-qm = Квартирмейстер
 job-name-cargotech = Грузчик
@@ -114,3 +114,12 @@ JobWarden = Смотритель
 JobVisitor = Посетитель
 JobBoxer = Боксёр
 JobZookeeper = Зоотехник
+
+JobCommandMaid = уборщик командования
+JobPartyMaker = патимейкер
+JobSecurityClown = клоун СБ
+
+job-name-cluwne = клувень
+job-name-command-maid = уборщик командования
+job-name-party-maker = патимейкер
+job-name-security-clown = клоун СБ

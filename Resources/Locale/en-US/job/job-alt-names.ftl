@@ -11,6 +11,8 @@ job-name-alt-paramedic-1 = Trauma Specialist
 job-name-alt-paramedic-2 = Emergency Medical Technician
 job-name-alt-paramedic-3 = Search & Rescue Technician
 
+job-name-alt-virologist-1 = Pandemologist
+
 job-name-alt-qm-1 = Requisitions Officer
 job-name-alt-qm-2 = Deck Chief
 job-name-alt-qm-3 = Warehouse Supervisor
@@ -23,9 +25,15 @@ job-name-alt-cargotech-1 = Courier
 job-name-alt-cargotech-2 = Shuttle Pilot
 job-name-alt-cargotech-3 = Logistics Clerk
 
-job-name-alt-salvage-1 = Shaft Miner
+job-name-alt-salvage-1 = Recycler
+job-name-alt-salvage-2 = Scavenger
 
-job-name-alt-atmos-1 = Fire Suppression Specialist
+job-name-alt-miner-1 = Geologist
+job-name-alt-miner-2 = Vulcanologist
+
+job-name-alt-atmos-1 = Firefighter
+job-name-alt-atmos-2 = Gas Specialist
+
 job-name-alt-ce-1 = Head of Engineering
 job-name-alt-ce-2 = Engineering Foreperson
 job-name-alt-ce-2-f = Engineering Forewoman
@@ -39,7 +47,10 @@ job-name-alt-engineer-4 = Engine Operator
 
 job-name-alt-scientist-1 = Xenoarchaeologist
 job-name-alt-scientist-2 = Anomaly Researcher
-job-name-alt-scientist-3 = Hardware Technician
+job-name-alt-scientist-3 = Xenobiologist
+
+job-name-alt-roboticist-1 = Cybersurgeon
+job-name-alt-roboticist-2 = AI Specialist
 
 job-name-alt-secoff-1 = Hall Monitor
 
@@ -53,24 +64,27 @@ job-name-alt-assistant-3 = Entrepreneur
 job-name-alt-assistant-4 = Off-duty Crew
 
 job-name-alt-bartender-1 = Mixologist
-job-name-alt-bartender-2 = Hydration Equipment Operator
+job-name-alt-bartender-2 = Sommelier
 job-name-alt-bartender-3 = Barista
 
 job-name-alt-botanist-1 = Hydroponics Specialist
 job-name-alt-botanist-2 = Herbologist
+job-name-alt-botanist-3 = Gardener
+job-name-alt-botanist-4 = Agronomist
 
 job-name-alt-chaplain-1 = Preacher
 job-name-alt-chaplain-2 = Spiritual Advisor
 job-name-alt-chaplain-3 = Shrine Guardian
 
 job-name-alt-chef-1 = Sous-chef
-job-name-alt-chef-2 = Line Cook
+job-name-alt-chef-2 = Gastronomist
 job-name-alt-chef-3 = Lunch Lady
+job-name-alt-chef-4 = Bromatologist
 
 job-name-alt-clown-1 = Jester
 job-name-alt-clown-2 = Bouffon
 
-job-name-alt-janitor-1 = Maid
+job-name-alt-janitor-1 = Dormworker
 job-name-alt-janitor-2 = Maintenance Worker
 job-name-alt-janitor-3 = Custodial Technician
 
@@ -97,6 +111,9 @@ job-name-alt-reporter-1 = Influencer
 job-name-alt-reporter-2 = Documentarian
 job-name-alt-reporter-3 = Media Coordinator
 
+job-name-alt-radiohost-1 = Podcaster
+job-name-alt-radiohost-2 = Conspiracy Theorist
+
 job-name-alt-boxer-1 = Fitness Instructor
 job-name-alt-boxer-2 = Yoga Instructor
 job-name-alt-boxer-3 = Life Coach
@@ -109,5 +126,5 @@ job-name-alt-psychologist-3 = Psychiatrist
 
 job-name-alt-zookeeper-1 = Animal Control
 job-name-alt-zookeeper-2 = Menagerist
-job-name-alt-zookeeper-3 = Xenobiologist
+job-name-alt-zookeeper-3 = Xenozoologist
 job-name-alt-zookeeper-4 = Wildlife Specialist

@@ -13,3 +13,4 @@ job-supervisors-security = Офицерам, Смотрителю, и Главе
 job-supervisors-science = Учёным, Директору биомедицинских исследований
 job-supervisors-hire = своим нанимателям
 job-supervisors-everyone = вообще всем
+job-supervisors-command = командованию

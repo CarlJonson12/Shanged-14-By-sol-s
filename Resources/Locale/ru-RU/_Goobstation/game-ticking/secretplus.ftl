@@ -10,3 +10,7 @@ secretplus-high-title = Секрет+ высокий
 secretplus-high-description = Если это может случиться, то так и будет.
 hermitplus-title = Отшельник
 hermitplus-description = Игровой режим, в котором основное внимание уделяется внутренним угрозам, а не внешним.
+
+secretplus-lowpop-description = Активнее, но менее опасно. Для не спящих членов экипажа.
+
+secretplus-lowpop-title = Секрет+ лоупоп

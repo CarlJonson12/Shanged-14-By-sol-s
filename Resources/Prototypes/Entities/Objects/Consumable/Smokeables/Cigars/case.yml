@@ -131,6 +131,8 @@
   name: premium cigar case
   description: "A case of premium Havanian cigars. You'll only see heads with these."
   components:
+  - type: Sprite
+    color: "#ffc833"  # Reserve edit: Better trinket loadout
   - type: StorageFill
     contents:
     - id: CigarGold
