@@ -210,6 +210,48 @@
   - OffsetCaneMime
   - OffsetCaneNT
   - Cane
+  # Reserve edit start: Better trinket loadout
+  - PlushieMoth
+  - PlushieSlime
+  - PlushieDiona
+  - PlushieVox
+  - PlushieHuman
+  - PlushieSharkBlue
+  - PlushieSharkGrey
+  - PlushieSharkPink
+  - PlushieSharkRainbow
+  - PlushieGhostRainbow
+  - PlushieBread
+  - PlushiePiano
+  - PlushieBehonkerEye
+  - PlushieChest
+  - PlushieAI
+  - MetalRing
+  - PlasticRing
+  - PokerChips50
+  - AceOfSpades
+  - MysteryFigureBox
+  - TennisBall
+  - TennisRacket
+  - BalloonNT
+  - BalloonCorgi
+  - SpellCardFun
+  - d6DiceGold
+  - d6DiceRainbow
+  - ReserveCan
+  - OrchitoCan
+  - ReserveRobustCan
+  - Rag
+  - RagGold
+  - UtensilSetGold
+  - Skub
+  - ClothingHeadHatPartyWaterCup
+  - MaterialCotton
+  - CigarGoldCase
+  - Vape
+  - SmokingPipe
+  - LighterGold
+  # Reserve edit end: Better trinket loadout
   # GoobStation Start
   - CardBoxBlack
   - CardBoxNanotrasen
@@ -236,11 +278,38 @@
   # Begin DeltaV Additions
   - GoldRing
   - SilverRing
-  - Cane
   - WhiteCane
   - TapeRecorder
   - DrinkOniGourd
   # End DeltaV Additions
+  # Reserve edit start: Better trinket loadout
+  - VinylSleeve
+  - VinylSleeveGold
+  - DiskCaseFilled
+  - DiskCaseGold
+  - OcarinaBlue
+  - MicrophoneMicro
+  - FakeDiamondRing
+  - FakeRubyRing
+  - MimeRing
+  - TomatoRing
+  - LoveRing
+  - RainbowRing
+  - FoodSnackLollypopOrchito
+  - FoodSnackLollypopBrepsi
+  - FoodSnackLollypopBacchusBlessing
+  - FoodSnackLollypopReserve
+  - FoodSnackLollypopMedical
+  - FoodSnackLollypopIce
+  - FoodSnackLollypopProtein
+  - FoodSnackSwirlLollipop
+  - TowelColorBorgNT
+  - TowelColorRoboticist
+  - TowelColorNT
+  - TowelColorCaptain
+  - TowelColorCentcom
+  - TowelColorOuterCommand
+  # Reserve edit end: Better trinket loadout
 
 - type: loadoutGroup
   id: Glasses
@@ -262,6 +331,16 @@
   - Mouse
   - Mothroach
   - Goldfish
+  # Reserve edit start: Better trinket loadout
+  - Butterfly
+  - SnailMoth
+  - Bee
+  - Snail
+  - Hamster
+  - MousePink
+  - CockroachBig
+  - MothroachCecropia
+  # Reserve edit end: Better trinket loadout
 
 - type: loadoutGroup
   id: GroupTankHarness

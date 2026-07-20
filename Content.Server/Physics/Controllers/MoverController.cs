@@ -54,6 +54,7 @@
 //
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
+/* // Reserve
 using System.Numerics;
 using System.Runtime.CompilerServices;
 using Content.Server.Shuttles.Components;
@@ -632,5 +633,5 @@ public sealed class MoverController : SharedMoverController
         && (ftl.State & (FTLState.Starting | FTLState.Travelling | FTLState.Arriving)) != 0x0
             || HasComp<PreventPilotComponent>(shuttleUid);
     }
-
 }
+*/

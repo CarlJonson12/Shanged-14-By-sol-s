@@ -91,6 +91,7 @@
   - External
   alternateTitles: # Reserve - alternate titles
   - SalvageSpecialistMiner
+  - SalvageSpecialistScavenger
 
 - type: startingGear
   id: SalvageSpecialistGear
@@ -119,3 +120,7 @@
 - type: jobAlternateTitle
   id: SalvageSpecialistMiner
   name: job-name-alt-salvage-1
+
+- type: jobAlternateTitle
+  id: SalvageSpecialistScavenger
+  name: job-name-alt-salvage-2

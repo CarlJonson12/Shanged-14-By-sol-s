@@ -238,7 +238,7 @@ namespace Content.Shared.Movement.Systems
             Dirty(uid, mover);
         }
 
-        private bool TryUpdateRelative(EntityUid uid, InputMoverComponent mover, TransformComponent xform)
+        protected bool TryUpdateRelative(EntityUid uid, InputMoverComponent mover, TransformComponent xform)
         {
             var relative = xform.GridUid;
             relative ??= xform.MapUid;
@@ -288,7 +288,9 @@ namespace Content.Shared.Movement.Systems
             mover.RelativeRotation -= diff;
 
             mover.RelativeEntity = relative;
-            Dirty(uid, mover);
+            // Starlight start
+            DirtyMover(uid, mover);
+            // Starlight end
             return true;
         }
 

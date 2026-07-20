@@ -112,6 +112,7 @@
   - ChefSousChef
   - ChefLineCook
   - ChefNutritionist
+  - ChefBromatologist
 
 - type: startingGear
   id: ChefGear
@@ -149,3 +150,7 @@
   name: job-name-alt-chef-3
   femaleName: job-name-alt-chef-3-f
   maleName: job-name-alt-chef-3-m
+
+- type: jobAlternateTitle
+  id: ChefBromatologist
+  name: job-name-alt-chef-4

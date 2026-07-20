@@ -128,7 +128,7 @@ namespace Content.Server.Nutrition.EntitySystems
             base.Initialize();
 
             // activate BEFORE entity is deleted and trash is spawned
-            SubscribeLocalEvent<CreamPieComponent, ConsumeDoAfterEvent>(OnConsume, before: [typeof(FoodSystem)]);
+            SubscribeLocalEvent<CreamPieComponent, ConsumeDoAfterEvent>(OnConsume, before: [typeof(EdibleComponent)]);  // Reserve edit: Fix burgers, tacos and skewers
             SubscribeLocalEvent<CreamPieComponent, SliceFoodEvent>(OnSlice);
 
             SubscribeLocalEvent<CreamPiedComponent, RejuvenateEvent>(OnRejuvenate);
@@ -140,7 +140,7 @@ namespace Content.Server.Nutrition.EntitySystems
             var coordinates = Transform(uid).Coordinates;
             _audio.PlayPvs(_audio.ResolveSound(creamPie.Sound), coordinates, AudioParams.Default.WithVariation(0.125f));
 
-            if (TryComp(uid, out FoodComponent? foodComp))
+            if (TryComp(uid, out EdibleComponent? foodComp))  // Reserve edit: Fix burgers, tacos and skewers
             {
                 if (_solutions.TryGetSolution(uid, foodComp.Solution, out _, out var solution))
                 {

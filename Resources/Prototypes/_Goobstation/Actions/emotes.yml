@@ -28,6 +28,10 @@
   - does a flip
   - does a flip.
   - does a flip!
+  # Reserve-Localization-Start
+  - переворачивается
+  - делает сальто
+  # Reserve-Localization-End
   event: !type:AnimationFlipEmoteEvent
 
 - type: emote
@@ -42,6 +46,9 @@
   - tweaks
   - tweaks.
   - tweaks!
+  # Reserve-Localization-Start
+  - приплясывает
+  # Reserve-Localization-End
   event: !type:AnimationTweakEmoteEvent
 
 - type: emote
@@ -60,6 +67,16 @@
   - shows off muscles
   - shows off its muscles
   - intimidates
+  # Reserve-Localization-Start
+  - хвастается мускулами
+  - хвастается мышцами
+  - играет мускулами
+  - играет мышцами
+  - напрягает мускулы
+  - напрягает мышцы
+  - выпендривается
+  - запугивает
+  # Reserve-Localization-End
   event: !type:AnimationFlexEmoteEvent
 
 - type: emote
@@ -72,6 +89,10 @@
   - spins
   - spins.
   - spins!
+  # Reserve-Localization-Start
+  - крутится
+  - вертится
+  # Reserve-Localization-End
   event: !type:AnimationSpinEmoteEvent
 
 - type: emote
@@ -84,4 +105,9 @@
   - jumps
   - jumps.
   - jumps!
+  # Reserve-Localization-Start
+  - прыгает
+  - скачет
+  - подпрыгивает
+  # Reserve-Localization-End
   event: !type:AnimationJumpEmoteEvent

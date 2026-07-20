@@ -9,6 +9,7 @@ ent-MobAngryBeeWeak = { ent-MobAngryBee }
     .suffix = Злая, Слабая
     .desc = { ent-MobAngryBee.desc }
 ent-MobLootbug = жук-сборщик
+    .suffix = Лутбаг
     .desc = Ест металл. Может уже съел что-то ценное?
 ent-MobCarpSentient = космический карп
     .desc = Это космический карп. Раньше был человеком.
