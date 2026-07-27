@@ -1,0 +1,35 @@
+- type: entity
+  id: Furry
+  parent: BaseGameRule
+  components:
+  - type: GameRule
+    minPlayers: 0
+    delay:
+      min: 600
+      max: 900
+    # Goobstation
+    chaosScore: 1200
+  # Goobstation
+  - type: Tag
+    tags:
+    - LoneRunRule
+  - type: FurryRule
+  - type: AntagSelection
+    definitions:
+    - prefRoles: [ MainFurry ]
+      spawnerPrototype: SpawnPointMainFurry
+      max: 4
+      playerRatio: 15
+      jobBlacklist: [ Chaplain ] # Goobstation
+      blacklist:
+        components:
+        - CommandStaff
+        - AntagImmune
+      briefing:
+        text: zombie-patientzero-role-greeting
+        color: Plum
+        sound: "/Audio/Ambience/Antag/zombie_start.ogg"
+      components:
+      - type: Furry
+      mindRoles:
+      - MindRoleMainFurry

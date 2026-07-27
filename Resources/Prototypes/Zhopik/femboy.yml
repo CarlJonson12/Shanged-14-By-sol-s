@@ -1,0 +1,23 @@
+- type: entity
+  parent: MantisBlade
+  id: FemboyThing
+  name: фембой
+  components:
+  - type: FemboyPhrase
+    dataset: OwO
+
+- type: dataset
+  id: UwU
+  values:
+  - OwO
+  - TwT
+  - arwf :3
+  - кис кис кис
+
+- type: dataset
+  id: OwO
+  values:
+  - Мррррр....
+  - meow
+  - mrrrow
+

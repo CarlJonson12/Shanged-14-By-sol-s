@@ -51,26 +51,6 @@
 // SPDX-FileCopyrightText: 2024 Truoizys <153248924+Truoizys@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 TsjipTsjip <19798667+TsjipTsjip@users.noreply.github.com>
 // SPDX-FileCopyrightText: 2024 Ubaser <134914314+UbaserB@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Vasilis <vasilis@pikachu.systems>
-// SPDX-FileCopyrightText: 2024 Wrexbe (Josh) <81056464+wrexbe@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 beck-thompson <107373427+beck-thompson@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <39013340+deltanedas@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 deltanedas <@deltanedas:kde.org>
-// SPDX-FileCopyrightText: 2024 lzk <124214523+lzk228@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 neutrino <67447925+neutrino-laser@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 osjarw <62134478+osjarw@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 plykiya <plykiya@protonmail.com>
-// SPDX-FileCopyrightText: 2024 redfire1331 <Redfire1331@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 username <113782077+whateverusername0@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 whateverusername0 <whateveremail>
-// SPDX-FileCopyrightText: 2024 Арт <123451459+JustArt1m@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Armok <155400926+ARMOKS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Server.Antag;
 using Content.Server.Chat.Systems;
@@ -78,7 +58,6 @@ using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Popups;
 using Content.Server.Roles;
 using Content.Server.RoundEnd;
-using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.Zombies;
 using Content.Shared.GameTicking.Components;
@@ -94,10 +73,11 @@ using Robust.Shared.Audio.Systems; // goobstation
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using System.Globalization;
+using Content.Shared.Changed14.Furry;
 
 namespace Content.Server.GameTicking.Rules;
 
-public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
+public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 {
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
@@ -110,38 +90,30 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
     [Dependency] private readonly SharedRoleSystem _roles = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!; // Einstein Engines - Zombie Improvements Take 2
-    [Dependency] private readonly ZombieSystem _zombie = default!;
+    [Dependency] private readonly FurryRuleSystem _zombie = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!; // Goobstation
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<InitialInfectedRoleComponent, GetBriefingEvent>(OnGetBriefing);
-        SubscribeLocalEvent<ZombieRoleComponent, GetBriefingEvent>(OnGetBriefing);
-        SubscribeLocalEvent<IncurableZombieComponent, ZombifySelfActionEvent>(OnZombifySelf);
+        SubscribeLocalEvent<MainFurryRoleComponent, GetBriefingEvent>(OnGetBriefing);
     }
 
-    private void OnGetBriefing(Entity<InitialInfectedRoleComponent> role, ref GetBriefingEvent args)
+    private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
-        if (!_roles.MindHasRole<ZombieRoleComponent>(args.Mind.Owner))
-            args.Append(Loc.GetString("zombie-patientzero-role-greeting"));
-    }
-
-    private void OnGetBriefing(Entity<ZombieRoleComponent> role, ref GetBriefingEvent args)
-    {
-        args.Append(Loc.GetString("zombie-infection-greeting"));
+        args.Append(Loc.GetString("zombie-patientzero-role-greeting"));
     }
 
     protected override void AppendRoundEndText(EntityUid uid,
-        ZombieRuleComponent component,
+        FurryRuleComponent component,
         GameRuleComponent gameRule,
         ref RoundEndTextAppendEvent args)
     {
         base.AppendRoundEndText(uid, component, gameRule, ref args);
 
         // This is just the general condition thing used for determining the win/lose text
-        var fraction = GetInfectedFraction(true, true);
+        var fraction = GetFurryFraction(true, true);
 
         if (fraction <= 0)
             args.AddLine(Loc.GetString("zombie-round-end-amount-none"));
@@ -186,56 +158,14 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         }
     }
 
-    /// <summary>
-    ///     The big kahoona function for checking if the round is gonna end
-    /// </summary>
-    private void CheckRoundEnd(ZombieRuleComponent zombieRuleComponent)
-    {
-        var healthy = GetHealthyHumans();
-        if (healthy.Count == 1) // Only one human left. spooky
-            _popup.PopupEntity(Loc.GetString("zombie-alone"), healthy[0], healthy[0]);
-
-        // goob edit
-        if (GetInfectedFraction(false) > zombieRuleComponent.ZombieShuttleCallPercentage / 5f && !zombieRuleComponent.StartAnnounced)
-        {
-            zombieRuleComponent.StartAnnounced = true;
-
-            foreach (var station in _station.GetStations())
-            {
-                _chat.DispatchStationAnnouncement(station,
-                    Loc.GetString("zombie-start-announcement"),
-                    colorOverride: Color.Pink);
-            }
-
-            _audio.PlayGlobal("/Audio/Announcements/outbreak7.ogg", Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
-        }
-
-        if (GetInfectedFraction(false) > zombieRuleComponent.ZombieShuttleCallPercentage && !_roundEnd.IsRoundEndRequested())
-        {
-            foreach (var station in _station.GetStations())
-            {
-                _chat.DispatchStationAnnouncement(station, Loc.GetString("zombie-shuttle-call"), colorOverride: Color.Crimson);
-            }
-
-            //_audio.PlayGlobal("/Audio/_Goobstation/Announcements/violet.ogg", Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f)); // Goobstation
-
-            _roundEnd.RequestRoundEnd(null, false);
-        }
-
-        // we include dead for this count because we don't want to end the round
-        // when everyone gets on the shuttle.
-        if (GetInfectedFraction() >= 1) // Oops, all zombies
-            _roundEnd.EndRound();
-    }
-
-    protected override void Started(EntityUid uid, ZombieRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid, FurryRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
         component.NextRoundEndCheck = _timing.CurTime + component.EndCheckDelay;
     }
 
-    protected override void ActiveTick(EntityUid uid, ZombieRuleComponent component, GameRuleComponent gameRule, float frameTime)
+    protected override void ActiveTick(EntityUid uid, FurryRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {
         base.ActiveTick(uid, component, gameRule, frameTime);
         if (!component.NextRoundEndCheck.HasValue || component.NextRoundEndCheck > _timing.CurTime)
@@ -243,33 +173,36 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         CheckRoundEnd(component);
         component.NextRoundEndCheck = _timing.CurTime + component.EndCheckDelay;
     }
-
-    private void OnZombifySelf(EntityUid uid, IncurableZombieComponent component, ZombifySelfActionEvent args)
+    private void CheckRoundEnd(FurryRuleComponent furryRuleComponent)
     {
-        _zombie.ZombifyEntity(uid);
-        if (component.Action != null)
-            Del(component.Action.Value);
-    }
+        var healthy = GetHealthyHumans();
+        if (healthy.Count == 1) // Only one human left. spooky
+            _popup.PopupEntity(Loc.GetString("zombie-alone"), healthy[0], healthy[0]);
 
-    /// <summary>
-    /// Get the fraction of players that are infected, between 0 and 1
-    /// </summary>
-    /// <param name="includeOffStation">Include healthy players that are not on the station grid</param>
-    /// <param name="includeDead">Should dead zombies be included in the count</param>
-    /// <returns></returns>
-    private float GetInfectedFraction(bool includeOffStation = false, bool includeDead = true)  // Einstein Engines - Zombie Improvements Take 2
+        if (GetFurryFraction(false) > furryRuleComponent.ZombieShuttleCallPercentage && !_roundEnd.IsRoundEndRequested())
+        {
+            foreach (var station in _station.GetStations())
+            {
+                _chat.DispatchStationAnnouncement(station, Loc.GetString("zombie-shuttle-call"), colorOverride: Color.Crimson);
+            }
+            _roundEnd.RequestRoundEnd(null, false);
+        }
+        if (GetFurryFraction() >= 1)
+            _roundEnd.EndRound();
+    }
+    private float GetFurryFraction(bool includeOffStation = false, bool includeDead = true)  // Einstein Engines - Zombie Improvements Take 2
     {
         var players = GetHealthyHumans(includeOffStation);
-        var zombieCount = 0;
-        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, ZombieComponent, MobStateComponent>();
+        var furryCount = 0;
+        var query = EntityQueryEnumerator<HumanoidAppearanceComponent, FurryComponent, MobStateComponent>();
         while (query.MoveNext(out _, out _, out _, out var mob))
         {
             if (!includeDead && mob.CurrentState == MobState.Dead)
                 continue;
-            zombieCount++;
+            furryCount++;
         }
 
-        return zombieCount / (float) (players.Count + zombieCount);
+        return furryCount / (float) (players.Count + furryCount);
     }
 
     /// <summary>
@@ -286,22 +219,18 @@ public sealed class ZombieRuleSystem : GameRuleSystem<ZombieRuleComponent>
         {
             foreach (var station in _gameTicker.GetSpawnableStations())  // Einstein Engines - Zombie Improvements Take 2
             {
-                if (TryComp<StationDataComponent>(station, out var data) && _station.GetLargestGrid(data) is { } grid)
+                if (_station.GetLargestGrid(station) is { } grid)
                     stationGrids.Add(grid);
             }
         }
 
         var players = AllEntityQuery<HumanoidAppearanceComponent, ActorComponent, MobStateComponent, TransformComponent>();
-        var zombers = GetEntityQuery<ZombieComponent>();
-        var zombieImmune = GetEntityQuery<ZombieImmuneComponent>(); // Goobstation
+        var furries = GetEntityQuery<FurryComponent>();
         while (players.MoveNext(out var uid, out _, out _, out var mob, out var xform))
         {
             // Einstein Engines - Zombie Improvements Take 2
             if (!_mobState.IsAlive(uid, mob)
-                || HasComp<PendingZombieComponent>(uid) // Do not include infected players in the "Healthy players" list.
-                || HasComp<ZombifyOnDeathComponent>(uid)
-                || zombieImmune.HasComponent(uid) // Goobstation
-                || zombers.HasComponent(uid)
+                || furries.HasComponent(uid)
                 || !includeOffStation && !stationGrids.Contains(xform.GridUid ?? EntityUid.Invalid))
                 continue;
 
