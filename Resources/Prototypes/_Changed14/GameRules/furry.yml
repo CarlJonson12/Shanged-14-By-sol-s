@@ -27,9 +27,9 @@
   parent: SpawnPointLoneNukeOperative
   id: SpawnPointMainFurry
   components:
-- type: GhostRole
-  name: roles-antag-nuclear-operative-commander-name
-  description: roles-antag-nuclear-operative-commander-objective
-  rules: ghost-role-information-rules-team-antagonist
-  mindRoles:
-  - MindRoleGhostRoleTeamAntagonist
+  - type: GhostRole
+    name: roles-antag-nuclear-operative-commander-name
+    description: roles-antag-nuclear-operative-commander-objective
+    rules: ghost-role-information-rules-team-antagonist
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
