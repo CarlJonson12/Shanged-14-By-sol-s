@@ -102,7 +102,7 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 
     private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
-        args.Append(Loc.GetString("zombie-patientzero-role-greeting"));
+        args.Append(Loc.GetString("furry-patientzero-role-greeting"));
     }
 
     protected override void AppendRoundEndText(EntityUid uid,
@@ -116,21 +116,21 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
         var fraction = GetFurryFraction(true, true);
 
         if (fraction <= 0)
-            args.AddLine(Loc.GetString("zombie-round-end-amount-none"));
+            args.AddLine(Loc.GetString("furry-round-end-amount-none"));
         else if (fraction <= 0.25)
-            args.AddLine(Loc.GetString("zombie-round-end-amount-low"));
+            args.AddLine(Loc.GetString("furry-round-end-amount-low"));
         else if (fraction <= 0.5)
-            args.AddLine(Loc.GetString("zombie-round-end-amount-medium", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
+            args.AddLine(Loc.GetString("furry-round-end-amount-medium", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
         else if (fraction < 1)
-            args.AddLine(Loc.GetString("zombie-round-end-amount-high", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
+            args.AddLine(Loc.GetString("furry-round-end-amount-high", ("percent", Math.Round((fraction * 100), 2).ToString(CultureInfo.InvariantCulture))));
         else
-            args.AddLine(Loc.GetString("zombie-round-end-amount-all"));
+            args.AddLine(Loc.GetString("furry-round-end-amount-all"));
 
         var antags = _antag.GetAntagIdentifiers(uid);
-        args.AddLine(Loc.GetString("zombie-round-end-initial-count", ("initialCount", antags.Count)));
+        args.AddLine(Loc.GetString("furry-round-end-initial-count", ("initialCount", antags.Count)));
         foreach (var (_, data, entName) in antags)
         {
-            args.AddLine(Loc.GetString("zombie-round-end-user-was-initial",
+            args.AddLine(Loc.GetString("furry-round-end-user-was-initial",
                 ("name", entName),
                 ("username", data.UserName)));
         }
@@ -141,7 +141,7 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
         if (healthy.Count <= 0 || healthy.Count > 2 * antags.Count)
             return;
         args.AddLine("");
-        args.AddLine(Loc.GetString("zombie-round-end-survivor-count", ("count", healthy.Count)));
+        args.AddLine(Loc.GetString("furry-round-end-survivor-count", ("count", healthy.Count)));
         foreach (var survivor in healthy)
         {
             var meta = MetaData(survivor);
@@ -152,7 +152,7 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
                 username = session.Name;
             }
 
-            args.AddLine(Loc.GetString("zombie-round-end-user-was-survivor",
+            args.AddLine(Loc.GetString("furry-round-end-user-was-survivor",
                 ("name", meta.EntityName),
                 ("username", username)));
         }
@@ -177,7 +177,7 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
     {
         var healthy = GetHealthyHumans();
         if (healthy.Count == 1) // Only one human left. spooky
-            _popup.PopupEntity(Loc.GetString("zombie-alone"), healthy[0], healthy[0]);
+            _popup.PopupEntity(Loc.GetString("furry-alone"), healthy[0], healthy[0]);
 
         if (GetFurryFraction(false) > furryRuleComponent.ZombieShuttleCallPercentage && !_roundEnd.IsRoundEndRequested())
         {
