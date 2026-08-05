@@ -99,7 +99,12 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 
         SubscribeLocalEvent<MainFurryRoleComponent, GetBriefingEvent>(OnGetBriefing);
     }
-
+    public bool CheckSendData(EntityUid uid, ref DataSentEvent args)
+    {
+        var dataSent = new DataSentEvent();
+        RaiseLocalEvent(uid, ref dataSent);
+        return args.Handled;
+    }
     private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("furry-patientzero-role-greeting"));
@@ -114,6 +119,8 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 
         // This is just the general condition thing used for determining the win/lose text
         var fraction = GetFurryFraction(true, true);
+        if (CheckSendData == true)//Этот прикол надо чинить!
+            _roundEnd.EndRound();
 
         if (fraction <= 0)
             args.AddLine(Loc.GetString("furry-round-end-amount-none"));
