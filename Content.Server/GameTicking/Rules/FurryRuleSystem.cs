@@ -99,7 +99,12 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 
         SubscribeLocalEvent<MainFurryRoleComponent, GetBriefingEvent>(OnGetBriefing);
     }
-
+    public bool CheckSendData(EntityUid uid, ref DataSentEvent args)
+    {
+        var dataSent = new DataSentEvent();
+        RaiseLocalEvent(uid, ref dataSent);
+        return args.Handled;
+    }
     private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("furry-patientzero-role-greeting"));
