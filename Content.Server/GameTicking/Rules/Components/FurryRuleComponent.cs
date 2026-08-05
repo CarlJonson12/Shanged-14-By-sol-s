@@ -25,4 +25,3 @@ public sealed partial class FurryRuleComponent : Component
     // goob edit
     public bool StartAnnounced = false;
 }
-public sealed class DataSentEvent: HandledEntityEventArgs;

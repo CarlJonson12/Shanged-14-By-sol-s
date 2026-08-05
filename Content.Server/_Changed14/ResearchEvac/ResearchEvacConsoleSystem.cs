@@ -70,5 +70,11 @@ public sealed class ResearchEvacSystem : EntitySystem
 
         UpdateGeneratorUi(uid, component);
     }
+    public bool CheckSendData(EntityUid uid, ref DataSentEvent args)
+    {
+        var dataSent = new DataSentEvent();
+        RaiseLocalEvent(uid, dataSent);
+        return args.Handled;
+    }
 
 }

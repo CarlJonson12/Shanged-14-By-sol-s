@@ -13,3 +13,4 @@ public sealed partial class ResearchEvacConsoleComponent : Component
 {
 
 }
+public sealed class DataSentEvent: HandledEntityEventArgs;
