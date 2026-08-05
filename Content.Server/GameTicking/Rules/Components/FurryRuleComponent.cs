@@ -1,5 +1,4 @@
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
-
 namespace Content.Server.GameTicking.Rules.Components;
 
 [RegisterComponent, Access(typeof(FurryRuleSystem))]
@@ -26,3 +25,4 @@ public sealed partial class FurryRuleComponent : Component
     // goob edit
     public bool StartAnnounced = false;
 }
+public sealed class DataSentEvent: HandledEntityEventArgs;
