@@ -74,7 +74,8 @@ using Robust.Shared.Player;
 using Robust.Shared.Timing;
 using System.Globalization;
 using Content.Shared.Changed14.Furry;
-
+using Content.Server._Changed14.ResearchEvac.Components;
+using Content.Server._Changed14.ResearchEvac;
 namespace Content.Server.GameTicking.Rules;
 
 public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
@@ -98,12 +99,16 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<MainFurryRoleComponent, GetBriefingEvent>(OnGetBriefing);
+        SubscribeLocalEvent<DataSentEvent>(CheckSendData);
     }
     private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("furry-patientzero-role-greeting"));
     }
-
+    public void CheckSendData(ref DataSentEvent args)
+    {
+        _roundEnd.EndRound();
+    }
     protected override void AppendRoundEndText(EntityUid uid,
         FurryRuleComponent component,
         GameRuleComponent gameRule,
@@ -113,9 +118,6 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
 
         // This is just the general condition thing used for determining the win/lose text
         var fraction = GetFurryFraction(true, true);
-        if (CheckSendData())//Этот прикол надо чинить!
-            _roundEnd.EndRound();
-
         if (fraction <= 0)
             args.AddLine(Loc.GetString("furry-round-end-amount-none"));
         else if (fraction <= 0.25)
