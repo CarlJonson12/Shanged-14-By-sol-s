@@ -58,7 +58,7 @@ public sealed class ResearchEvacSystem : EntitySystem
 
     }
 
-    private void OnGeneratingFinished(EntityUid uid, ResearchEvacConsoleComponent component)
+    public void OnGeneratingFinished(EntityUid uid, ResearchEvacConsoleComponent component)
     {
         var dataSent = new DataSentEvent();
         RaiseLocalEvent(uid, ref dataSent);

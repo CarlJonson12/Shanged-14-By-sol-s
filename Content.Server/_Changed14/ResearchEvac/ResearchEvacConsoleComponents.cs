@@ -14,4 +14,6 @@ public sealed partial class ResearchEvacConsoleComponent : Component
 
 }
 [ByRefEvent]
-public sealed class DataSentEvent: HandledEntityEventArgs;
+public sealed class DataSentEvent: HandledEntityEventArgs
+{
+}
