@@ -7,7 +7,7 @@ using Content.Server.Research.Systems;
 using Content.Server.Chat.Systems;
 using Robust.Shared.Containers;
 using Content.Server.RoundEnd;
-
+using Content.Shared._Changed14.ResearchEvac.Events;
 
 namespace Content.Server._Changed14.ResearchEvac;
 

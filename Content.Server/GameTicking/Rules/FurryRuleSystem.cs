@@ -76,6 +76,7 @@ using System.Globalization;
 using Content.Shared.Changed14.Furry;
 using Content.Server._Changed14.ResearchEvac.Components;
 using Content.Server._Changed14.ResearchEvac;
+using Content.Shared._Changed14.ResearchEvac.Events;
 namespace Content.Server.GameTicking.Rules;
 
 public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
@@ -99,13 +100,13 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<MainFurryRoleComponent, GetBriefingEvent>(OnGetBriefing);
-        SubscribeLocalEvent<DataSentEvent>(CheckSendData);
+        SubscribeLocalEvent<ResearchEvacConsoleComponent,DataSentEvent>(CheckSendData);
     }
     private void OnGetBriefing(Entity<MainFurryRoleComponent> role, ref GetBriefingEvent args)
     {
         args.Append(Loc.GetString("furry-patientzero-role-greeting"));
     }
-    public void CheckSendData(ref DataSentEvent args)
+    public void CheckSendData(ResearchEvacConsoleComponent comp, ref DataSentEvent)
     {
         _roundEnd.EndRound();
     }

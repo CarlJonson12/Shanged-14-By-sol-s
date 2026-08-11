@@ -11,9 +11,4 @@ namespace Content.Server._Changed14.ResearchEvac.Components;
 [RegisterComponent]
 public sealed partial class ResearchEvacConsoleComponent : Component
 {
-
-}
-[ByRefEvent]
-public sealed class DataSentEvent: HandledEntityEventArgs
-{
 }
