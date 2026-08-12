@@ -106,7 +106,7 @@ public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
     {
         args.Append(Loc.GetString("furry-patientzero-role-greeting"));
     }
-    public void CheckSendData(ResearchEvacConsoleComponent comp, ref DataSentEvent)
+    public void CheckSendData(ResearchEvacConsoleComponent comp, ref DataSentEvent args)
     {
         _roundEnd.EndRound();
     }
