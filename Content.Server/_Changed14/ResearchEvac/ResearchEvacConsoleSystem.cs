@@ -7,7 +7,7 @@ using Content.Server.Research.Systems;
 using Content.Server.Chat.Systems;
 using Robust.Shared.Containers;
 using Content.Server.RoundEnd;
-
+using Content.Shared._Changed14.ResearchEvac.Events;
 
 namespace Content.Server._Changed14.ResearchEvac;
 
@@ -27,7 +27,7 @@ public sealed class ResearchEvacSystem : EntitySystem
         SubscribeLocalEvent<ResearchEvacConsoleComponent, ResearchEvacButtonPressedEvent>(OnCallEvacButtonPressed);
     }
 
-    private void OnCompInit(EntityUid uid,  ResearchEvacConsoleComponent component, ref ComponentInit args)
+    private void OnCompInit(EntityUid uid, ResearchEvacConsoleComponent component, ref ComponentInit args)
     {
         UpdateGeneratorUi(uid, component);
     }
@@ -41,7 +41,7 @@ public sealed class ResearchEvacSystem : EntitySystem
         UpdateGeneratorUi(uid, component);
     }
 
-     private void OnCallEvacButtonPressed(EntityUid uid, ResearchEvacConsoleComponent component, ResearchEvacButtonPressedEvent message)
+    private void OnCallEvacButtonPressed(EntityUid uid, ResearchEvacConsoleComponent component, ResearchEvacButtonPressedEvent message)
     {
 
         UpdateGeneratorUi(uid, component);
@@ -58,8 +58,10 @@ public sealed class ResearchEvacSystem : EntitySystem
 
     }
 
-    private void OnGeneratingFinished(EntityUid uid, ResearchEvacConsoleComponent component)
+    public void OnGeneratingFinished(EntityUid uid, ResearchEvacConsoleComponent component)
     {
+        var dataSent = new DataSentEvent();
+        RaiseLocalEvent(uid, ref dataSent);
 
         var container = Container.GetContainer(uid, "evac_disk");
 
@@ -70,5 +72,4 @@ public sealed class ResearchEvacSystem : EntitySystem
 
         UpdateGeneratorUi(uid, component);
     }
-
 }

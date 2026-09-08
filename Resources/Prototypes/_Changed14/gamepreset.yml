@@ -1,0 +1,11 @@
+- type: gamePreset
+  id: Furry
+  name: furry-title
+  description: furry-description
+  showInVote: true
+  rules:
+  - Furry
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
