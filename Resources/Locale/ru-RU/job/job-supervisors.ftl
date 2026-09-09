@@ -14,3 +14,4 @@ job-supervisors-science = Учёным, Директору биомедицин�
 job-supervisors-hire = своим нанимателям
 job-supervisors-everyone = вообще всем
 job-supervisors-command = командованию
+job-supervisors-nobody = никому
