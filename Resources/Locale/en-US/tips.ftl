@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # SPDX-FileCopyrightText: 2024 Aidenkrz <aiden@djkraz.com>
 # SPDX-FileCopyrightText: 2024 Ed <96445749+TheShuEd@users.noreply.github.com>
 # SPDX-FileCopyrightText: 2024 Ilya246 <57039557+Ilya246@users.noreply.github.com>
@@ -153,4 +151,3 @@ tips-dataset-136 = If you're trapped behind an electrified door, disable the APC
 tips-dataset-137 = If the AI electrifies a door and you have insulated gloves, snip and mend the power wire to reset their electrification!
 tips-dataset-138 = If you want to stop your prisoner from escaping from the cell right after being uncuffed, turn on combat mode while uncuffing - this will shove the prisoner down.
 tips-dataset-139 = Make sure to clean your illegal implanters with a soap after you use them! Detectives can scan used implanters for incriminating DNA evidence, but not if they've been wiped clean.
->>>>>>> 60f48efc137aa68d4537ad96f0774ef4b53ef5a0
