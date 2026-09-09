@@ -77,6 +77,7 @@ using Content.Shared.Changed14.Furry;
 using Content.Server._Changed14.ResearchEvac.Components;
 using Content.Server._Changed14.ResearchEvac;
 using Content.Shared._Changed14.ResearchEvac.Events;
+using Content.Shared.Roles.Components;
 namespace Content.Server.GameTicking.Rules;
 
 public sealed class FurryRuleSystem : GameRuleSystem<FurryRuleComponent>
