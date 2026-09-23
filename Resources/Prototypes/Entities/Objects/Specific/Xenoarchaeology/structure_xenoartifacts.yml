@@ -19,7 +19,6 @@
     - state: crystal_grey
       map: [ "enum.ArtifactsVisualLayers.UnlockingEffect" ]
       visible: false
-<<<<<<< HEAD
     # - state: crystal_grey
     #   map: [ "enum.ArtifactsVisualLayers.ActivationEffect" ]
     #   visible: false
@@ -37,32 +36,19 @@
   #   available:
   #   - enum.ArtifactsVisualLayers.UnlockingEffect:
   #       ano01_on: Rainbow
-=======
-    - state: artifact-activation
-      map: [ "enum.ArtifactsVisualLayers.ActivationEffect" ]
-      visible: false
-  - type: Physics
-    bodyType: KinematicController
-  - type: RandomArtifactSprite
-    maxSprite: 36
-  - type: RandomSprite
-    available:
-    - enum.ArtifactsVisualLayers.UnlockingEffect:
-        ano01_on: Rainbow
->>>>>>> 60f48efc137aa68d4537ad96f0774ef4b53ef5a0
-  - type: Transform
-    noRot: true
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.45
-        density: 75
-        layer: # doesn't collide with artifact storage
-        - Opaque
-        mask:
-        - MachineMask
+    - type: Transform
+      noRot: true
+    - type: Fixtures
+      fixtures:
+          fix1:
+            shape:
+              !type:PhysShapeCircle
+              radius: 0.45
+              density: 75
+              layer: # doesn't collide with artifact storage
+              - Opaque
+              mask:
+                - MachineMask
 
 - type: entity
   parent: BaseXenoArtifactStructure
@@ -72,4 +58,3 @@
     nodeCount:
       min: 9
       max: 13
-

@@ -13,10 +13,8 @@
       - !type:Polymorph
         prototype: FurryMorph
         conditions:
-        # - !type:MetabolizerTypeCondition
-        #   type: [Animal]
-        #   inverted: true
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: FurryJuiceWhite
           min: 2
 
 - type: reagent
