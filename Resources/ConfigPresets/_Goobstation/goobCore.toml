@@ -60,7 +60,7 @@ login_host_user = "GoobStation"
 loginlocal = true
 
 [auth]
-mode = 1
+mode = 2
 
 [vote]
 restart_required_ratio = 0.7
