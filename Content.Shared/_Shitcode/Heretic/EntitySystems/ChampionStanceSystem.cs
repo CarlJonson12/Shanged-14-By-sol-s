@@ -65,7 +65,7 @@ public sealed class ChampionStanceSystem : EntitySystem
         if (!TryComp(ent, out DamageableComponent? dmg) || !TryComp(ent, out MobThresholdsComponent? thresholdComp))
             return false;
 
-        if (!_threshold.TryGetThresholdForState(ent, MobState.Critical, out var threshold, thresholdComp))
+        if (!_threshold.TryGetThresholdForState(ent, MobState.SoftCritical, out var threshold, thresholdComp)) // Reserve edit: Soft Crit port
             threshold = _threshold.GetThresholdForState(ent, MobState.Dead, thresholdComp);
         return dmg.TotalDamage >= threshold.Value.Float() / 2f;
     }

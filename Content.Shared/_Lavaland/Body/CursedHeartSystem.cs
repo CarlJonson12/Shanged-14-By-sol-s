@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Actions;
 using Content.Shared.Damage;
@@ -22,7 +22,7 @@ public sealed class CursedHeartSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
+    // [Dependency] private readonly MobStateSystem _mobState = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly DamageableSystem _damage = default!;
     //[Dependency] private readonly BloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -53,7 +53,7 @@ public sealed class CursedHeartSystem : EntitySystem
         var query = EntityQueryEnumerator<CursedHeartComponent, MobStateComponent>();
         while (query.MoveNext(out var uid, out var comp, out var state))
         {
-            if (state.CurrentState is MobState.Critical or MobState.Dead)
+            if (state.CurrentState is MobState.SoftCritical or MobState.HardCritical or MobState.Dead) // Reserve edit: Soft Crit port
                 continue;
 
             if (_timing.CurTime < comp.LastPump + TimeSpan.FromSeconds(comp.MaxDelay))

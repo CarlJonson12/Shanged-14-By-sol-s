@@ -59,6 +59,7 @@
     - BluespaceTheory
     - ScienceClothing
     - UpgradeKits
+    - AdvancedEmitters        # Omu - advanced emitters
   - type: EmagLatheRecipes
     emagStaticPacks:
     - NailgunEvilStatic

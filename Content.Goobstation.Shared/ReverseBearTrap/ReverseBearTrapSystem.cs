@@ -137,11 +137,12 @@ public sealed partial class ReverseBearTrapSystem : EntitySystem
             }
             else
             {
+                var weldingTag = "Welding";  // Reserve edit: Fix warnings
                 args.Verbs.Add(new Verb()
                 {
                     DoContactInteraction = true,
                     Text = "Remove trap",
-                    Disabled = !activeItem.HasValue || !_toolSystem.HasQuality(activeItem.Value, "Welding"),
+                    Disabled = !activeItem.HasValue || !_toolSystem.HasQuality(activeItem.Value, weldingTag),  // Reserve edit: Fix warnings
                     Act = () =>
                     {
                         var user = args.User;
@@ -156,14 +157,15 @@ public sealed partial class ReverseBearTrapSystem : EntitySystem
                         _popup.PopupClient(Loc.GetString("reverse-bear-trap-component-start-welding-by-other",
                             ("otherName", Identity.Name(user, EntityManager, target))), target, target, PopupType.Large);
 
-                        _toolSystem.UseTool(activeItem!.Value, args.User, uid, 5f, "Welding", new WeldFinishedEvent(), 3f);
+                        _toolSystem.UseTool(activeItem!.Value, args.User, uid, 5f, weldingTag, new WeldFinishedEvent(), 3f);  // Reserve edit: Fix warnings
                     }
                 });
             }
 
+            var reverseBearTrapKeyTag = "ReverseBearTrapKey";  // Reserve edit: Fix warnings
             if (activeItem.HasValue
                 && TryComp<TagComponent>(activeItem, out var tagComponent)
-                && _tag.HasTag(tagComponent, "ReverseBearTrapKey"))
+                && _tag.HasTag(tagComponent, reverseBearTrapKeyTag))  // Reserve edit: Fix warnings
             {
                 args.Verbs.Add(new Verb()
                 {

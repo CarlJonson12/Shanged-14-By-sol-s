@@ -157,6 +157,8 @@
           inverted: true
           tag: Bee
 # Goobstation yowie changes end
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: BuzzochloricBeesEffect
 
 - type: reagent
   id: GroundBee

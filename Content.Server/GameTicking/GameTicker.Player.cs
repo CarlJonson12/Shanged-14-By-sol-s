@@ -14,6 +14,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using Content.Server.Discord;
+using Content.Server.Discord.DiscordLink;  // Reserve edit: Maecenas System
 using Content.Server.ADT.Administration;
 
 namespace Content.Server.GameTicking
@@ -22,6 +23,7 @@ namespace Content.Server.GameTicking
     public sealed partial class GameTicker
     {
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly DiscordLink _discordLink = default!;  // Reserve edit: Maecenas System
 
         private void InitializePlayer()
         {
@@ -81,26 +83,16 @@ namespace Content.Server.GameTicking
                           Loc.GetString("player-first-join-account-date", ("creationDate", creationDate)) //Reserve edit
                         : Loc.GetString("player-join-message", ("name", args.Session.Name)));
 
-                    // ADT-Tweak-start: Постит в дис админчата, о заходе новых игроков
-                    if (!string.IsNullOrEmpty(_cfg.GetCVar(CCVars.DiscordAdminchatWebhook)) && firstConnection)
-                    {
-                        var webhookUrl = _cfg.GetCVar(CCVars.DiscordAdminchatWebhook);
-
-                        if (webhookUrl == null)
-                            return;
-
-                        if (await _discord.GetWebhook(webhookUrl) is not { } webhookData)
-                            return;
-                        var payload = new WebhookPayload
+                        // Reserve edit start: Better webhook send
+                        if (!string.IsNullOrEmpty(_cfg.GetCVar(CCVars.DiscordAdminchatWebhook)) && firstConnection)
                         {
-                            Content = Loc.GetString("player-first-join-message-webhook", ("name", args.Session.Name)) + "\n" +
-                            Loc.GetString("player-first-join-account-date", ("creationDate", creationDate)) + "\n" + //Reserve edit
-                            $"userid: {args.Session.UserId.ToString()}" //Reserve edit
-                        };
-                        var identifier = webhookData.ToIdentifier();
-                        await _discord.CreateMessage(identifier, payload);
-                    }
-                    // ADT-Tweak-end
+                            var message = Loc.GetString("player-first-join-message-webhook", ("name", args.Session.Name)) + "\n" +
+                                Loc.GetString("player-first-join-account-date", ("creationDate", creationDate)) + "\n" +
+                                $"userid: {args.Session.UserId.ToString()}";
+                            await _discord.SendWebhookMessage(message, _cfg.GetCVar(CCVars.DiscordAdminchatWebhook));
+                        }
+                        // Reserve edit end: Better webhook send
+                        await _discordLink.AssignPatronTierAsync(args.Session.UserId);  // Reserve edit: Maecenas System
                     if (session.Channel.IsConnected)  // Reserve edit: Flaky test fixes
                         RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 

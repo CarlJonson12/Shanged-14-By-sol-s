@@ -24,8 +24,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - shard: unit
+            timeout_minutes: 90
           - shard: fast
             timeout_minutes: 90
+          - shard: medium
+            timeout_minutes: 120
           - shard: heavy
             timeout_minutes: 120
 
@@ -57,20 +61,23 @@ jobs:
       run: dotnet build --configuration DebugOpt --no-restore /m
 
     - name: Run Content.Tests
-      if: matrix.shard == 'fast'
+      if: matrix.shard == 'unit'
       run: dotnet test --no-build --configuration DebugOpt Content.Tests/Content.Tests.csproj -- NUnit.ConsoleOut=0
 
     - name: Run Content.IntegrationTests
+      if: matrix.shard != 'unit'
       shell: bash
       env:
         DOTNET_gcServer: 1
         SHARD: ${{ matrix.shard }}
       run: |
         set -euo pipefail
-        if [ "$SHARD" = "heavy" ]; then
+        if [ "$SHARD" = "medium" ]; then
           FILTER='FullyQualifiedName~Content.IntegrationTests.Tests.EntityTest|FullyQualifiedName~Content.IntegrationTests.Tests.PostMapInitTest|FullyQualifiedName~Content.IntegrationTests.Tests.Power.StationPowerTests|FullyQualifiedName~Content.IntegrationTests.Tests.Power.PowerTest|FullyQualifiedName~Content.IntegrationTests.Tests.Atmos.AirtightTest|FullyQualifiedName~Content.IntegrationTests.Tests.ClickableTest'
+        elif [ "$SHARD" = "fast" ]; then
+          FILTER='FullyQualifiedName~Content.IntegrationTests.Tests.PrototypeTests.PrototypeTests|FullyQualifiedName~Content.IntegrationTests.Tests.SaveLoadMapTest|FullyQualifiedName~Content.IntegrationTests.Tests.SaveLoadSaveTest|FullyQualifiedName~Content.IntegrationTests.Tests.Commands.ForceMapTest'
         else
-          FILTER='FullyQualifiedName!~Content.IntegrationTests.Tests.EntityTest&FullyQualifiedName!~Content.IntegrationTests.Tests.PostMapInitTest&FullyQualifiedName!~Content.IntegrationTests.Tests.Power.StationPowerTests&FullyQualifiedName!~Content.IntegrationTests.Tests.Power.PowerTest&FullyQualifiedName!~Content.IntegrationTests.Tests.Atmos.AirtightTest&FullyQualifiedName!~Content.IntegrationTests.Tests.ClickableTest'
+          FILTER='FullyQualifiedName!~Content.IntegrationTests.Tests.EntityTest&FullyQualifiedName!~Content.IntegrationTests.Tests.PostMapInitTest&FullyQualifiedName!~Content.IntegrationTests.Tests.Power.StationPowerTests&FullyQualifiedName!~Content.IntegrationTests.Tests.Power.PowerTest&FullyQualifiedName!~Content.IntegrationTests.Tests.Atmos.AirtightTest&FullyQualifiedName!~Content.IntegrationTests.Tests.ClickableTest&FullyQualifiedName!~Content.IntegrationTests.Tests.PrototypeTests.PrototypeTests&FullyQualifiedName!~Content.IntegrationTests.Tests.SaveLoadMapTest&FullyQualifiedName!~Content.IntegrationTests.Tests.SaveLoadSaveTest&FullyQualifiedName!~Content.IntegrationTests.Tests.Commands.ForceMapTest'
         fi
         dotnet test --no-build --configuration DebugOpt Content.IntegrationTests/Content.IntegrationTests.csproj \
           --filter "$FILTER" \

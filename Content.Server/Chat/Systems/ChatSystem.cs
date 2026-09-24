@@ -19,6 +19,7 @@ using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
 using Content.Shared._Starlight.CollectiveMind; // Goobstation - Starlight collective mind port
+using Content.Shared.Damage.ForceSay;
 using Content.Shared.Database;
 using Content.Shared.Examine;
 using Content.Shared.Ghost;
@@ -304,6 +305,11 @@ public sealed partial class ChatSystem : SharedChatSystem
                 return;
             }
         }
+
+        // Reserve edit start: Soft Crit port
+        if (desiredType == InGameICChatType.Speak && _mobStateSystem.IsSoftCritical(source))
+            desiredType = InGameICChatType.Whisper;
+        // Reserve edit end: Soft Crit port
 
         // Otherwise, send whatever type.
         switch (desiredType)
@@ -652,8 +658,24 @@ public sealed partial class ChatSystem : SharedChatSystem
         Color? colorOverride = null // Goobstation
         )
     {
+        // Reserve edit start: Soft Crit port
+        var allowSoftCritWhisper = false;
+        if (!ignoreActionBlocker && _mobStateSystem.IsSoftCritical(source) && !HasComp<AllowNextCritSpeechComponent>(source))
+        {
+            allowSoftCritWhisper = true;
+            EnsureComp<AllowNextCritSpeechComponent>(source);
+        }
+        // Reserve edit end: Soft Crit port
+
+        // Reserve edit start: Soft Crit port
         if (!_actionBlocker.CanSpeak(source) && !ignoreActionBlocker)
+        {
+            if (allowSoftCritWhisper)
+                RemCompDeferred<AllowNextCritSpeechComponent>(source);
+
             return;
+        }
+        // Reserve edit end: Soft Crit port
 
         // Goob edit start
         var message = FormattedMessage.RemoveMarkupOrThrow(originalMessage);
@@ -704,10 +726,9 @@ public sealed partial class ChatSystem : SharedChatSystem
                 continue; // Won't get logged to chat, and ghosts are too far away to see the pop-up, so we just won't send it to them.
 
             // Goob edit start
-            if (TryComp<DeafComponent>(listener, out var modifier) && language.SpeechOverride.RequireSpeech)
-                continue; // blocks anyone with the deaf component from hearing.
-            if (HasComp<PermanentBlindnessComponent>(listener) || HasComp<TemporaryBlindnessComponent>(listener))
-                continue; // block blind people from seeing subtle sign language gestures
+            var evSight = new ChatMessageOverrideInRange(language.SpeechOverride.RequireSpeech, language.SpeechOverride.RequireSight);
+            RaiseLocalEvent(listener, ref evSight);
+            if (evSight.Cancelled) continue;
             // Goob edit end
 
             // Einstein Engines - Language begin

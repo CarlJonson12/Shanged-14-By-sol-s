@@ -4,6 +4,7 @@ ent-EffectElectricity = { "" }
     .desc = { "" }
 ent-Chronofield = хронополе
     .desc = ЗА ВОЙНУ!
+    .suffix = Хронолегионер
 ent-ActionTargetMark = { "" }
     .desc = { "" }
 ent-BaseFlashEffect = { "" }

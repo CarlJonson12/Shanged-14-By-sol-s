@@ -134,6 +134,7 @@ loadout-group-mime-envirohelm = Мим, экошлем
 loadout-group-mime-envirosuit = Мим, экокостюм
 loadout-group-mime-envirogloves = Мим, экоперчатки
 loadout-group-mime-gloves = Мим, перчатки
+loadout-group-mime-shoes = Мим, обувь
 # Assistant
 loadout-group-assistant-envirohelm = Пассажир, экошлем
 loadout-group-assistant-envirosuit = Пассажир, экокостюм

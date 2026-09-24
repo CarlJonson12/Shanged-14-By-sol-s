@@ -45,7 +45,8 @@ public static class ListingLocalisationHelpers
         var _protoMan = IoCManager.Resolve<IPrototypeManager>();
         var _rand = IoCManager.Resolve<IRobustRandom>();
 
-        var discountFluff = _rand.Pick(_protoMan.Index<DatasetPrototype>("UplinkDiscountFluff").Values);
+        var protoIdUplinkDiscountFluff = "UplinkDiscountFluff";  // Reserve edit: Fix warnings
+        var discountFluff = _rand.Pick(_protoMan.Index<DatasetPrototype>(protoIdUplinkDiscountFluff).Values);  // Reserve edit: Fix warnings
         var discountString = $"{Loc.GetString("store-sales-amount", ("amount", listingData.DiscountValue))} {discountFluff}";
 
         if (listingData.DiscountValue > 0)

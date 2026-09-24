@@ -418,16 +418,26 @@ public abstract partial class SharedMartialArtsSystem : EntitySystem
             return;
         var userName = Identity.Entity(user, EntityManager);
         var targetName = Identity.Entity(target, EntityManager);
+        // Reserve edit start: localization #359
+        string locComboName;
+        if (Loc.TryGetString(comboName, out var name))
+            locComboName = name;
+        else if (Loc.TryGetString("martial-arts-combo-" + comboName.Replace(" ", ""), out name))
+            locComboName = name;
+        else
+            locComboName = comboName;
         _popupSystem.PopupEntity(Loc.GetString("martial-arts-action-sender",
+            ("user", userName),
             ("name", targetName),
-            ("move", comboName)),
+            ("move", locComboName)),
             user,
             user);
         _popupSystem.PopupEntity(Loc.GetString("martial-arts-action-receiver",
             ("name", userName),
-            ("move", comboName)),
+            ("move", locComboName)),
             target,
             target);
+        // Reserve edit end: localization #359
     }
 
     #endregion

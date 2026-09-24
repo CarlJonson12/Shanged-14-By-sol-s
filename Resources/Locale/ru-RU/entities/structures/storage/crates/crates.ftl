@@ -56,7 +56,7 @@ ent-CrateRodentCage = хомячья клетка
     .desc = { ent-CrateGeneric.desc }
 
 ent-CrateBaseLockBox = сейф
-    .desc = Надежный сейф. Средства от его продажи будут распределены обратно в департамент. Только помните: карго всегда получает свою долю от прибыли.
+    .desc = Надёжный сейф. Средства от его продажи будут распределены обратно в департамент. Только помните: карго всегда получает свою долю от прибыли.
 ent-CrateLockBoxEngineering = инженерный { ent-CrateBaseLockBox }
     .desc = { ent-CrateBaseLockBox.desc }
 ent-CrateLockBoxMedical = медицинский { ent-CrateBaseLockBox }

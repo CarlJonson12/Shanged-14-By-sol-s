@@ -1,8 +1,9 @@
-ent-ClothingOuterHardsuitChronolegioneer = футуристический пустотный костюм
+ent-ClothingOuterHardsuitChronolegioneer = футуристичный пустотный костюм
     .desc = Пустотный костюм, покрытый неизвестным материалом, защищающий от большинства материальных и временных повреждений.
+    .suffix = Хронолегионер
 ent-ClothingOuterHardsuitChronolegioneerUnremoveable = { ent-ClothingOuterHardsuitChronolegioneer }
-    .suffix = Неснимаемый
     .desc = { ent-ClothingOuterHardsuitChronolegioneer.desc }
+    .suffix = { ent-ClothingOuterHardsuitChronolegioneer.suffix }, Неснимаемый
 ent-ClothingOuterHardsuitBlueshieldLight = пустотный костюм эскорта "Преторианец"
     .desc = Пустотный костюм, предназначенный для элитного телохранителя. Этот костюм изготовлен из более лёгкого металла, обеспечивая большую манёвренность.
 ent-ClothingOuterHardsuitCybersunStealth = стелс-скафандр Cybersun

@@ -14,8 +14,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest # No self-hosted sadly
-
-
     steps:
     - name: Fail if we are attempting to run on the master branch
       if: ${{GITHUB.REF_NAME == 'master' && github.repository == 'space-wizards/space-station-14'}}
@@ -49,7 +47,6 @@ jobs:
         cd RobustToolbox
         git fetch --tags
 
-
     - name: Clean
       run: dotnet clean
 
@@ -70,6 +67,7 @@ jobs:
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+        PYTHONUNBUFFERED: "1"
 
     - name: Publish changelog (Discord)
       run: Tools/actions_changelogs_since_last_run.py

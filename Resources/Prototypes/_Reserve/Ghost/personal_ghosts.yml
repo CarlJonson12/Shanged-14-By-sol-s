@@ -221,3 +221,22 @@
   - type: Sprite
     sprite: _Reserve/Ghosts/goose-in-a-hat-ghost.rsi
     color: "#ffffff88"
+
+- type: customGhost
+  id: glagol-ghost
+  category: personal
+  proto: MobObserverCkeyGlagol
+  restrictions:
+  - !type:CkeyRestriction
+    ckey: [ _elster_ ]
+  name: Angela
+  description: Я Анжела, ИИ. Смотритель, секретарь, и та, с кем вы можете поговорить.
+    Надеюсь, я смогу сделать ваше времяпрепровождение здесь более комфортным.
+
+- type: entity
+  parent: MobObserverCkey
+  id: MobObserverCkeyGlagol
+  components:
+  - type: Sprite
+    sprite: _Reserve/Ghosts/glagol-ghost.rsi
+    color: "#ffffff88"

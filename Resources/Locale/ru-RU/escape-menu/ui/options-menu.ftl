@@ -40,7 +40,7 @@ ui-options-event-music = Музыка событий
 ui-options-admin-sounds = Музыка админов
 ui-options-bwoink-sound = Звук оповещения админ-помощи
 # Goobstation - Highlight Volume
-ui-options-highlight-volume = Chat Highlight Ping Volume:
+ui-options-highlight-volume = Цвет подсветки имён в IC чате:
 
 ## Graphics menu
 

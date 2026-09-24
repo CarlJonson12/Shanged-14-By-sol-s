@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using System.Text;
@@ -23,9 +23,8 @@ using Content.Shared.Examine;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
-using Robust.Shared.Utility;
+// using Robust.Shared.Utility; // Reserve edit: Fix warnings
 using Content.Shared.HealthExaminable;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Shitmed.PartStatus;
 
@@ -34,9 +33,8 @@ public sealed class PartStatusSystem : EntitySystem
     [Dependency] private readonly WoundSystem _woundSystem = default!;
     [Dependency] private readonly BodySystem _bodySystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly TraumaSystem _trauma = default!;
+    // [Dependency] private readonly TraumaSystem _trauma = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly IChatManager _chat = default!;
-    [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly ExamineSystemShared _examineSystem = default!;
 
     private static readonly IReadOnlyList<BodyPartType> BodyPartOrder = new List<BodyPartType>
@@ -136,9 +134,19 @@ public sealed class PartStatusSystem : EntitySystem
 
         foreach (var woundable in _woundSystem.GetAllWoundableChildren(rootPart))
         {
-            if (!TryComp<BodyPartComponent>(woundable, out var bodyPartComponent) ||
-                !TryComp<BoneComponent>(woundable.Comp.Bone.ContainedEntities.FirstOrNull(), out var bone))
+            if (!TryComp<BodyPartComponent>(woundable, out var bodyPartComponent)) // Reserve edit: localization #359
                 continue;
+
+            // Reserve edit start: localization #359
+            var boneSeverity = BoneSeverity.Normal;
+            if (!HasComp<BonelessComponent>(woundable))
+            {
+                if (!TryComp<BoneComponent>(woundable.Comp.Bone.ContainedEntities.FirstOrNull(), out var bone))
+                    continue;
+
+                boneSeverity = bone.BoneSeverity;
+            }
+            // Reserve edit end: localization #359
 
             var partName = bodyPartComponent.ParentSlot?.Id ?? bodyPartComponent.PartType.ToString().ToLower();
             var (damageSeverities, isBleeding) = AnalyzeWounds(woundable);
@@ -149,7 +157,7 @@ public sealed class PartStatusSystem : EntitySystem
                 partName,
                 woundable.Comp.WoundableSeverity,
                 damageSeverities,
-                bone.BoneSeverity,
+                boneSeverity, // Reserve edit: localization #359
                 isBleeding));
         }
 
@@ -168,9 +176,12 @@ public sealed class PartStatusSystem : EntitySystem
                 || wound.Comp.WoundSeverity == WoundSeverity.Healed)
                 continue;
 
-            if (!damageSeverities.TryGetValue(wound.Comp.DamageType, out var existingSeverity) ||
+            // Reserve edit start: localization #359
+            var groupId = wound.Comp.DamageGroup.Value.Id;
+            if (!damageSeverities.TryGetValue(groupId, out var existingSeverity) ||
                 wound.Comp.WoundSeverity > existingSeverity)
-                damageSeverities[_proto.Index(wound.Comp.DamageGroup).LocalizedName] = wound.Comp.WoundSeverity;
+                damageSeverities[groupId] = wound.Comp.WoundSeverity;
+            // Reserve edit end: localization #359
 
             if (TryComp<BleedInflicterComponent>(wound, out var bleeds) && bleeds.IsBleeding)
                 isBleeding = true;
@@ -238,10 +249,17 @@ public sealed class PartStatusSystem : EntitySystem
                 locString += "-styleless";
             }
 
+            // Reserve edit start: localization #359
+            var partKey = "body-part-" + partStatus.PartName.Replace(" ", "-");
+            var partName = Loc.TryGetString(partKey, out var localizedPart)
+                ? localizedPart
+                : partStatus.PartName;
+
             message.AddText("    " + Loc.GetString(locString,
                 ("possessive", possessive),
-                ("part", partStatus.PartName),
+                ("part", partName),
                 ("status", statusDescription)));
+            // Reserve edit end: localization #359
 
             message.PushNewline();
         }

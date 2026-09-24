@@ -30,7 +30,7 @@ public sealed partial class LawboardSiliconLawUi : FancyWindow
     private ISawmill _sawmill;
 
     public event Action<List<SiliconLaw>, bool>? LawsChangedEvent;
-    public event Action<bool>? LawsSavedEvent;
+    // public event Action<bool>? LawsSavedEvent;  // Reserve edit: Fix warnings
     public EntityUid Entity;
     public CustomLawboardComponent? LawboardComponent;
 

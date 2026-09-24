@@ -1,5 +1,5 @@
-ent-SpawnPointGhostBlob = спавнер блоб
-    .suffix = DEBUG, гостроль спавнер
+ent-SpawnPointGhostBlob = { ent-BaseAntagSpawner }
+    .suffix = Блоб, DEBUG
     .desc = { ent-MarkerBase.desc }
 ent-MobBlobPod = блоб-под
     .desc = Обычный боец-блоб.

@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Goobstation.Common.Blob;
 using Content.Goobstation.Server.Changeling.GameTicking.Rules;
 using Content.Goobstation.Server.Devil.GameTicking.Rules;
+using Content.Goobstation.Shared.Gangwars.Components;
 using Content.Goobstation.Server.Shadowling.Rules;
 using Content.Goobstation.Server.Slasher.Components; // Reserve edit: Fix antag verbs
 using Content.Server.Administration.Managers;
@@ -114,6 +115,21 @@ public sealed partial class GoobAdminVerbSystem
         };
         args.Verbs.Add(slasher);
         // Reserve end
+
+        // Gangwars
+        Verb gangLeader = new()
+        {
+            Text = "075. " + Loc.GetString("admin-verb-text-make-gang-leader"), // Reserve edit: Fix antag verbs
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Goobstation/Gangs/gang_markers.rsi"), "gang_head"), // Reserve edit: Fix antag verbs
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<GangwarRuleComponent>(targetPlayer, "Gangwars");
+            },
+            Impact = LogImpact.High,
+            Message = Loc.GetString("admin-verb-make-gang-leader"),
+        };
+        args.Verbs.Add(gangLeader);
     }
 
     public bool AntagVerbAllowed(GetVerbsEvent<Verb> args, [NotNullWhen(true)] out ICommonSession? target)

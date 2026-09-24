@@ -385,7 +385,8 @@ public sealed class BodySetupTest
 
                 // Apply lethal damage
                 var lethalDamage = deadThreshold.Value + FixedPoint2.New(10);
-                var damageSpecifier = new DamageSpecifier(protoMan.Index<DamageTypePrototype>("Blunt"), lethalDamage);
+                var damageType = "Blunt";  // Reserve edit: Fix warnings
+                var damageSpecifier = new DamageSpecifier(protoMan.Index<DamageTypePrototype>(damageType), lethalDamage);  // Reserve edit: Fix warnings
                 if (entMan.TryGetComponent<BodyComponent>(entity, out var body)
                     && body.BodyType == BodyType.Complex)
                 {

@@ -58,7 +58,7 @@
   group: Toxins
   desc: cum-desc
   physicalDesc: reagent-physical-desc-gloopy
-  flavor: Salty
+  flavor: salty
   color: "#ffffff"
 
 - type: reagent

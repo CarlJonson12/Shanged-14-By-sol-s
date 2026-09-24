@@ -10,6 +10,7 @@
   hidden: true
   loadouts:
   - Orchito
+  - Stardust
 
 # endregion
 
@@ -23,5 +24,14 @@
   storage:
     back:
     - DrinkOrchitoGlass
+
+- type: loadout
+  id: Stardust
+  effects:
+  - !type:CkeyRequirementLoadoutEffect
+    ckey: [ Ceterai ]
+  storage:
+    back:
+    - PillCanisterStardust
 
 # endregion

@@ -129,7 +129,7 @@
   - type: Speech
     # speechSounds: Harpy Reserve edit
     speechVerb: Harpy
-    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Mars', 'Belch']
+    allowedEmotes: ['Chirp', 'Trill', 'Warble', 'Wurble', 'Mars']  # Reserve edit: Disable intentional belching
   - type: Vocal
     sounds:
       Male: SoundsHarpyMale
