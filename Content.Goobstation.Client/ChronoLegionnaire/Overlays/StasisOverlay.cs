@@ -23,7 +23,8 @@ public sealed class StasisOverlay : Overlay
     public StasisOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _coloredScreenBorder = _prototypeManager.Index<ShaderPrototype>("WideColoredScreenBorder").InstanceUnique();
+        var protoId = "WideColoredScreenBorder";  // Reserve edit: Fix warnings
+        _coloredScreenBorder = _prototypeManager.Index<ShaderPrototype>(protoId).InstanceUnique();  // Reserve edit: Fix warnings
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

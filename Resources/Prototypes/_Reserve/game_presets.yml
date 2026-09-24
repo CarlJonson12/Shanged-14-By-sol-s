@@ -41,6 +41,22 @@
 # region Presets
 
 - type: gamePreset
+  id: Vampire
+  alias:
+    - vamp
+    - vampyre
+  name: vampire-title
+  description: vampire-description
+  showInVote: true
+  rules:
+  - DummyNonAntagChance
+  - Vampire
+  - BasicStationEventScheduler
+  - MeteorSwarmScheduler
+  - SpaceTrafficControlEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
   id: Thief
   name: roles-antag-thief-name
   description: roles-antag-thief-objective

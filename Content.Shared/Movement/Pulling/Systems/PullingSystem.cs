@@ -159,7 +159,7 @@ public sealed class PullingSystem : EntitySystem
         if (component.Pulling == null)
             return;
 
-        if (TryComp<PullableComponent>(component.Pulling, out var comp) && (args.NewMobState == MobState.Critical || args.NewMobState == MobState.Dead))
+        if (TryComp<PullableComponent>(component.Pulling, out var comp) && args.NewMobState is MobState.SoftCritical or MobState.HardCritical or MobState.Dead) // Reserve edit: Soft Crit port
         {
             TryStopPull(component.Pulling.Value, comp);
         }

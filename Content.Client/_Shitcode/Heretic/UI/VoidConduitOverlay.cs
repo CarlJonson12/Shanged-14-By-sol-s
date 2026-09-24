@@ -33,7 +33,8 @@ public sealed class VoidConduitOverlay : Overlay
         _xform = _entMan.System<TransformSystem>();
         _sprite = _entMan.System<SpriteSystem>();
 
-        _unshadedShader = _prototype.Index<ShaderPrototype>("unshaded").Instance();
+        var protoIdUnshaded = "unshaded";  // Reserve edit: Fix warnings
+        _unshadedShader = _prototype.Index<ShaderPrototype>(protoIdUnshaded).Instance();  // Reserve edit: Fix warnings
     }
 
     protected override void Draw(in OverlayDrawArgs args)

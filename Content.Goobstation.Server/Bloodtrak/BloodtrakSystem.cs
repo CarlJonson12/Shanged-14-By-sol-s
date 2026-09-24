@@ -37,7 +37,8 @@ public sealed class BloodtrakSystem : SharedBloodtrakSystem
     /// </summary>
     private (EntityUid, TimeSpan)? GetPuddleDnaOwner(EntityUid target, BloodtrakComponent component, EntityUid user)
     {
-        if (!_tag.HasTag(target, "DNASolutionScannable") || !HasComp<PuddleComponent>(target))
+        var dNAtag = "DNASolutionScannable";  // Reserve edit: Fix warnings
+        if (!_tag.HasTag(target, dNAtag) || !HasComp<PuddleComponent>(target))  // Reserve edit: Fix warnings
         {
             _popupSystem.PopupEntity(Loc.GetString("bloodtrak-scan-failed"), user, user);
             return null;

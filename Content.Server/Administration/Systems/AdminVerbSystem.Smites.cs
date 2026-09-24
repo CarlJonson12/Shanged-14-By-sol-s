@@ -229,7 +229,7 @@ public sealed partial class AdminVerbSystem
                 Act = () =>
                 {
                     int damageToDeal;
-                    if (!_mobThresholdSystem.TryGetThresholdForState(args.Target, MobState.Critical, out var criticalThreshold))
+                    if (!_mobThresholdSystem.TryGetThresholdForState(args.Target, MobState.HardCritical, out var criticalThreshold)) // Reserve edit: Soft Crit port
                     {
                         // We can't crit them so try killing them.
                         if (!_mobThresholdSystem.TryGetThresholdForState(args.Target, MobState.Dead,

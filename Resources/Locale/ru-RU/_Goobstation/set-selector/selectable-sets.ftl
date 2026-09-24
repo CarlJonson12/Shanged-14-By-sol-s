@@ -17,11 +17,11 @@ selectable-set-thief-chameleon-description =
     Включает: полный комплект одежды хамелеона,
     проектор хамелеона и ID-карту агента.
     Маскируйся под кого угодно и что угодно.
-selectable-set-thief-syndie-name = Набор синдиката
+selectable-set-thief-syndie-name = Набор Синдиката
 selectable-set-thief-syndie-description =
     Безделушки из отвергнутого прошлого или украденные у беззаботного агента?
     Ты завел кое-какие связи. Виски, эх...
-    Включает: ЕМАГ, взломщик доступа, сигареты Interdyne, кодовое слово синдиката,
+    Включает: ЕМАГ, взломщик доступа, сигареты Interdyne, кодовое слово Синдиката,
     радиоподавитель, зажигалку и странные красные кристаллы.
 selectable-set-thief-sleeper-name = Набор слипера
 selectable-set-thief-sleeper-description =
@@ -148,7 +148,7 @@ selectable-set-blueshield-modsuit-description = MOD требующий пита�
 
 selectable-set-ert-ballistic-name = баллистический набор
 selectable-set-ert-ballistic-description =
-    Надежный, эффективный и компактный. Энни прикроет вас.
+    надёжный, эффективный и компактный. Энни прикроет вас.
     Включает: .30 калиберную винтовку Энни,
     запасные магазины и N1984.
 selectable-set-ert-pulse-name = импульсный набор

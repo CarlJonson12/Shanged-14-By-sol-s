@@ -138,6 +138,8 @@
         showInChat: true
         showInGuidebook: true
         probability: 0.05
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: PepperEffect
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -226,6 +228,8 @@
       - !type:AdjustReagent
         reagent: Nutriment
         amount: 0.75
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: OilyEffect
 
 - type: reagent
   id: Oil
@@ -240,6 +244,13 @@
   flammability: 1 # Funky change
   boilingPoint: 300.0
   meltingPoint: -16.0
+  # Reserve edit start: Mood System port
+  metabolisms:
+    Food:
+      effects:
+      - !type:ChemAddMoodlet
+        moodPrototype: DeepFriedEffect
+  # Reserve edit end: Mood System port
   tileReactions:
   - !type:FlammableTileReaction {}
   # Reserve: Orchid's Barmania - Visual Fixes start
@@ -277,6 +288,8 @@
       - !type:AdjustReagent
         reagent: Nutriment #Oils enhance nutrition
         amount: 0.75
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: SpicyEffect
     Poison:
       effects:
         - !type:AdjustTemperature
@@ -315,6 +328,10 @@
           reagent: Nutriment
           min: 0.1
         factor: 1
+      # Reserve edit start: Mood System port
+      - !type:ChemAddMoodlet
+        moodPrototype: ChocolateEffect
+      # Reserve edit end: Mood System port
   plantMetabolism:
   - !type:PlantAdjustNutrition
     amount: 0.1
@@ -340,6 +357,8 @@
       - !type:AdjustReagent
         reagent: Nutriment
         amount: 0.75
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: ButterEffect
 
 - type: reagent
   id: TeaPowder
@@ -380,6 +399,8 @@
       - !type:AdjustReagent
         reagent: Nutriment #Oils enhance nutrition
         amount: 0.75
+      - !type:ChemAddMoodlet  # Reserve edit: Mood System port
+        moodPrototype: MintyEffect
     Poison:
       effects:
       - !type:AdjustTemperature

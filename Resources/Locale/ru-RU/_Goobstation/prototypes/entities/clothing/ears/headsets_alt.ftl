@@ -1,12 +1,14 @@
 ent-ClothingHeadsetAltLoudspeaker = { ent-ClothingHeadsetAlt }
     .desc = { ent-ClothingHeadsetAlt.desc }
-ent-ClothingHeadsetAltSyndicateCommander = кроваво-красная полноразмерная гарнитура командира
+ent-ClothingHeadsetAltSyndicateCommander = { ent-ClothingHeadsetAltSyndicate } командира
     .desc = { ent-ClothingHeadsetAltSyndicate.desc }
+    .suffix = Синдикат
 ent-ClothingHeadsetChronolegioneer = полноразмерная футуристичная гарнитура
     .desc = Гарнитура из будущего, способная принимать большинство частот станции.
+    .suffix = Хронолегионер
 ent-ClothingHeadsetChronolegioneerUnremoveable = { ent-ClothingHeadsetChronolegioneer }
-    .suffix = Неснимаемый
     .desc = { ent-ClothingHeadsetChronolegioneer.desc }
+    .suffix = { ent-ClothingHeadsetChronolegioneer.suffix }, Неснимаемый
 ent-ClothingHeadsetAltWarden = полноразмерная гарнитура смотрителя
     .desc = Модифицированный модульный интерком, позволяющий быстро связываться с командным составом.
 ent-ClothingHeadsetDeathsquad = полноразмерная гарнитура отряда смерти

@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Goobstation.Shared.Xenobiology.Components;
 using Content.Goobstation.Shared.Xenobiology.Systems;
@@ -124,7 +124,7 @@ public sealed partial class SlimeGrinderSystem : EntitySystem
         EnsureComp<ActiveSlimeGrinderComponent>(grinder);
         grinder.Comp.ProcessingTimer += physics.FixturesMass * grinder.Comp.ProcessingTimePerUnitMass;
 
-        var extractProto = slime.ProducedExtract;
+        var extractProto = _xenobio.GetProducedExtract((toProcess, slime));
         var extractQuantity = slime.ExtractsProduced;
 
         if (!grinder.Comp.YieldQueue.ContainsKey(extractProto))

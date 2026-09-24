@@ -119,7 +119,7 @@
   id: TunnelClownMidround
   components:
   - type: StationEvent
-    weight: 4
+    weight: 1.5
     duration: null
     earliestStart: 15
     minimumPlayers: 20
@@ -149,13 +149,14 @@
     objectives:
     - TunnelClownProtectMaintenanceObjective
   - type: GhostPingRule # Reserve
+  - type: TunnelClownRule
 
 - type: entity
   parent: BaseGameRule
   id: SingulothKnightsMidround
   components:
   - type: StationEvent
-    weight: 2.5
+    weight: 1
     duration: null
     earliestStart: 45
     minimumPlayers: 50
@@ -187,6 +188,7 @@
     - SingulothKnightSingularityObjective
     - SingulothKnightTeslaObjective
   - type: GhostPingRule # Reserve
+  - type: SingulothKnightRule
 
 - type: entity
   parent: BaseGameRule
@@ -227,6 +229,7 @@
     - KillRandomHeadObjective
     - DarkLordDuelObjective
   - type: GhostPingRule # Reserve
+  - type: DarkLordRule
 
 - type: entity # Only has a chance to spawn whenever dark lord spawns
   parent: BaseGameRule
@@ -254,13 +257,14 @@
     objectives:
     - ChosenOneKillDarkLordObjective
   - type: GhostPingRule # Reserve
+  - type: ChosenOneRule
 
 - type: entity
   parent: BaseGameRule
   id: MimeAssassinMidround
   components:
   - type: StationEvent
-    weight: 4
+    weight: 1.2
     duration: null
     earliestStart: 30
     minimumPlayers: 30
@@ -294,13 +298,14 @@
     - KillRandomHeadObjective
     - EscapeShuttleObjective
   - type: GhostPingRule # Reserve
+  - type: MimeAssassinRule
 
 - type: entity
   parent: BaseGameRule
   id: DarkPriestMidround
   components:
   - type: StationEvent
-    weight: 3
+    weight: 0.05
     duration: null
     earliestStart: 30
     minimumPlayers: 30
@@ -333,6 +338,7 @@
     - KillRandomPersonObjective
     - EscapeShuttleObjective
   - type: GhostPingRule # Reserve
+  - type: DarkPriestRule
 
 - type: entity
   parent: BaseGameRule
@@ -351,7 +357,7 @@
     maxDifficulty: 10
   - type: StationEvent
     earliestStart: 35
-    weight: 2.5
+    weight: 0.9
     minimumPlayers: 50
     duration: 1
     chaos:

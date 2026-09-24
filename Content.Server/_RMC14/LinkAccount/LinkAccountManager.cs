@@ -57,10 +57,9 @@ public sealed class LinkAccountManager : IPostInjectInit
         if (patron?.LobbyMessage is { Message.Length: > 0 } patronMsg)
             lobbyMessage = new SharedRMCLobbyMessage(patronMsg.Message);
 
-        var ntName = patron?.RoundEndNTShoutout?.Name;
-        SharedRMCRoundEndShoutouts? shoutouts = null;
-        if (ntName != null)
-            shoutouts = new SharedRMCRoundEndShoutouts(ntName);
+        SharedRMCRoundEndShoutouts? shoutouts = null;  // Reserve edit: Maecenas System
+        if (patron?.RoundEndNTShoutout is { Name.Length: > 0 } ntName)  // Reserve edit: Maecenas System
+            shoutouts = new SharedRMCRoundEndShoutouts(ntName.Name);  // Reserve edit: Maecenas System
 
 
         Robust.Shared.Maths.Color? ghostColor = null;

@@ -160,3 +160,4 @@
         factions:
         - Syndicate
   - type: GhostPingRule # Reserve
+  - type: ContractorRule

@@ -733,7 +733,8 @@ public sealed partial class ChangelingSystem
         // Goobstation end
 
         var soln = new Solution();
-        soln.AddReagent("PolytrinicAcid", 10f);
+        var polytrinicAcid = "PolytrinicAcid";  // Reserve edit: Fix warnings
+        soln.AddReagent(polytrinicAcid, 10f);  // Reserve edit: Fix warnings
 
         if (_pull.IsPulled(uid))
         {
@@ -835,7 +836,8 @@ public sealed partial class ChangelingSystem
             slope: 4,
             maxTileIntensity: 2);
 
-        _actions.AddAction((EntityUid) newUid, "ActionLayEgg");
+        var actionLayEgg = "ActionLayEgg";  // Reserve edit: Fix warnings
+        _actions.AddAction((EntityUid) newUid, actionLayEgg);  // Reserve edit: Fix warnings
 
         PlayMeatySound((EntityUid) newUid, comp);
 

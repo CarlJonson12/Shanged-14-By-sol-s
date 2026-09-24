@@ -58,6 +58,9 @@ global-antagonist-devil-description = Һеҙ әһәмиәтһеҙ.
 global-antagonist-abductor-name = Абдуктор
 global-antagonist-abductor-description = Зондирование в процессе.
 
+global-antagonist-vampire-name = Вампир
+global-antagonist-vampire-description = Кровососущее создание ночи.
+
 global-antagonist-ghost-role-name = Внестанционный
 global-antagonist-ghost-role-description = Роли для призраков, чаще всего не несут никакого влияния на станцию.
 

@@ -1,7 +1,7 @@
 <p align="center"> <img alt="Reserve Station 14" width="100%" src="https://i.imgur.com/yagb8UO.png" /></p>
 
 <div align="center" style="font-size: 150%;">
-<a href="https://reserve-station.space/">САЙТ</a> | <a href="https://discord.gg/WXZvqzZ2Fc">ДИСКОРД</a> | <a href="https://boosty.to/reserve-station">БУСТИ</a>
+<a href="https://ccdn.reserve-station.space/fork/reserve/">CCDN</a> | <a href="https://discord.gg/WXZvqzZ2Fc">DISCORD</a> | <a href="https://boosty.to/reservestation">BOOSTY</a>
 </div>
 
 ---

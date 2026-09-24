@@ -5,6 +5,7 @@ using Content.Server.Database;
 using NetCord;
 using NetCord.Rest;
 using Robust.Shared.Network;
+using System.Linq;
 
 namespace Content.Server._Reserve.Discord;
 
@@ -64,5 +65,42 @@ public sealed class DiscordLinkCog
             Content = message,
             Flags = MessageFlags.Ephemeral,
         });
+    }
+
+    /// <summary>
+    ///     Dynamically assigns a Patron Tier to a player based on their Discord account.
+    ///     First, checks if the player has a linked Discord account and then assigns the appropriate Patron Tier based on their Discord roles.
+    /// </summary>
+    public async Task AssignPatronTierAsync(NetUserId playerId, RestClient client, ulong guildId)
+    {
+        var discordId = await _database.GetLinkedDiscordId(playerId, default);
+
+        if (discordId == null)
+            return;
+
+        GuildUser member;
+        try
+        {
+            member = await client.GetGuildUserAsync(guildId, discordId.Value);
+        }
+        catch (RestException)
+        {
+            // Linked, but not a member of the guild (left, banned, etc.) or lookup otherwise failed.
+            return;
+        }
+
+        // Get all patron tiers
+        var patronTiers = await _database.GetPatronTiers();
+
+        foreach (var patronTier in patronTiers)
+        {
+            if (member.RoleIds.Contains(patronTier.DiscordRole))
+            {
+                await _database.SetPatron(playerId, patronTier.Id);
+                return;
+            }
+        }
+        // No matching patron tier found or member does not have any patron roles.
+        await _database.SetPatron(playerId, null);
     }
 }

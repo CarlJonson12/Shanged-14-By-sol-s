@@ -21,6 +21,9 @@ admin-verb-make-mime-assassin = Сделать цель мимом-убийце�
 admin-verb-make-tunnel-clown = Сделать цель туннельным клоуном.
 admin-verb-make-abductor = Сделать цель абдуктором.
 admin-verb-make-abductor-victim = Сделать цель жертвой абдуктора.
+admin-verb-make-singuloth-knight = Сделать цель рыцарем Сингулота.
+admin-verb-make-dark-lord = Сделать цель тёмным лордом.
+admin-verb-make-chosen-one = Сделать цель избранным.
 
 admin-verb-text-make-traitor = Сделать предателем
 admin-verb-text-make-initial-infected = Сделать нулевым пациентом
@@ -42,3 +45,6 @@ admin-verb-text-make-mime-assassin = Сделать мимом-убийцей
 admin-verb-text-make-tunnel-clown = Сделать туннельным клоуном
 admin-verb-text-make-abductor = Сделать абдуктором
 admin-verb-text-make-abductor-victim = Сделать жертвой абдуктора
+admin-verb-text-make-singuloth-knight = Сделать рыцарем Сингулота
+admin-verb-text-make-dark-lord = Сделать тёмным лордом
+admin-verb-text-make-chosen-one = Сделать избранным

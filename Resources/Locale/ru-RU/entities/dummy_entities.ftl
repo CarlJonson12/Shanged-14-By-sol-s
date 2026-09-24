@@ -90,9 +90,6 @@ ent-LighterGold = золотая зажигалка
     .desc = { ent-d6DiceGold.desc }
     .suffix = Лодаут, Безделушки
 
-ent-FoodSnackLollypopOrchito = леденец с орхито
-    .desc = Леденец со вкусом орхито. Не такой освежающий.
-    .suffix = Лодаут, Безделушки
 ent-FoodSnackLollypopBrepsi = леденец с брепси
     .desc = Леденец со вкусом брепси. Не такой очищающий.
     .suffix = Лодаут, Безделушки
@@ -124,4 +121,6 @@ ent-KnifeGoldDummy = набор золотых столовых приборов
 ent-FoodSnackLollypopReserveDummy = три леденца Резерва
     .desc = { ent-KnifeGold.desc }
 ent-FoodSnackLollypopMedicalDummy = три докторских леденца
+    .desc = { ent-KnifeGold.desc }
+ent-FoodSnackLollypopOrchiDeaDummy = четыре леденца Орхи Деи
     .desc = { ent-KnifeGold.desc }

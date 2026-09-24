@@ -89,8 +89,8 @@ public sealed partial class PossessionSystem : EntitySystem
             possessed.Comp.HiddenActions = _action.HideActions(possessed);
 
         _action.AddAction(possessed, ref possessed.Comp.ActionEntity, possessed.Comp.EndPossessionAction);
-
-        _tag.AddTag(possessed, "CannotSuicideAny");
+        var cannotSuicideTag = "CannotSuicideAny";  // Reserve edit: Fix warnings
+        _tag.AddTag(possessed, cannotSuicideTag);  // Reserve edit: Fix warnings
 
         possessed.Comp.PossessedContainer = _container.EnsureContainer<Container>(possessed, "PossessedContainer");
     }
@@ -118,7 +118,8 @@ public sealed partial class PossessionSystem : EntitySystem
         if (possessed.Comp.PolymorphEntity && HasComp<PolymorphedEntityComponent>(possessed))
             _polymorph.Revert(possessed.Owner);
 
-        _tag.RemoveTag(possessed, "CannotSuicideAny");
+        var cannotSuicideTag = "CannotSuicideAny";  // Reserve edit: Fix warnings
+        _tag.RemoveTag(possessed, cannotSuicideTag);  // Reserve edit: Fix warnings
 
         // Remove associated components.
         if (!possessed.Comp.WasPacified)

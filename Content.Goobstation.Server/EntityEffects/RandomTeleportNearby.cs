@@ -32,9 +32,10 @@ public sealed partial class RandomTeleportNearbySystem : EntityEffectSystem<Reac
             return;
 
         //Prevent Positronic Brain to get teleported too
+        var brainTag = "Brain";  // Reserve edit: Fix warnings
         entities.RemoveWhere(ent => //todo upstreamtest
             TryComp<TagComponent>(ent, out var tagComp) &&
-            _tag.HasTag(tagComp, "Brain"));
+            _tag.HasTag(tagComp, brainTag));  // Reserve edit: Fix warnings
 
         var range = args.Effect.Range;
 

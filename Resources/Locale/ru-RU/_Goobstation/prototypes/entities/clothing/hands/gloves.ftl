@@ -1,8 +1,9 @@
-ent-ClothingHandsGlovesChronoLegioneer = футуристические перчатки
-    .desc = Футуристические перчатки из неизвестного материала, не оставляющего следов
+ent-ClothingHandsGlovesChronoLegioneer = футуристичные перчатки
+    .desc = Футуристические перчатки из неизвестного материала, не оставляющего следов.
+    .suffix = Хронолегионер
 ent-ClothingHandsGlovesChronoLegioneerUnremoveable = { ent-ClothingHandsGlovesChronoLegioneer }
-    .suffix = Неснимаемый
     .desc = { ent-ClothingHandsGlovesChronoLegioneer.desc }
+    .suffix = { ent-ClothingHandsGlovesChronoLegioneer.suffix }, Неснимаемый
 ent-ClothingHandsGlovesExplosiveShock = { ent-ClothingHandsGlovesColorYellow }
     .suffix = Взрывающийся
     .desc = { ent-ClothingHandsGlovesColorYellow.desc }

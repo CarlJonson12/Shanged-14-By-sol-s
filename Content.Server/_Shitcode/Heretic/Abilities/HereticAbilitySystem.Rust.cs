@@ -233,7 +233,8 @@ public sealed partial class HereticAbilitySystem
             targetEntity = Spawn(transformation, coords, rotation: rotation);
         }
 
-        if (TerminatingOrDeleted(targetEntity) || !_tag.HasTag(targetEntity, "Wall"))
+        var wallTag = "Wall";  // Reserve edit: Fix warnings
+        if (TerminatingOrDeleted(targetEntity) || !_tag.HasTag(targetEntity, wallTag))  // Reserve edit: Fix warnings
             return false;
 
         if (targetEntity == target && !canRust)

@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Space Station 14 Contributors
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
@@ -39,7 +37,8 @@ public sealed class LightingOverlay : Overlay
 
         IoCManager.InjectDependencies(this);
 
-        _shader = _prototypeManager.Index<ShaderPrototype>("LightingOverlay").InstanceUnique();
+        var protoId = "LightingOverlay";  // Reserve edit: Fix warnings
+        _shader = _prototypeManager.Index<ShaderPrototype>(protoId).InstanceUnique();  // Reserve edit: Fix warnings
         ZIndex = (int) DrawDepth.Overdoors;
     }
 

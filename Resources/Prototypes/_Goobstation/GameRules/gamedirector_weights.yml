@@ -13,6 +13,7 @@
     Wizard: 0.025
     CosmicCult: 0.05 # make it semi often so we can test it
     Honkops: 0.01
+    Vampire: 0.05  # Reserve edit: Vampires
 
 
 - type: incompatibleModes

@@ -24,7 +24,8 @@ public sealed class EnthrallOverlay : Overlay
     public EnthrallOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _shader = _prototypeManager.Index<ShaderPrototype>("EnthrallEffect").Instance().Duplicate();
+        var protoId = "EnthrallEffect";  // Reserve edit: Fix warnings
+        _shader = _prototypeManager.Index<ShaderPrototype>(protoId).Instance().Duplicate();  // Reserve edit: Fix warnings
     }
 
     public void ReceiveEnthrall(double duration)

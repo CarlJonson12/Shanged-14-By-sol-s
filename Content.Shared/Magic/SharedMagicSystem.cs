@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
 using System.Numerics;
@@ -88,11 +88,11 @@ public abstract class SharedMagicSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!; // Goobstation
+    // [Dependency] private readonly DamageableSystem _damageable = default!; // Goobstation // Reserve edit: Fix warnings
     [Dependency] private readonly NpcFactionSystem _faction = default!; // Goobstation
     [Dependency] private readonly TurfSystem _turf = default!;
     [Dependency] private readonly SharedChargesSystem _charges = default!;
-    [Dependency] private readonly ExamineSystemShared _examine= default!;
+    // [Dependency] private readonly ExamineSystemShared _examine= default!; // Reserve edit: Fix warnings
 
     public override void Initialize()
     {
@@ -527,10 +527,10 @@ public abstract class SharedMagicSystem : EntitySystem
             if (HasComp(target, data.Component.GetType()))
                 continue;
 
-            var component = (Component)Factory.GetComponent(name);
-            var temp = (object)component;
+            var component = (Component) Factory.GetComponent(name);
+            var temp = (object) component;
             _seriMan.CopyTo(data.Component, ref temp);
-            AddComp(target, (Component)temp!);
+            AddComp(target, (Component) temp!);
         }
     }
 
@@ -661,7 +661,8 @@ public abstract class SharedMagicSystem : EntitySystem
 
             var ent = human.Comp.OwnedEntity.Value;
 
-            if (_tag.HasTag(ent, "InvalidForGlobalSpawnSpell"))
+            var invalidForGlobalSpawnSpellTag = "InvalidForGlobalSpawnSpell";  // Reserve edit: Fix warnings
+            if (_tag.HasTag(ent, invalidForGlobalSpawnSpellTag))  // Reserve edit: Fix warnings
                 continue;
 
             var mapCoords = _transform.GetMapCoordinates(ent);

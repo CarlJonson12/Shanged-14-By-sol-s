@@ -4,10 +4,13 @@ using Content.Goobstation.Shared.Pirates.Roles; // Reserve edit: Fix antag verbs
 using Content.Server._Goobstation.Wizard.Components;
 using Content.Server._DV.CosmicCult.Components; // DeltaV
 using Content.Server._Harmony.GameTicking.Rules.Components; // Harmony
+using Content.Server._Reserve.GameTicking.Rules.Components;  // Reserve edit: Vampires
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules.Components;
 using Content.Server.Zombies;
+using Content.Shared._Shitmed.Antags.Abductor; // Reserve edit: Fix antag verbs
+using Content.Shared._Shitmed.Roles; // Reserve edit: Fix antag verbs
 using Content.Shared.Administration;
 using Content.Server.Clothing.Systems;
 using Content.Shared.Database;
@@ -35,6 +38,7 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultRevsRule = "Revolutionary";
     private static readonly EntProtoId DefaultThiefRule = "Thief";
     private static readonly EntProtoId DefaultChangelingRule = "Changeling";
+    private static readonly EntProtoId DefaultVampireRule = "Vampire";  // Reserve edit: Vampires
     private static readonly EntProtoId ParadoxCloneRuleId = "ParadoxCloneSpawn";
     private static readonly EntProtoId DefaultWizardRule = "Wizard";
     private static readonly EntProtoId DefaultNinjaRule = "NinjaSpawn";
@@ -56,6 +60,9 @@ public sealed partial class AdminVerbSystem
     private static readonly EntProtoId DefaultAbductorRule = "LoneAbductorSpawn";
     private static readonly EntProtoId DefaultAbductorVictimRule = "AbductorVictim";
     private static readonly EntProtoId DefaultDarkPriestRule = "DarkPriestMidround";
+    private static readonly EntProtoId DefaultSingulothKnightRule = "SingulothKnightsMidround";
+    private static readonly EntProtoId DefaultDarkLordRule = "DarkLordMidround";
+    private static readonly EntProtoId DefaultChosenOneRule = "ChosenOneMidround";
     // Reserve edit end: Fix antag verbs
 
     // All antag verbs have names so invokeverb works.
@@ -269,6 +276,22 @@ public sealed partial class AdminVerbSystem
         };
         args.Verbs.Add(wizard);
 
+        // Reserve edit: Vampires - vampire antag admin verb
+        var vampireName = Loc.GetString("admin-verb-text-make-vampire");
+        Verb vampire = new()
+        {
+            Text = "071. " + vampireName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "Vampire"),
+            Act = () =>
+            {
+                _antag.ForceMakeAntag<VampireRuleComponent>(targetPlayer, DefaultVampireRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", vampireName, Loc.GetString("admin-verb-make-vampire")),
+        };
+        args.Verbs.Add(vampire);
+
         // Begin DeltaV Additions
         var cosmicCultName = Loc.GetString("admin-verb-text-make-cosmiccultist");
         Verb cosmiccult = new()
@@ -325,7 +348,7 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "CorporateAgent"),
             Act = () =>
             {
-                _antag.ForceMakeAntag<TraitorRuleComponent>(targetPlayer, DefaultCorporateAgentRule);
+                _antag.ForceMakeAntag<CorporateAgentRuleComponent>(targetPlayer, DefaultCorporateAgentRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", corporateAgentName, Loc.GetString("admin-verb-make-corporate-agent")),
@@ -356,7 +379,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "EmptyNudeGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultContractorRule);
+                _antag.ForceMakeAntag<ContractorRuleComponent>(targetPlayer, DefaultContractorRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", contractorName, Loc.GetString("admin-verb-make-contractor")),
@@ -388,7 +411,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "EmptyNudeGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultNukeOpHonkRule);
+                _antag.ForceMakeAntag<HonkopsRuleComponent>(targetPlayer, DefaultNukeOpHonkRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", nukeOpHonkName, Loc.GetString("admin-verb-make-nuclear-operative-command-honk")),
@@ -420,7 +443,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "MimeAssassinGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultMimeAssassinRule);
+                _antag.ForceMakeAntag<MimeAssassinRuleComponent>(targetPlayer, DefaultMimeAssassinRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", mimeAssassinName, Loc.GetString("admin-verb-make-mime-assassin")),
@@ -436,7 +459,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "TunnelClownAntagGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultTunnelClownRule);
+                _antag.ForceMakeAntag<TunnelClownRuleComponent>(targetPlayer, DefaultTunnelClownRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", tunnelClownName, Loc.GetString("admin-verb-make-tunnel-clown")),
@@ -452,7 +475,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "DarkPriestAntagGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultDarkPriestRule);
+                _antag.ForceMakeAntag<DarkPriestRuleComponent>(targetPlayer, DefaultDarkPriestRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", darkPriestName, Loc.GetString("admin-verb-make-dark-priest")),
@@ -468,7 +491,7 @@ public sealed partial class AdminVerbSystem
             Act = () =>
             {
                 _outfit.SetOutfit(args.Target, "EmptyNudeGear");
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultAbductorRule);
+                _antag.ForceMakeAntag<AbductorScientistComponent>(targetPlayer, DefaultAbductorRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", abductorName, Loc.GetString("admin-verb-make-abductor")),
@@ -483,12 +506,60 @@ public sealed partial class AdminVerbSystem
             Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "AbductorVictim"),
             Act = () =>
             {
-                _antag.ForceMakeAntag<NukeopsRuleComponent>(targetPlayer, DefaultAbductorVictimRule);
+                _antag.ForceMakeAntag<AbductorVictimRoleComponent>(targetPlayer, DefaultAbductorVictimRule);
             },
             Impact = LogImpact.High,
             Message = string.Join(": ", abductorVictimName, Loc.GetString("admin-verb-make-abductor-victim")),
         };
         args.Verbs.Add(abductorVictim);
+
+        var singulothKnightName = Loc.GetString("admin-verb-text-make-singuloth-knight");
+        Verb singulothKnight = new()
+        {
+            Text = "072. " + singulothKnightName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "SingulothKnight"),
+            Act = () =>
+            {
+                _outfit.SetOutfit(args.Target, "SingulothKnightsAntagGear");
+                _antag.ForceMakeAntag<SingulothKnightRuleComponent>(targetPlayer, DefaultSingulothKnightRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", singulothKnightName, Loc.GetString("admin-verb-make-singuloth-knight")),
+        };
+        args.Verbs.Add(singulothKnight);
+
+        var darkLordName = Loc.GetString("admin-verb-text-make-dark-lord");
+        Verb darkLord = new()
+        {
+            Text = "073. " + darkLordName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "DarkLord"),
+            Act = () =>
+            {
+                _outfit.SetOutfit(args.Target, "DarkLordAntagGear");
+                _antag.ForceMakeAntag<DarkLordRuleComponent>(targetPlayer, DefaultDarkLordRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", darkLordName, Loc.GetString("admin-verb-make-dark-lord")),
+        };
+        args.Verbs.Add(darkLord);
+
+        var chosenOneName = Loc.GetString("admin-verb-text-make-chosen-one");
+        Verb chosenOne = new()
+        {
+            Text = "074. " + chosenOneName,
+            Category = VerbCategory.Antag,
+            Icon = new SpriteSpecifier.Rsi(new("/Textures/Interface/Misc/job_icons.rsi"), "ChosenOne"),
+            Act = () =>
+            {
+                _outfit.SetOutfit(args.Target, "ChosenOneProtagGear");
+                _antag.ForceMakeAntag<ChosenOneRuleComponent>(targetPlayer, DefaultChosenOneRule);
+            },
+            Impact = LogImpact.High,
+            Message = string.Join(": ", chosenOneName, Loc.GetString("admin-verb-make-chosen-one")),
+        };
+        args.Verbs.Add(chosenOne);
         // Reserve end
     }
 }

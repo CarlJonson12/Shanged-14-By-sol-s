@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
@@ -50,12 +50,12 @@ public sealed class HealingSystem : EntitySystem
     // Shitmed Change
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
-    [Dependency] private readonly SharedTargetingSystem _targetingSystem = default!;
+    // [Dependency] private readonly SharedTargetingSystem _targetingSystem = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly TraumaSystem _trauma = default!;
     [Dependency] private readonly WoundSystem _wounds = default!;
 
     // Goobstation edit
-    [Dependency] private readonly INetManager _net = default!;
+    // [Dependency] private readonly INetManager _net = default!; // Reserve edit: Fix warnings
 
     // Goobstation start
     private TargetBodyPart[] _partHealingOrder =
@@ -577,7 +577,7 @@ public sealed class HealingSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2, false))
             return mod;
 
-        if (!_mobThresholdSystem.TryGetThresholdForState(ent, MobState.Critical, out var amount, ent.Comp2))
+        if (!_mobThresholdSystem.TryGetThresholdForState(ent, MobState.SoftCritical, out var amount, ent.Comp2)) // Reserve edit: Soft Crit port
             return 1;
 
         var percentDamage = (float) (ent.Comp1.TotalDamage / amount);

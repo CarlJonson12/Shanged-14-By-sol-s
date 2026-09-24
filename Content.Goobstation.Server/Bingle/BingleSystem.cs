@@ -67,7 +67,8 @@ public sealed class BingleSystem : EntitySystem
         if (component.Upgraded)
             return;
 
-        _actions.AddAction(uid, "ActionBingleUpgrade", uid);
+        var actionBingleUpgrade = "ActionBingleUpgrade";  // Reserve edit: Fix warnings
+        _actions.AddAction(uid, actionBingleUpgrade, uid);  // Reserve edit: Fix warnings
 
         _popup.PopupEntity(Loc.GetString("bingle-upgrade-success"), uid, uid);
         component.Upgraded = true;

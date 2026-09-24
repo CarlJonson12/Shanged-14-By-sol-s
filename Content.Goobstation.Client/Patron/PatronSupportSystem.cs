@@ -1,5 +1,3 @@
-// SPDX-FileCopyrightText: 2025 Goob Station Contributors
-//
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using Content.Client.Lobby;
@@ -17,7 +15,7 @@ public sealed class PatronSupportUIController : UIController, IOnStateEntered<Lo
     [Dependency] private readonly IUriOpener _uriOpener = default!;
 
     private PatronSupportWindow? _supportWindow;
-    private bool _hasShownThisSession;
+    // private bool _hasShownThisSession;  // Reserve edit: Fix warnings
 
     public void OnStateEntered(LobbyState state)
     {

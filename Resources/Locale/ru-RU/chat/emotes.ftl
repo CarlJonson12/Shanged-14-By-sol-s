@@ -1,4 +1,5 @@
-# Имена
+# Название
+
 chat-emote-name-scream = Кричать
 chat-emote-name-laugh = Смеяться
 chat-emote-name-honk = Хонк
@@ -11,10 +12,11 @@ chat-emote-name-squeak = Пищать
 chat-emote-name-thump = Стучать хвостом
 chat-emote-name-click = Клацать
 chat-emote-name-clap = Хлопать
+chat-emote-name-clap-single = Одиночный хлопок
 chat-emote-name-snap = Щёлкать пальцами
 chat-emote-name-salute = Салютовать
 chat-emote-name-gasp = Задыхаться
-chat-emote-name-deathgasp = Предсмертный хрип
+chat-emote-name-deathgasp = Притвориться мёртвым
 chat-emote-name-buzz = Жужжать
 chat-emote-name-weh = Вехать
 chat-emote-name-hew = Хью
@@ -31,7 +33,9 @@ chat-emote-name-monkeyscreeches = Обезьяньи крики
 chat-emote-name-robotbeep = Робот
 chat-emote-name-yawn = Зевать
 chat-emote-name-snore = Храпеть
+
 # Сообщение
+
 chat-emote-msg-scream = кричит!
 chat-emote-msg-laugh = смеётся
 chat-emote-msg-honk = хонкает

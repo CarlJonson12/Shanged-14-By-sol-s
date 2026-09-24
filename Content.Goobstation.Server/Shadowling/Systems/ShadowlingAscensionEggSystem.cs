@@ -154,7 +154,7 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
 
             if (sling.IsAscending)
             {
-                _popup.PopupEntity(Loc.GetString("shadowling-ascension-ascending"), uid,uid, PopupType.MediumCaution);
+                _popup.PopupEntity(Loc.GetString("shadowling-ascension-ascending"), uid, uid, PopupType.MediumCaution);
                 return;
             }
         }
@@ -239,7 +239,8 @@ public sealed class ShadowlingAscensionEggSystem : EntitySystem
             _actions.RemoveAction(ascendant.ActionHatchEntity);
         }
 
-        var nightmareComps = _protoMan.Index("NightmareAbilities");
+        var nightmareAbilities = "NightmareAbilities";  // Reserve edit: Fix warnings
+        var nightmareComps = _protoMan.Index(nightmareAbilities);  // Reserve edit: Fix warnings
         foreach (var thrall in thralls)
         {
             if (HasComp<LesserShadowlingComponent>(thrall))

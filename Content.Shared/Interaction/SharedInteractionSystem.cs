@@ -177,10 +177,11 @@ namespace Content.Shared.Interaction
             if (!_actionBlockerSystem.CanInteract(ev.Actor, ev.Target))
             {
                 // We permit ghosts to open uis unless explicitly blocked
+                var cantInteractTag = "CantInteract";  // Reserve edit: Fix warnings
                 if (ev.Message is not OpenBoundInterfaceMessage
                     || !HasComp<GhostComponent>(ev.Actor)
                     || aUiComp?.BlockSpectators == true
-                    || _tagSystem.HasTag(ev.Actor, "CantInteract")) // Shitmed change
+                    || _tagSystem.HasTag(ev.Actor, cantInteractTag)) // Shitmed change  // Reserve edit: Fix warnings
                 {
                     ev.Cancel();
                     return;
@@ -927,7 +928,7 @@ namespace Content.Shared.Interaction
                     if (target == otherEnt ||
                         !_physicsQuery.TryComp(otherEnt, out var otherBody) ||
                         !otherBody.CanCollide ||
-                        ((int)collisionMask & otherBody.CollisionLayer) == 0x0)
+                        ((int) collisionMask & otherBody.CollisionLayer) == 0x0)
                     {
                         continue;
                     }
@@ -1485,7 +1486,7 @@ namespace Content.Shared.Interaction
                 return;
 
             if (!TryComp(uidB, out MetaDataComponent? metaB) || metaB.EntityPaused)
-                return ;
+                return;
 
             // TODO Struct event
             var ev = new ContactInteractionEvent(uidB.Value);

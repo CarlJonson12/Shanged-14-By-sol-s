@@ -45,7 +45,8 @@ internal sealed class CyberneticsSystem : EntitySystem
                 if (TryComp(cyberEnt, out DamageableComponent? damageable)
                     && part.Body is not null)
                 {
-                    var shock = new DamageSpecifier(_prototypes.Index<DamageTypePrototype>("Shock"), 30);
+                    var protoIdShock = "Shock";  // Reserve edit: Fix warnings
+                    var shock = new DamageSpecifier(_prototypes.Index<DamageTypePrototype>(protoIdShock), 30);  // Reserve edit: Fix warnings
                     var targetPart = _body.GetTargetBodyPart(part);
                     _damageable.TryChangeDamage(part.Body.Value, shock, ignoreResistances: true, targetPart: targetPart, damageable: damageable);
                     Dirty(cyberEnt, damageable);

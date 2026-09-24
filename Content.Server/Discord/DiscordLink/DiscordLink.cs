@@ -9,6 +9,7 @@ using NetCord.Rest;
 using DiscordInteraction = NetCord.Interaction;  // Reserve edit: Full discord bot integration
 using Robust.Shared.Asynchronous;  // Reserve edit: Full discord bot integration
 using Robust.Shared.Configuration;
+using Robust.Shared.Network;  // Reserve edit: Maecenas System
 using Robust.Shared.Utility;
 
 namespace Content.Server.Discord.DiscordLink;
@@ -364,7 +365,14 @@ public sealed class DiscordLink : IPostInjectInit
             var registeredCommands = await _client.Rest.GetGuildApplicationCommandsAsync(_client.Id, _guildId);
             foreach (var command in commandDefinitions)
             {
-                await _client.Rest.DeleteGuildApplicationCommandAsync(_client.Id, _guildId, registeredCommands.FirstOrDefault(c => c.Name == command.Name)?.Id ?? 0);
+                try
+                {
+                    await _client.Rest.DeleteGuildApplicationCommandAsync(_client.Id, _guildId, registeredCommands.FirstOrDefault(c => c.Name == command.Name)?.Id ?? 0);
+                }
+                catch (Exception e)
+                {
+                    _sawmill.Warning($"Failed to unregister command {command.Name}!", e);
+                }
                 await _client.Rest.CreateGuildApplicationCommandAsync(_client.Id, _guildId, command);
             }
 
@@ -435,4 +443,13 @@ public sealed class DiscordLink : IPostInjectInit
     }
 
     #endregion
+
+    // Reserve edit start: Maecenas System
+    public async Task AssignPatronTierAsync(NetUserId playerId)
+    {
+        if (_linkCog == null || _client == null)
+            return;
+        await _linkCog.AssignPatronTierAsync(playerId, _client!.Rest, _guildId);
+    }
+    // Reserve edit end: Maecenas System
 }
