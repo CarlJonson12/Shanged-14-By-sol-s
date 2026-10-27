@@ -4,6 +4,7 @@ ent-MobSalvager = утилизатор
     .desc = { ent-BaseMobHuman.desc }
 ent-MobSpirate = космопират
     .desc = Яррр!
+    .suffix = Адмем, Злой, AI
 ent-MobSyndicateFootsoldier = пехотинец Синдиката
     .desc = { ent-BaseMobHuman.desc }
 ent-MobSyndicateFootsoldierPilot = пилот шаттла Синдиката

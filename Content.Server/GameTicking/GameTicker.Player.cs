@@ -14,6 +14,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Utility;
 using Content.Server.Discord;
+using Content.Server.Discord.DiscordLink;  // Reserve edit: Maecenas System
+using Content.Server._Reserve.Discord.BanGuard; // Reserve edit: Reserve Red - BanGuard
 using Content.Server.ADT.Administration;
 
 namespace Content.Server.GameTicking
@@ -22,6 +24,8 @@ namespace Content.Server.GameTicking
     public sealed partial class GameTicker
     {
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly DiscordLink _discordLink = default!;  // Reserve edit: Maecenas System
+        [Dependency] private IBanGuardManager _banGuard = default!; // Reserve edit: Reserve Red - BanGuard
 
         private void InitializePlayer()
         {
@@ -64,16 +68,20 @@ namespace Content.Server.GameTicking
                     var firstSeenTime = record?.FirstSeenTime.ToString("dd.MM.yyyy") ?? "unknown"; // Reserve edit- first connection date
 
                     //ADT tweak begin
-                    var creationDate = "Unable to get account creation date";
-                    try
+                    var creationDate = "Не удалось получить дату создания аккаунта";
+                    if (firstConnection) // The date is only used in first-join messages
+                    {
+                        try
                         {
                             // Получаем дату создания аккаунта через API визардов
                             creationDate = await AuthApiHelper.GetCreationDate(args.Session.UserId.ToString());
                         }
                         catch (Exception ex)
                         {
-                            Log.Error($"Ошибка при получении даты создания аккаунта: {ex.Message}");
+                            // Warning: this can fail on shutdown (e.g. disposed logger in tests) and must not fail them.
+                            Log.Warning($"Ошибка при получении даты создания аккаунта: {ex.Message}");
                         }
+                    }
                     //ADT tweak end
                         _chatManager.SendAdminAnnouncement(firstConnection
                         ? Loc.GetString("player-first-join-message", ("name", args.Session.Name)) + " " +
@@ -81,26 +89,11 @@ namespace Content.Server.GameTicking
                           Loc.GetString("player-first-join-account-date", ("creationDate", creationDate)) //Reserve edit
                         : Loc.GetString("player-join-message", ("name", args.Session.Name)));
 
-                    // ADT-Tweak-start: Постит в дис админчата, о заходе новых игроков
-                    if (!string.IsNullOrEmpty(_cfg.GetCVar(CCVars.DiscordAdminchatWebhook)) && firstConnection)
-                    {
-                        var webhookUrl = _cfg.GetCVar(CCVars.DiscordAdminchatWebhook);
-
-                        if (webhookUrl == null)
-                            return;
-
-                        if (await _discord.GetWebhook(webhookUrl) is not { } webhookData)
-                            return;
-                        var payload = new WebhookPayload
-                        {
-                            Content = Loc.GetString("player-first-join-message-webhook", ("name", args.Session.Name)) + "\n" +
-                            Loc.GetString("player-first-join-account-date", ("creationDate", creationDate)) + "\n" + //Reserve edit
-                            $"userid: {args.Session.UserId.ToString()}" //Reserve edit
-                        };
-                        var identifier = webhookData.ToIdentifier();
-                        await _discord.CreateMessage(identifier, payload);
-                    }
-                    // ADT-Tweak-end
+                        // Reserve edit start: Reserve Red - BanGuard
+                        if (firstConnection)
+                            _banGuard.PlayerFirstJoined(args.Session.Name, args.Session.UserId, creationDate);
+                        // Reserve edit end: Reserve Red - BanGuard
+                        await _discordLink.AssignPatronTierAsync(args.Session.UserId);  // Reserve edit: Maecenas System
                     if (session.Channel.IsConnected)  // Reserve edit: Flaky test fixes
                         RaiseNetworkEvent(GetConnectionStatusMsg(), session.Channel);
 

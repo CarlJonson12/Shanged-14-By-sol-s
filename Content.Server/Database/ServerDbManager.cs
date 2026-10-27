@@ -38,7 +38,7 @@ namespace Content.Server.Database
     }
     // Reserve edit end: Discord bot account linking
 
-    public interface IServerDbManager
+    public partial interface IServerDbManager // Goob
     {
         void Init();
 
@@ -115,7 +115,6 @@ namespace Content.Server.Database
             bool includeUnbanned = true,
             BanType type = BanType.Server);
 
-        Task<BanDef?> GetLastBanAsync(); //ADT-Tweak: Логи банов для диса
         Task<BanDef> AddBanAsync(BanDef ban);
         Task AddUnbanAsync(UnbanDef ban);
 
@@ -347,26 +346,22 @@ namespace Content.Server.Database
         // Goob start
         Task SetGhostCosmetics(Guid player, string? particles, string? hat, string? mask);
 
-        Task<List<RMCPatronTier>> GetPatronTiers();
+        Task SetOocIcon(Guid player, string? icon);
 
-        Task<int> AddPatronTier(RMCPatronTier tier);
-
-        Task<bool> UpdatePatronTier(RMCPatronTier tier);
-
-        Task<int> CountPatronsInTier(int tierId);
-
-        Task<bool> DeletePatronTier(int tierId);
+        Task SyncPatronTiers(List<RMCPatronTier> tiers);
 
         Task<bool> SetPatron(Guid player, int? tierId);
+
+        Task SetPatronTiers(Guid player, List<int> tierIds);  // Reserve edit: Maecenas System
         // Goob end
 
         Task SetLobbyMessage(Guid player, string message);
 
         Task SetNTShoutout(Guid player, string name);
 
-        Task<List<(string, string)>> GetLobbyMessages();
+        Task<List<(string Message, string User, List<int> TierIds)>> GetLobbyMessages(); // Goob - tier perks from prototypes
 
-        Task<List<string>> GetShoutouts();
+        Task<List<(string Name, List<int> TierIds)>> GetShoutouts(); // Goob - tier perks from prototypes
 
         #endregion
 
@@ -396,6 +391,16 @@ namespace Content.Server.Database
         Task<int> GetPollSeenCountAsync(int pollId, CancellationToken cancel = default);
 
         #endregion
+
+        // Reserve edit start: Brainrot Triggers
+        #region Brainrot Triggers
+
+        Task<List<string>> GetBrainrotTriggersAsync(CancellationToken cancel = default);
+        Task AddBrainrotTriggerAsync(string trigger, CancellationToken cancel = default);
+        Task RemoveBrainrotTriggerAsync(string trigger, CancellationToken cancel = default);
+
+        #endregion
+        // Reserve edit end: Brainrot Triggers
 
         #region DB Notifications
 
@@ -444,7 +449,7 @@ namespace Content.Server.Database
         public string? Payload { get; set; }
     }
 
-    public sealed class ServerDbManager : IServerDbManager
+    public sealed partial class ServerDbManager : IServerDbManager // Goob
     {
         public static readonly Counter DbReadOpsMetric = Metrics.CreateCounter(
             "db_read_ops",
@@ -606,13 +611,6 @@ namespace Content.Server.Database
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetBansAsync(address, userId, hwId, modernHWIds, includeUnbanned, type));
         }
-        //Start-ADT-Tweak: логи банов для диса
-        public Task<BanDef?> GetLastBanAsync()
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetLastBanAsync());
-        }
-        //End-ADT-Tweak
 
         public Task<BanDef> AddBanAsync(BanDef ban)
         {
@@ -1161,40 +1159,28 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetGhostCosmetics(player, particles, hat, mask));
         }
 
-        public Task<List<RMCPatronTier>> GetPatronTiers()
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.GetPatronTiers());
-        }
-
-        public Task<int> AddPatronTier(RMCPatronTier tier)
+        public Task SetOocIcon(Guid player, string? icon)
         {
             DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.AddPatronTier(tier));
+            return RunDbCommand(() => _db.SetOocIcon(player, icon));
         }
 
-        public Task<bool> UpdatePatronTier(RMCPatronTier tier)
+        public Task SyncPatronTiers(List<RMCPatronTier> tiers)
         {
             DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.UpdatePatronTier(tier));
-        }
-
-        public Task<int> CountPatronsInTier(int tierId)
-        {
-            DbReadOpsMetric.Inc();
-            return RunDbCommand(() => _db.CountPatronsInTier(tierId));
-        }
-
-        public Task<bool> DeletePatronTier(int tierId)
-        {
-            DbWriteOpsMetric.Inc();
-            return RunDbCommand(() => _db.DeletePatronTier(tierId));
+            return RunDbCommand(() => _db.SyncPatronTiers(tiers));
         }
 
         public Task<bool> SetPatron(Guid player, int? tierId)
         {
             DbWriteOpsMetric.Inc();
             return RunDbCommand(() => _db.SetPatron(player, tierId));
+        }
+
+        public Task SetPatronTiers(Guid player, List<int> tierIds)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.SetPatronTiers(player, tierIds));
         }
         // Goob end
 
@@ -1210,13 +1196,13 @@ namespace Content.Server.Database
             return RunDbCommand(() => _db.SetNTShoutout(player, name));
         }
 
-        public Task<List<(string, string)>> GetLobbyMessages()
+        public Task<List<(string Message, string User, List<int> TierIds)>> GetLobbyMessages() // Goob - tier perks from prototypes
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetLobbyMessages());
         }
 
-        public Task<List<string>> GetShoutouts()
+        public Task<List<(string Name, List<int> TierIds)>> GetShoutouts() // Goob - tier perks from prototypes
         {
             DbReadOpsMetric.Inc();
             return RunDbCommand(() => _db.GetShoutouts());
@@ -1328,6 +1314,30 @@ namespace Content.Server.Database
         }
 
         #endregion
+
+        // Reserve edit start: Brainrot Triggers
+        #region Brainrot Triggers
+
+        public Task<List<string>> GetBrainrotTriggersAsync(CancellationToken cancel = default)
+        {
+            DbReadOpsMetric.Inc();
+            return RunDbCommand(() => _db.GetBrainrotTriggersAsync(cancel));
+        }
+
+        public Task AddBrainrotTriggerAsync(string trigger, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.AddBrainrotTriggerAsync(trigger, cancel));
+        }
+
+        public Task RemoveBrainrotTriggerAsync(string trigger, CancellationToken cancel = default)
+        {
+            DbWriteOpsMetric.Inc();
+            return RunDbCommand(() => _db.RemoveBrainrotTriggerAsync(trigger, cancel));
+        }
+
+        #endregion
+        // Reserve edit end: Brainrot Triggers
 
         public void SubscribeToNotifications(Action<DatabaseNotification> handler)
         {

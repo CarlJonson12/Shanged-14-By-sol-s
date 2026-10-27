@@ -323,9 +323,8 @@
         - !type:MetabolizerTypeCondition # Goobstation - Yowie
           type: [ Yowie ]
           inverted: true
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow # Reserve edit: Fix overlay narcotics
         type: Add
         time: 20
       - !type:ModifyParalysis

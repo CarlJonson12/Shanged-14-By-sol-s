@@ -9,6 +9,12 @@
 - type: cloningSettings
   id: BaseClone
   components:
+  # Reserve edit start: Mood System port
+  - MoodTrait
+  - Manic
+  - Mercurial
+  - DeadEmotions
+  # Reserve edit end: Mood System port
   # general
   - DetailExaminable
   - Dna

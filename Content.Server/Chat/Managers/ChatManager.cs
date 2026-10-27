@@ -329,20 +329,21 @@ internal sealed partial class ChatManager : IChatManager
         }
         // RMC - Heavily modified for patreon.
         if (_netConfigManager.GetClientCVar(player.Channel, CCVars.ShowOocPatronColor) &&
-            _linkAccount.GetPatron(player)?.Tier is { } tier)
+            _linkAccount.GetPatron(player)?.Tier != null) // Goob
         {
-            if (tier.Icon != null)
+            var patronColor = colorOverride?.ToHex() ?? "#aa00ff"; // Goob - admin ooc color overrides patron color
+            if (_linkAccount.GetOocIcon(player.UserId) is { } oocIcon) // Goob
             {
                 wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message",
-                    ("tierIcon", tier.Icon),
-                    ("patronColor", "#aa00ff"),
+                    ("tierIcon", oocIcon), // Goob
+                    ("patronColor", patronColor), // Goob
                     ("playerName", player.Name),
                     ("message", FormattedMessage.EscapeText(message)));
             }
             else
             {
                 wrappedMessage = Loc.GetString("chat-manager-send-ooc-patron-wrap-message-no-icon",
-                    ("patronColor", "#aa00ff"),
+                    ("patronColor", patronColor), // Goob
                     ("playerName", player.Name),
                     ("message", FormattedMessage.EscapeText(message)));
             }
@@ -383,24 +384,10 @@ internal sealed partial class ChatManager : IChatManager
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"OOC from {player:Player}: {message}");
 
         // Reserve ooc-discord start
-        if (!string.IsNullOrEmpty(_configurationManager.GetCVar(CCVars.DiscordOOCChatWebhook)))
+        _ = Task.Run(async () =>
         {
-            var webhookUrl = _configurationManager.GetCVar(CCVars.DiscordOOCChatWebhook);
-            var playerName = player.Name;
-
-            _ = Task.Run(async () =>
-            {
-                if (await _discord.GetWebhook(webhookUrl) is not { } webhookData)
-                    return;
-
-                var payload = new WebhookPayload
-                {
-                    Content = $"`{playerName}`: {message}"
-                };
-
-                await _discord.CreateMessage(webhookData.ToIdentifier(), payload);
-            });
-        }
+            await _discord.SendWebhookMessage($"`{player.Name}`: {message}", _configurationManager.GetCVar(CCVars.DiscordOOCChatWebhook));
+        });
         // Reserve ooc-discord end
     }
 
@@ -439,14 +426,18 @@ internal sealed partial class ChatManager : IChatManager
                 author: player.UserId);
         }
 
-        _discordLink.SendMessage(message, player.Name, ChatChannel.AdminChat);
+        var adminTitle = _adminManager.GetAdminData(player)?.Title ?? "Admin";  // Reserve edit: Use bot instead of webhook
+        _discordLink.SendMessage(message, $"[{adminTitle}] {player.Name}", ChatChannel.AdminChat);  // Reserve edit: Use bot instead of webhook
         _adminLogger.Add(LogType.Chat, $"Admin chat from {player:Player}: {message}");
 
-        if (!string.IsNullOrEmpty(_configurationManager.GetCVar(CCVars.DiscordAdminchatWebhook)))
+        if (  // Reserve edit: Use bot instead of webhook for admin chat when bot admin chat relay is configured
+            string.IsNullOrEmpty(_configurationManager.GetCVar(CCVars.AdminChatDiscordChannelId)) &&
+            !string.IsNullOrEmpty(_configurationManager.GetCVar(CCVars.DiscordAdminchatWebhook))
+        )
         {
             var webhookUrl = _configurationManager.GetCVar(CCVars.DiscordAdminchatWebhook);
             var playerName = player.Name;
-            var adminTitle = _adminManager.GetAdminData(player)?.Title ?? "Admin";
+            // var adminTitle = _adminManager.GetAdminData(player)?.Title ?? "Admin";  // Reserve edit: Use bot instead of webhook
 
             _ = Task.Run(async () =>
             {

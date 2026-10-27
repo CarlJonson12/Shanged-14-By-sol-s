@@ -111,6 +111,22 @@ public sealed partial class CCVars
     public static readonly CVarDef<string> DiscordAdminchatWebhook =
         CVarDef.Create("discord.adminchat_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL | CVar.ARCHIVE);
 
+    // Reserve edit start: Reserve Red - BanGuard
+    /// <summary>
+    ///     URL of the Discord webhook which will relay admin logs.
+    /// </summary>
+    public static readonly CVarDef<string> DiscordAdminLogsWebhook =
+        CVarDef.Create("discord.admin_logs_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+    // Reserve edit end: Reserve Red - BanGuard
+
+    // Reserve edit start: Custos
+    public static readonly CVarDef<string> CustosDiscordChannelId =
+        CVarDef.Create("discord.custos_channel_id", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
+    public static readonly CVarDef<string> DiscordCustosWebhook =
+        CVarDef.Create("discord.custos_webhook", string.Empty, CVar.SERVERONLY | CVar.CONFIDENTIAL);
+    // Reserve edit end: Custos
+
     /// <summary>
     ///     URL of the Discord webhook which will receive station news acticles at the round end.
     ///     If left empty, disables the webhook.

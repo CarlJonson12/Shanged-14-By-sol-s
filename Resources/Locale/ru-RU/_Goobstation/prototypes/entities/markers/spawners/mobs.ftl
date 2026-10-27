@@ -44,8 +44,10 @@ ent-SpawnNukeBot = спавнер { ent-NukeBot }
 
 ent-SpawnMobFlockDrone = спавнер { ent-MobFlockDrone }
     .desc = { ent-MarkerBase.desc }
+    .suffix = Стая
 ent-SpawnMobFlockBit = спавнер { ent-MobFlockBit }
     .desc = { ent-MarkerBase.desc }
+    .suffix = Стая
 
 ent-SpawnCMMobXenoDrone = спавнер { ent-CMMobXenoDrone }
     .desc = { ent-MarkerBase.desc }
@@ -91,5 +93,7 @@ ent-SpawnCMMobXenoRogueKingSentient = спавнер { ent-CMMobXenoRogueKingSen
 
 ent-SpawnMobHierophant = спавнер { ent-MobHierophant }
     .desc = { ent-MarkerBase.desc }
-ent-SpawnPointShaftMiner = шахтёр
+
+ent-SpawnPointShaftMiner = { ent-SpawnPointJobBase }
     .desc = { ent-SpawnPointJobBase.desc }
+    .suffix = Шахтёр

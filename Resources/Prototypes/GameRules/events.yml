@@ -54,6 +54,7 @@
     - id: NinjaSpawn
     - id: ParadoxCloneSpawn
     #- id: RevenantSpawn  # GoobStation - removed till rework
+    - id: RevenantMidround # Reserve edit: Revenant, replaces the disabled RevenantSpawn
     - id: SleeperAgents
     - id: ZombieOutbreak
     - id: LoneOpsSpawn
@@ -64,7 +65,7 @@
     - id: SlaughterDemonMidround # Goobstation - Slaughter Demon
     - id: XenomorphsInfestation # WD EDIT
     - id: SlasherSpawn # Goobstation - The Slasher
-    - id: SpacePirates # Goobstation - you probably can read whom this rule spawns
+    - id: PiratesMidroundStart # Goobstation - you probably can read whom this rule spawns  # Reserve edit: Pirates Enhanced
     - id: SingulothKnightsMidround # Goobstation - New Midrounds
     #- id: DarkLordMidround # Goobstation - New Midrounds
     - id: MimeAssassinMidround # Goobstation - New Midrounds
@@ -321,6 +322,7 @@
     - Abductor
     - Harpy
     - Plasmaman # EE
+    - Synth # Goob
     # Goobstation end
   - type: AntagObjectives
     objectives:
@@ -667,8 +669,15 @@
   - type: GameRule
     chaosScore: 240
   - type: VentCrittersRule
-    table: # DeltaV: EntityTable instead of spawn entries
-      id: MobGiantSpiderAngry
+    table: !type:GroupSelector  # Reserve edit: Arachnageddon
+      children:
+      - id: MobGiantSpiderAngry
+      - id: MobBloodmotherSpiderAngry
+        weight: 0.2
+      - id: MobBrutemotherSpiderAngry
+        weight: 0.2
+      - id: MobXenorantulaSpiderAngry
+        weight: 0.2
 
 - type: entity
   id: SpiderClownSpawn

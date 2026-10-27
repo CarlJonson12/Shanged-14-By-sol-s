@@ -1,16 +1,22 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-using System.Threading.Tasks;
+using Content.Goobstation.Common.Patrons;
+using Content.Server._Reserve.Discord.AdminGuard;
 using Content.Server.Database;
 using NetCord;
 using NetCord.Rest;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Content.Server._Reserve.Discord;
 
-public sealed class DiscordLinkCog
+public sealed partial class DiscordLinkCog
 {
-    [Dependency] private readonly IServerDbManager _database = default!;
+    [Dependency] private IServerDbManager _database = default!;
+    [Dependency] private IAdminGuardManager _adminGuard = default!;
+    [Dependency] private IPrototypeManager _prototypes = default!;
 
     public DiscordLinkCog()
     {
@@ -37,6 +43,9 @@ public sealed class DiscordLinkCog
                 return Ephemeral(Loc.GetString("discord-link-discord-already-linked"));
         }
 
+        if (playerId is { } linkedId)
+            _adminGuard.DiscordAccountLinked(linkedId, discordUserId);
+
         var name = playerId is { } id
             ? (await _database.GetPlayerRecordByUserId(id))?.LastSeenUserName ?? id.ToString()
             : "?";
@@ -50,11 +59,15 @@ public sealed class DiscordLinkCog
     /// </summary>
     public async Task<InteractionCallback> HandleUnlinkAsync(ulong discordUserId)
     {
+        var playerId = await _database.GetLinkedPlayerId(discordUserId, default);
         var unlinked = await _database.UnlinkDiscordAccount(discordUserId, default);
         if (unlinked)
+        {
+            _adminGuard.DiscordAccountUnlinked(playerId, discordUserId);
             return Ephemeral(Loc.GetString("discord-unlink-success"));
-        else
-            return Ephemeral(Loc.GetString("discord-unlink-not-linked"));
+        }
+
+        return Ephemeral(Loc.GetString("discord-unlink-not-linked"));
     }
 
     private static InteractionCallback Ephemeral(string message)
@@ -64,5 +77,34 @@ public sealed class DiscordLinkCog
             Content = message,
             Flags = MessageFlags.Ephemeral,
         });
+    }
+
+    /// <summary>
+    ///     Assigns all patron tiers matching the linked Discord account's roles.
+    /// </summary>
+    public async Task AssignPatronTierAsync(NetUserId playerId, RestClient client, ulong guildId)
+    {
+        var discordId = await _database.GetLinkedDiscordId(playerId, default);
+
+        if (discordId == null)
+            return;
+
+        GuildUser member;
+        try
+        {
+            member = await client.GetGuildUserAsync(guildId, discordId.Value);
+        }
+        catch (RestException)
+        {
+            // Linked, but not a member of the guild (left, banned, etc.) or lookup otherwise failed.
+            return;
+        }
+
+        // Get all patron tiers
+        var tierIds = _prototypes.EnumeratePrototypes<PatronTierPrototype>()
+            .Where(tier => member.RoleIds.Contains(tier.DiscordRole))
+            .Select(tier => tier.DatabaseId)
+            .ToList();
+        await _database.SetPatronTiers(playerId, tierIds);
     }
 }

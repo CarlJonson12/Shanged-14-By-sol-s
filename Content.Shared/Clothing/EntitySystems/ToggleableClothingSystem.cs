@@ -1,32 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
-// SPDX-FileCopyrightText: 2023 DrSmugleaf <DrSmugleaf@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2023 TemporalOroboros <TemporalOroboros@gmail.com>
-// SPDX-FileCopyrightText: 2023 Ygg01 <y.laughing.man.y@gmail.com>
-// SPDX-FileCopyrightText: 2023 keronshb <keronshb@live.com>
-// SPDX-FileCopyrightText: 2023 metalgearsloth <31366439+metalgearsloth@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Krunklehorn <42424291+Krunklehorn@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Leon Friedrich <60421075+ElectroJr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 Nemanja <98561806+EmoGarbage404@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 nikthechampiongr <32041239+nikthechampiongr@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 slarticodefast <161409025+slarticodefast@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2024 to4no_fix <156101927+chavonadelal@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <28298836+Aidenkrz@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 Aiden <aiden@djkraz.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <115770678+BombasterDS@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS <deniskaporoshok@gmail.com>
-// SPDX-FileCopyrightText: 2025 BombasterDS2 <shvalovdenis.workmail@gmail.com>
-// SPDX-FileCopyrightText: 2025 GoobBot <uristmchands@proton.me>
-// SPDX-FileCopyrightText: 2025 Marty <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 NotActuallyMarty <martynashagriefer@gmail.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 SX-7 <sn1.test.preria.2002@gmail.com>
-// SPDX-FileCopyrightText: 2025 SlamBamActionman <83650252+SlamBamActionman@users.noreply.github.com>
-// SPDX-FileCopyrightText: 2025 gluesniffler <linebarrelerenthusiast@gmail.com>
-//
-// SPDX-License-Identifier: AGPL-3.0-or-later
-
 using Content.Goobstation.Common.Clothing;
 using Content.Shared.Actions;
 using Content.Shared.Body.Components;
@@ -152,6 +125,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnMove = true,
             DistanceThreshold = 2,
+            FaceTarget = false, // Goob
         };
 
         if (!_doAfter.TryStartDoAfter(args))
@@ -181,6 +155,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnMove = true,
             DistanceThreshold = 2,
+            FaceTarget = false, // Goob
         };
 
         if (!_doAfter.TryStartDoAfter(args))
@@ -278,6 +253,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         // If it's a part of PVS departure then don't handle it.
         if (_timing.ApplyingState)
+            return;
+
+        if (_transferringInventory.Contains(args.Equipee)) // Goobstation
             return;
 
         _clothing.SetEquippedPrefix(toggleable, null);
@@ -379,7 +357,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             args.Cancel(); // Cancel original unequip, DoAfter will handle it
         }
         else
-            UnequipClothing(args.Unequipee, new Entity<ToggleableClothingComponent>(toggleable, toggleableComp), args.UnEquipTarget, args.Slot);
+            args.Cancel(); // Goob - attempt events are also raised by CanUnequip queries (e.g. building the context menu), so retracting here unequipped the part
     }
 
     private void OnRemoveAttached(Entity<AttachedClothingComponent> attached, ref ComponentRemove args)
@@ -419,6 +397,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         // Let containers worry about it.
         if (_timing.ApplyingState)
+            return;
+
+        if (_transferringInventory.Contains(args.Equipee)) // Goobstation
             return;
 
         if (comp.LifeStage > ComponentLifeStage.Running)
@@ -567,6 +548,22 @@ public sealed class ToggleableClothingSystem : EntitySystem
             }
         }
     }
+
+    // <Goobstation>
+    private readonly HashSet<EntityUid> _transferringInventory = new();
+
+    /// <summary>
+    ///     While set, deployed pieces stay deployed when unequipped, so a whole-inventory
+    ///     transfer (e.g. polymorph) carries the worn state over to the new body as-is.
+    /// </summary>
+    public void SetInventoryTransferring(EntityUid wearer, bool transferring)
+    {
+        if (transferring)
+            _transferringInventory.Add(wearer);
+        else
+            _transferringInventory.Remove(wearer);
+    }
+    // </Goobstation>
 
     private bool CanToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, bool multiple)
     {

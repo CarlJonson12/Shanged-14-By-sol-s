@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: AGPL-3.0-or-later
+﻿// SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Numerics;
 using Content.Goobstation.Common.Projectiles;
@@ -36,14 +36,14 @@ namespace Content.Server.Weapons.Ranged.Systems;
 public sealed partial class GunSystem : SharedGunSystem
 {
     [Dependency] private readonly PricingSystem _pricing = default!;
-    [Dependency] private readonly SharedColorFlashEffectSystem _color = default!;
-    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
-    [Dependency] private readonly SharedContainerSystem _container = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
+    // [Dependency] private readonly SharedColorFlashEffectSystem _color = default!; // Reserve edit: Fix warnings
+    // [Dependency] private readonly SharedStaminaSystem _stamina = default!; // Reserve edit: Fix warnings
+    // [Dependency] private readonly SharedContainerSystem _container = default!; // Reserve edit: Fix warnings
+    // [Dependency] private readonly PowerCellSystem _powerCell = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly SharedMapSystem _map = default!;
 
     // Goobstation
-    [Dependency] private readonly FlammableSystem _flammable = default!;
+    // [Dependency] private readonly FlammableSystem _flammable = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
@@ -94,7 +94,7 @@ public sealed partial class GunSystem : SharedGunSystem
         var angle = GetRecoilAngle(Timing.CurTime, gun, mapDirection.ToAngle(), user);  // Goobstation user
 
         // If applicable, this ensures the projectile is parented to grid on spawn, instead of the map.
-        var fromEnt = MapManager.TryFindGridAt(fromMap, out var gridUid, out _)
+        var fromEnt = _map.TryFindGridAt(fromMap, out var gridUid, out _)
             ? TransformSystem.WithEntityId(fromCoordinates, gridUid)
             : new EntityCoordinates(_map.GetMapOrInvalid(fromMap.MapId), fromMap.Position);
 
@@ -352,7 +352,7 @@ public sealed partial class GunSystem : SharedGunSystem
 
         var spread = component.CurrentAngle.Theta * random;
         var angle = new Angle(direction.Theta + component.CurrentAngle.Theta * random);
-        DebugTools.Assert(Math.Abs(spread) <= maxTheta); // goob edit
+        DebugTools.Assert(Math.Abs(spread) <= maxTheta * Math.Max(1f, Math.Abs(angleEv.Modifier))); // goob edit
         return angle;
     }
 

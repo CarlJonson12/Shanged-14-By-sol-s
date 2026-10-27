@@ -1,5 +1,5 @@
 ent-BaseItem = предмет
-    .desc = { "" }
+    .desc = Обычная вещь.
 ent-BaseStorageItem = предмет хранения
     .desc = { ent-BaseItem.desc }
 ent-BaseBagOpenClose = { "" }
