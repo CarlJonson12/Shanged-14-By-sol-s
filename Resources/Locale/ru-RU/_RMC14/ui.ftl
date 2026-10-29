@@ -37,9 +37,9 @@ rmc-ui-discord = Дискорд
 rmc-ui-patreon = Бусти
 rmc-ui-save = Сохранить
 
-rmc-ui-lobby-main = Уровень
+rmc-ui-lobby-main = Уровни
 rmc-ui-lobby-main-description = Спасибо что поддерживаешь Резерв!
-    {"\u000A"}[bold]Текущий уровень[/bold]: [color=#c23c2d]{ $tier }[/color]
+    {"\u000A"}[bold]Текущие уровни[/bold]: [color=#c23c2d]{ $tier }[/color]
     {"\u000A"}[bold]Бонусы в Бусти[/bold]
     - Доступ к тизерам и эксклюзивным постам
     {"\u000A"}[bold]Бонусы в Дискорде[/bold]
@@ -49,10 +49,17 @@ rmc-ui-lobby-main-description = Спасибо что поддерживаешь
     {"\u000A"}[bold]Бонусы в игре[/bold]
     - Доступ в Меценат-меню
     - Цветной сикей в ООС-чате
+    - Иконка в ООС-чате
 rmc-ui-lobby-main-credits = - Упоминание в "Авторах и меценатах" [color=#909090](внизу слева в лобби)[/color]
 rmc-ui-lobby-main-shoutout = - Сообщение "Резерв спонсируется" в манифесте с кастомным именем
-rmc-ui-lobby-main-lobby-message = - Кастомное сообщение в лобби [color=#909090](внизу слева)[/color]
+rmc-ui-lobby-main-lobby-message = - Кастомное сообщение в лобби [color=#909090](внизу слева в лобби)[/color]
 rmc-ui-lobby-main-ghost-color = - Выбор цвета призрака
-rmc-ui-lobby-main-ghost-cosmetics = - Украшения призрака
-rmc-ui-lobby-main-ghost-particles = - Эффект призрака
+rmc-ui-lobby-main-ghost-cosmetics = - Выбор украшений призрака
+rmc-ui-lobby-main-ghost-particles = - Выбор эффекта призрака
 rmc-ui-lobby-main-ooc-color = - Выбор цвета сикея в ООС-чате
+rmc-ui-lobby-main-ooc-icons = - Выбор иконки в ООС-чате
+rmc-ui-lobby-main-sprite-export = - Экспорт любого спрайта в раунде [color=#909090](ПКМ -> Меценат-действия -> Экспорт спрайта)[/color]
+
+rmc-ui-lobby-main-locked-perks = {"\u000A"}[bold]Станет доступно на других уровнях[/bold]
+rmc-ui-lobby-main-ooc-icons-more = - Больше иконок для ООС-чата
+rmc-ui-lobby-main-ghost-cosmetics-more = - Больше украшений для призрака

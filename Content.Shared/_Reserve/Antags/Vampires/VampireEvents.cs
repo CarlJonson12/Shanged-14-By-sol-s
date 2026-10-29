@@ -88,7 +88,11 @@ public sealed class VampireProgressionChangedEvent : EntityEventArgs { }
 #region Hemomancer
 
 // Vampiric Claws
-public sealed partial class VampireHemomancerClawsActionEvent : InstantActionEvent;
+public sealed partial class VampireHemomancerClawsActionEvent : InstantActionEvent
+{
+    [DataField]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Reserve/Effects/vampire/exit_blood.ogg");
+}
 
 // Blood Tendril
 public sealed partial class VampireHemomancerTendrilsActionEvent : WorldTargetActionEvent
@@ -131,6 +135,9 @@ public sealed partial class VampireHemomancerTendrilsActionEvent : WorldTargetAc
 
     [DataField]
     public float MinSlowMultiplier = 0.05f;
+
+    [DataField]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Reserve/Effects/vampire/enter_blood.ogg");
 }
 
 // Blood Barrier
@@ -141,6 +148,9 @@ public sealed partial class VampireBloodBarrierActionEvent : WorldTargetActionEv
 
     [DataField]
     public int BarrierCount = 3;
+
+    [DataField]
+    public SoundSpecifier Sound = new SoundPathSpecifier("/Audio/_Reserve/Effects/vampire/exit_blood.ogg");
 }
 
 // Blood Pool
@@ -310,8 +320,8 @@ public sealed partial class VampireShadowBoxingActionEvent : EntityTargetActionE
     public SoundSpecifier? HitSound;
 }
 
-[Serializable, NetSerializable]
-public sealed class VampireShadowBoxingPunchEvent : EntityEventArgs
+[DataDefinition, Serializable, NetSerializable]
+public sealed partial class VampireShadowBoxingPunchEvent : EntityEventArgs
 {
     public NetEntity Source { get; }
     public NetEntity Target { get; }

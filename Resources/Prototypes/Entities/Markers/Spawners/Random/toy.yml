@@ -95,14 +95,64 @@
       - id: PlushieSharkRainbow
       - id: PlushieGhostRainbow
     - !type:GroupSelector # Goobstation plushies  # Reserve edit: Random maints - moved from figurines
-      weight: 0.2 # 1 in >105
+      weight: 0.4 # 1 in >52.5  # Reserve edit: Random maints
       children:
       - id: PlushieBingle # Goobstation
       - id: PlushieSamantha # Goobstation
       - id: PlushieJvne # Goobstation
       - id: PlushieFern # Goobstation
       - id: PlushieAbductor # Goobstation
+      - id: PlushieBongle
+      - id: PlushieBinglePony
+      - id: PlushieAbductor
+      - id: PlushieNigel
+      - id: PlushieBrizby
+      - id: PlushieBoggle
+      - id: PlushieLehmin
+      - id: PlushieWachtel
+      - id: PlushieLeguia
+      - id: PlushiePasha
+      - id: PlushieLeoMalone
+      - id: PlushieRouge
+      - id: PlushieRedstonewolf
+      - id: PlushieDoremyZerg
+      - id: PlushieSanyati
+      - id: PlushieHarel
     # Reserve edit end: Random maints
+    # Reserve edit start: Reserve Plushies
+    - !type:GroupSelector
+      children:
+      - id: PlushieArtizziKasya
+      - id: PlushieArtizziKasyaLarge
+      - id: PlushieAwareFoxy
+      - id: PlushieAwareFoxyLarge
+      - id: PlushieCeteraiOrchiDea
+      - id: PlushieCeteraiOrchiDeaMime
+      - id: PlushieDotusaruTaipan
+        weight: 0.5
+      - id: PlushieDotusaruTaipanRainbow
+        weight: 0.5
+      - id: PlushieDotusaruTaipanSyndicate
+        weight: 0.5
+      - id: PlushieDotusaruTaipanLarge
+        weight: 0.5
+      - id: PlushieFloppaGeoffroyKrisp
+        weight: 2.0
+      - id: PlushieMrSamuelGoose
+        weight: 2.0
+      - id: PlushieNazrinNya
+      - id: PlushieNazrinNyaCap
+      - id: PlushieSvarshikEva
+      - id: PlushieSvarshikEvaLarge
+    # Reserve edit end: Reserve Plushies
+    - id: PlushieSanabi  # Reserve edit: Reserve Plushies
+    - id: PlushieSynth  # Reserve edit: Upstream 20261020
+    # Reserve edit start: Halloween on Reserve
+    - !type:GroupSelector
+      children:
+      - id: PlushiePumpkin
+      - id: PlushieGhostBurger
+    # Reserve edit end: Halloween on Reserve
 
 # Weh!
 - type: entityTable

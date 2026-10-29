@@ -1,3 +1,3 @@
 ent-RandomHumanoidSpawnerSwatMedic = роль призрака - медик ОКГ
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = ОБР, Резерв, Адмем

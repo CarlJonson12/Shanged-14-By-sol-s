@@ -13,6 +13,7 @@ using Content.Shared.CombatMode;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Events;
 using Content.Shared.Damage.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Ensnaring.Components;
 using Content.Shared.Bed.Sleep;
@@ -142,7 +143,8 @@ public sealed class GargantuaSystem : EntitySystem
         var spec = new DamageSpecifier();
         spec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_bruteGroupId), -FixedPoint2.New(3));
         spec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_burnGroupId), -FixedPoint2.New(3));
-        _damageableSystem.TryChangeDamage(uid, spec, true);
+        // Heal all body parts, otherwise Woundmed puts the heal into a single random part
+        _damageableSystem.TryChangeDamage(uid, spec, true, targetPart: TargetBodyPart.All);
     }
 
     private bool TryGetVampireActionEvent<T>(VampireComponent vampire, string actionId, out T ev)

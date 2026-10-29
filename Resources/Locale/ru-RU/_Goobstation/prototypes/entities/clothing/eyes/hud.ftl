@@ -1,5 +1,5 @@
-ent-ShowHealthRelatedIcons = { "" }
-    .desc = { "" }
+ent-ShowHealthRelatedIcons = Показывать индикаторы здоровья
+    .desc = Показывать индикаторы здоровья на визоре.
 ent-ClothingEyesHudChrono = футуристичный визор
     .desc = Визор из будущего, способный отображать практически всё.
     .suffix = Хронолегионер

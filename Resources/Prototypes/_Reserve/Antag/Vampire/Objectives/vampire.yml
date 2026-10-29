@@ -202,3 +202,4 @@
       state: thralls_up
   - type: TargetObjective
     title: objective-vampire-thrall-obey-master-title
+  - type: RoleplayObjective # Roleplay objective, always counts as done. Without a progress component the objective is hidden

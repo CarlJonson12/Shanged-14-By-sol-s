@@ -108,6 +108,12 @@ public sealed partial class VampireComponent : Component
     /// </summary>
     public Dictionary<EntityUid, int> BloodDrunkFromTargets = new();
 
+    /// <summary>
+    /// Humanoid victims that counted towards progression when they were bitten (had a mind at that moment).
+    /// Used for full power, so a victim still counts if their player leaves the body later.
+    /// </summary>
+    public HashSet<EntityUid> ProgressionVictims = new();
+
     public int MaxBloodPerTarget = 200;
     public EntityUid? SpawnedClaws = null;
     [DataField]

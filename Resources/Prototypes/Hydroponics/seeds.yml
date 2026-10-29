@@ -1845,6 +1845,7 @@
     - FoodPumpkin
   mutationPrototypes:
     - bluePumpkin
+    - pumpkinKiller  # Reserve edit: Halloween on Reserve
   lifespan: 55
   maturation: 10
   production: 4

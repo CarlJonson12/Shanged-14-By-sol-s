@@ -14,6 +14,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.Examine;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Fluids.Components;
@@ -159,6 +160,8 @@ public sealed class HemomancerSystem : EntitySystem
         if (TryComp<WieldableComponent>(claws, out var wieldable) && _hands.IsHolding(uid, claws, out _))
             _wieldable.TryWield(claws, wieldable, uid);
 
+        _audio.PlayPvs(args.Sound, uid, AudioParams.Default.WithVolume(-2f));
+
         args.Handled = true;
     }
 
@@ -190,6 +193,8 @@ public sealed class HemomancerSystem : EntitySystem
 
         if (args.SpawnVisuals)
             SpawnTendrilVisuals(tileCoords, args.TendrilsVisualPrototype);
+
+        _audio.PlayPvs(args.Sound, tileCoords, AudioParams.Default.WithVolume(-2f));
 
         var delay = args.Delay < args.MinDelay ? args.MinDelay : args.Delay;
         var slowDuration = args.SlowDuration < args.MinSlowDuration ? args.MinSlowDuration : args.SlowDuration;
@@ -314,6 +319,8 @@ public sealed class HemomancerSystem : EntitySystem
             preventComp.Uid = args.Performer;
             Dirty(barrier, preventComp);
         }
+
+        _audio.PlayPvs(args.Sound, tileCoords, AudioParams.Default.WithVolume(-2f));
     }
 
     private void OnSanguinePool(EntityUid uid, VampireComponent comp, ref VampireSanguinePoolActionEvent args)
@@ -370,7 +377,8 @@ public sealed class HemomancerSystem : EntitySystem
         }
 
         Spawn(args.EnterEffectPrototype, Transform(poolEntity.Value).Coordinates);
-        _audio.PlayPvs(args.EnterSound, uid, AudioParams.Default.WithVolume(-2f));
+        // The original body is already in the paused map at this point, so play the sound on the pool
+        _audio.PlayPvs(args.EnterSound, poolEntity.Value, AudioParams.Default.WithVolume(-2f));
         _popup.PopupEntity(Loc.GetString("action-vampire-sanguine-pool-enter"), poolEntity.Value, poolEntity.Value);
         return true;
     }
@@ -650,7 +658,8 @@ public sealed class HemomancerSystem : EntitySystem
             var selfHealSpec = new DamageSpecifier();
             selfHealSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_bruteGroupId), -(healBrute * count));
             selfHealSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_burnGroupId), -(healBurn * count));
-            _damageableSystem.TryChangeDamage(uid, selfHealSpec, true);
+            // Heal all body parts, otherwise Woundmed puts the heal into a single random part
+            _damageableSystem.TryChangeDamage(uid, selfHealSpec, true, targetPart: TargetBodyPart.All);
 
             if (TryComp<StaminaComponent>(uid, out var stam))
                 _stamina.TakeStaminaDamage(uid, -healStamina * count, stam);

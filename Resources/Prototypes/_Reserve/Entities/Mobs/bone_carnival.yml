@@ -1,0 +1,623 @@
+# SPDX-FileCopyrightText: Made by Ceterai on GitHub.
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# Title: Bone Carnival
+
+# A collection of spooky-scary skeleton admemes brought by Orchi Dea to Reserve.
+
+
+
+
+
+# region PROTOTYPES
+
+
+
+
+
+# region Gear
+
+- type: startingGear
+  id: BoneCarnivalSkeletonGladiatorGear
+  equipment:
+    head: ClothingHeadHatGladiator
+    jumpsuit: ClothingUniformJumpsuitGladiator
+    pocket1: RitualDagger
+    id: VisitorPDA
+  inhand:
+  - Machete
+
+- type: startingGear
+  parent: CossackGear
+  id: BoneCarnivalSkeletonGetmanGear
+  equipment:
+    head: ClothingHeadHatHetmanHat
+    outerClothing: ClothingOuterArmorHoSExperimental
+  inhand:
+  - CaptainSabre
+  - WeaponRevolverPirate
+
+- type: startingGear
+  id: BoneCarnivalSkeletonCultistGear
+  equipment:
+    head: ClothingHeadHatHelmetAdept
+    outerClothing: ClothingOuterArmorAdept
+    shoes: ClothingShoesCult
+    id: VisitorPDA
+  inhand:
+  - RitualDagger
+
+- type: startingGear
+  id: BoneCarnivalSkeletonGentlemanGear
+  equipment:
+    head: ClothingHeadHatTophat
+    jumpsuit: ClothingUniformJumpsuitMusician
+    id: VisitorPDA
+  inhand:
+  - Cane
+
+- type: startingGear
+  id: BoneCarnivalSkeletonWebGear
+  equipment:
+    head: ClothingHeadHatHoodWinterWeb
+    outerClothing: ClothingOuterWinterWeb
+    jumpsuit: ClothingUniformJumpsuitWeb
+    shoes: ClothingShoesBootsWinterWeb
+    id: VisitorPDA
+
+- type: startingGear
+  id: BoneCarnivalSkeletonGhostGear
+  equipment:
+    outerClothing: ClothingOuterGhostSheet
+    id: VisitorPDA
+
+- type: startingGear
+  id: BoneCarnivalSkeletonWitchGear
+  equipment:
+    head: ClothingHeadHatWitch1
+    outerClothing: ClothingOuterSuitWitchRobes
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+    id: VisitorPDA
+  inhand:
+  - MagicBroomstickVehicleFolded
+
+- type: startingGear
+  id: BoneCarnivalSkeletonRapperGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCasualBlue
+    outerClothing: ClothingOuterCoatJacketLettermanRed
+    shoes: ClothingShoesFakeJordans
+    neck: ClothingNeckBling
+    head: ClothingHeadHatBizarreSoftFlipped
+    id: VisitorPDA
+  inhand:
+  - MicrophoneInstrument
+
+- type: startingGear
+  id: BoneCarnivalSkeletonWizardGear
+  equipment:
+    head: ClothingHeadHatWizard
+    outerClothing: ClothingOuterWizard
+    jumpsuit: ClothingUniformJumpsuitColorDarkBlue
+    shoes: ClothingShoesWizard
+    id: VisitorPDA
+
+- type: startingGear
+  parent: BasePirateGear
+  id: BoneCarnivalSkeletonFarEasternPirateGear
+  equipment:
+    head: ClothingHeadHatCasa
+    jumpsuit: ClothingUniformJumpsuitKimono
+    id: VisitorPDA
+  inhand:
+  - Cutlass
+
+- type: startingGear
+  id: BoneCarnivalSkeletonNunGear
+  equipment:
+    head: ClothingHeadHatHoodNunHood
+    outerClothing: ClothingOuterNunRobe
+    id: VisitorPDA
+
+- type: startingGear
+  id: BoneCarnivalSkeletonTemplarGear
+  equipment:
+    pocket1: ClothingHeadHelmetTemplar
+    jumpsuit: ClothingUniformJumpsuitColorBlack
+    outerClothing: ClothingOuterArmorTemplar
+    id: VisitorPDA
+  inhand:
+  - Claymore
+
+- type: startingGear
+  id: BoneCarnivalSkeletonKnightGear
+  equipment:
+    head: ClothingHeadHelmetBone
+    outerClothing: ClothingOuterArmorBone
+    pocket1: DaggerBone
+    id: VisitorPDA
+  inhand:
+  - WeaponBoneAxe
+
+- type: startingGear
+  id: BoneCarnivalSkeletonWehGear
+  equipment:
+    head: PlushieLizardJobMultiweh
+    jumpsuit: ClothingUniformJumpskirtColorGreen
+    neck: ClothingNeckCloakAdmin
+    gloves: ClothingHandsGlovesColorGreen
+    shoes: ClothingShoeSlippersLizard
+    id: VisitorPDA
+    pocket1: CrayonGreen
+    pocket2: TowelColorGreen
+  inhand:
+  - FoodSnackLollypopWeh
+
+- type: startingGear
+  id: BoneCarnivalSkeletonSanabiGear
+  equipment:
+    head: ClothingHeadSanabi
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorBlackAlt
+    neck: ClothingNeckCloakSanabi
+    gloves: ClothingHandsGlovesEnviroglovesBlack
+    shoes: ClothingShoesBootsCowboyBlackFilled
+    id: VisitorPDA
+  inhand:
+  - Sledgehammer
+
+- type: startingGear
+  id: BoneCarnivalSkeletonSnakeWarriorGear
+  equipment:
+    mask: ClothingMaskGasERT
+    jumpsuit: ClothingUniformJumpsuitMilitaryColorDarkGreen
+    outerClothing: ClothingOuterArmorHeavyGreen
+    neck: ClothingNeckScarfStripedSyndieGreen
+    gloves: ClothingHandsGlovesEnviroglovesBlack
+    shoes: ClothingShoesSwat
+    back: ClothingBackpackSatchel
+    belt: ClothingBeltMilitaryWebbing
+    id: VisitorPDA
+  inhand:
+  - EnergyKatana
+
+- type: startingGear
+  id: BoneCarnivalSkeletonPumpkinGear
+  equipment:
+    head: ClothingHeadHatPumpkin
+    jumpsuit: ClothingUniformJumpskirtColorOrange
+    neck: BedsheetOrange
+    shoes: ClothingShoesColorGreen
+    back: ClothingBackpackMessengerCentcomm
+    id: VisitorPDA
+  inhand:
+  - DrinkPumpkinBoomCan
+
+- type: startingGear
+  parent: SkeletonBiker
+  id: BoneCarnivalSkeletonGhostRiderGear
+  equipment:
+    head: ClothingHeadHatPumpkin
+
+# endregion Gear
+
+# region Entities
+
+- type: entity
+  id: MobSkeletonGladiator
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-gladiator-name
+    description: ghost-role-information-skeleton-gladiator-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonGladiatorGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonCossack
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-cossack-name
+    description: ghost-role-information-skeleton-cossack-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [CossackGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonGetman
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-getman-name
+    description: ghost-role-information-skeleton-getman-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonGetmanGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonCultist
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-cultist-name
+    description: ghost-role-information-skeleton-cultist-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonCultistGear]
+  - type: RandomHumanoidAppearance
+  - type: InputMover
+  - type: MobMover
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: HTN
+    rootTask:
+      task: SimpleHumanoidHostileCompound
+  - type: CombatMode
+
+- type: entity
+  id: MobSkeletonGentleman
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-gentleman-name
+    description: ghost-role-information-skeleton-gentleman-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonGentlemanGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonWeb
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-web-name
+    description: ghost-role-information-skeleton-web-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonWebGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonGhost
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-ghost-name
+    description: ghost-role-information-skeleton-ghost-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonGhostGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonWitch
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-witch-name
+    description: ghost-role-information-skeleton-witch-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonWitchGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonRapper
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-rapper-name
+    description: ghost-role-information-skeleton-rapper-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonRapperGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonWizard
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-wizard-name
+    description: ghost-role-information-skeleton-wizard-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonWizardGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonNinja
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-ninja-name
+    description: ghost-role-information-skeleton-ninja-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [SpaceNinjaGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonFarEasternPirate
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-far-eastern-pirate-name
+    description: ghost-role-information-skeleton-far-eastern-pirate-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonFarEasternPirateGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonPirateCaptain
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-pirate-captain-name
+    description: ghost-role-information-skeleton-pirate-captain-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [PirateCaptainGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonNun
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-nun-name
+    description: ghost-role-information-skeleton-nun-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonNunGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonTemplar
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-templar-name
+    description: ghost-role-information-skeleton-templar-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonTemplarGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonKnight
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-knight-name
+    description: ghost-role-information-skeleton-knight-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonKnightGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonWeh
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-weh-name
+    description: ghost-role-information-skeleton-weh-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonWehGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonHelldiver
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-helldiver-name
+    description: ghost-role-information-skeleton-helldiver-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [HelldiverGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonOuterCommander
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-outer-commander-name
+    description: ghost-role-information-skeleton-outer-commander-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [OuterCommanderGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonSnakeWarrior
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-snake-warrior-name
+    description: ghost-role-information-skeleton-snake-warrior-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonSnakeWarriorGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonSanabi
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-sanabi-name
+    description: ghost-role-information-skeleton-sanabi-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonSanabiGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonHECUOperative
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-hecu-operative-name
+    description: ghost-role-information-skeleton-hecu-operative-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [HECUOperativeGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonPumpkin
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-pumpkin-name
+    description: ghost-role-information-skeleton-pumpkin-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonPumpkinGear]
+  - type: RandomHumanoidAppearance
+
+- type: entity
+  id: MobSkeletonGhostRider
+  parent: MobSkeletonPerson
+  components:
+  - type: GhostRole
+    name: ghost-role-information-skeleton-ghost-rider-name
+    description: ghost-role-information-skeleton-ghost-rider-description
+    rules: ghost-role-information-freeagent-rules
+    mindRoles:
+    - MindRoleGhostRoleFreeAgent
+    raffle:
+      settings: default
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [BoneCarnivalSkeletonGhostRiderGear]
+  - type: RandomHumanoidAppearance
+
+# endregion Entities

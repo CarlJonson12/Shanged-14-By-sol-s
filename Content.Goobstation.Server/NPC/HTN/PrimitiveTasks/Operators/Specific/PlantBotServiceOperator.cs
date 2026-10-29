@@ -9,6 +9,7 @@ using Content.Server.NPC.HTN;
 using Content.Server.NPC.HTN.PrimitiveTasks;
 using Content.Shared.Chat;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Emag.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -20,8 +21,8 @@ namespace Content.Goobstation.Server.NPC.HTN.PrimitiveTasks.Operators.Specific;
 
 public sealed partial class PlantbotServiceOperator : HTNOperator
 {
-    [Dependency] private readonly IEntityManager _entMan = default!;
-    // [Dependency] private readonly IPrototypeManager _prototypeManager = default!; // Reserve edit: Fix warnings
+    [Dependency] private IEntityManager _entMan = default!;
+    // [Dependency] private IPrototypeManager _prototypeManager = default!; // Reserve edit: Fix warnings
 
     private ChatSystem _chat = default!;
     private SharedAudioSystem _audio = default!;

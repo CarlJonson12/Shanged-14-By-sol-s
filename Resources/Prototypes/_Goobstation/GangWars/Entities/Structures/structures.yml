@@ -14,7 +14,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 40
+        damage: 20
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -211,6 +211,20 @@
     currencyWhitelist:
     - GangPoint
 
+- type: constructionGraph
+  id: CrateGang
+  start: crate
+  graph:
+    - node: crate
+      entity: CrateGang
+
+- type: constructionGraph
+  id: GangDuffelBag
+  start: bag
+  graph:
+    - node: bag
+      entity: GangDuffelBag
+
 - type: damageModifierSet
   id: GangCrate
   flatReductions:
@@ -252,6 +266,14 @@
           !type:PhysShapeAabb
           bounds: "-0.4,-0.4,0.4,0.29"
         density: 600
+        mask:
+        - CrateMask
+        layer:
+        - BulletImpassable
+  - type: Construction # Doesn't seem like there's a better way to block deconstruction.
+    graph: CrateGang
+    node: crate
+    deconstructionTarget: null
   - type: GangCrate
   - type: EntityStorage
     capacity: 60
@@ -358,7 +380,7 @@
   id: GangDuffelBag
   parent: CrateGeneric
   name: gang duffel bag
-  description: A battered duffel bag with a suspicious bulge inside. Looks like it's been rigged. Can only be opened next to a gang loc ker.
+  description: A battered duffel bag with a suspicious bulge inside. Looks like it's been rigged.
   suffix: Gang
   components:
   - type: Icon
@@ -372,6 +394,10 @@
       map: ["enum.StorageVisualLayers.Base"]
   - type: Damageable
     damageModifierSet: GangCrate
+  - type: Construction
+    graph: GangDuffelBag
+    node: bag
+    deconstructionTarget: null
   - type: GangDuffelBag
   - type: EntityStorage
     capacity: 60

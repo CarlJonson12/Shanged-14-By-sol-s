@@ -1,5 +1,5 @@
-ent-BaseSubfloorAnchorStorage = { "" }
-    .desc = { "" }
+ent-BaseSubfloorAnchorStorage = хранилище под напольной плиткой
+    .desc = Небольшое вместилище для предметов, которое можно спрятать под напольной плиткой.
 ent-BaseSubfloorAnchorStorageAnchored = { ent-BaseSubfloorAnchorStorage }
     .desc = { ent-BaseSubfloorAnchorStorage.desc }
 ent-ClothingBackpackSatchelSmuggler = сумка контрабандиста

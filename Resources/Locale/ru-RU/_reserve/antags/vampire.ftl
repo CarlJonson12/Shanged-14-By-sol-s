@@ -4,13 +4,27 @@ alerts-vampire-blood-name = Кровавое опьянение
 alerts-vampire-blood-desc = Показывает, сколько крови вы выпили. Выпустите клыки и нажмите ЛКМ по цели, чтобы пить кровь.
 alerts-vampire-fed-name = Сытость кровью
 alerts-vampire-fed-desc = Текущая “сытость” кровью. Пейте кровь, чтобы не голодать.
+alerts-vampire-fangs-name = Клыки выпущены
+alerts-vampire-fangs-desc = Ваши клыки выпущены. Нажмите ЛКМ по цели, чтобы пить кровь.
+vampire-fangs-extended = Вы выпускаете клыки.
+vampire-fangs-extended-others = { CAPITALIZE(THE($vampire)) } обнажает острые клыки.
+vampire-fangs-retracted = Вы прячете клыки.
 
 roles-antag-vampire-name = Вампир
 roles-antag-vampire-description = Питайтесь экипажем. Выпустите клыки и пейте их кровь.
+roles-antag-vampire-thrall-name = Слуга вампира
+roles-antag-vampire-thrall-description = Подчиняйтесь своему хозяину-вампиру.
+role-subtype-vampire = Вампир
+role-subtype-vampire-thrall = Слуга вампира
+vampire-thrall-admin-note = хозяин: { $master }
+vampire-thrall-admin-note-other-roles = { $note }, также: { $roles }
 
 vampire-roundend-name = вампир
 
 vampire-drink-start = Вы вонзаете клыки в { CAPITALIZE(THE($target)) }.
+vampire-drink-start-target = { CAPITALIZE(THE($vampire)) } вонзает клыки в вашу шею!
+vampire-drink-start-others = { CAPITALIZE(THE($vampire)) } вонзает клыки в шею { THE($target) }!
+vampire-drink-no-progression = В этой крови нет разума. Она утоляет голод, но не делает вас сильнее.
 vampire-not-enough-blood = Недостаточно крови.
 vampire-mouth-covered = Ваш рот закрыт!
 vampire-drink-invalid-target = Нельзя пить кровь у вампиров и их треллов.
@@ -186,6 +200,16 @@ ent-VampireDecoyEntity = вампирская приманка
 ent-MobVampireSanguinePool = кровавый сгусток
     .desc = Разумная лужа вампирской крови.
 
+# Objectives
+ent-VampireSurviveObjective = Выжить
+    .desc = Доживите до конца смены.
+ent-VampireEscapeObjective = Сбежать
+    .desc = Улетите живым на эвакуационном шаттле.
+ent-VampireKillRandomPersonObjective = { ent-BaseKillObjective }
+    .desc = Устраните свою цель и убедитесь, что она не улетит живой.
+ent-VampireThrallObeyMasterObjective = Подчиняйтесь своему хозяину
+    .desc = Выполняйте приказы хозяина превыше всего.
+
 # endregion
 
 # region Действия
@@ -228,7 +252,7 @@ ent-ActionVampireShadowAnchor = Теневой якорь (20)
     .desc = Первое применение ставит маяк (2 мин). Повторное мгновенно возвращает к нему и расходует маяк.
 ent-ActionVampireShadowBoxing = Теневой бокс (50)
     .desc = Прикажите теневым летучим мышам избивать цель. Вы должны оставаться в пределах 4 тайлов.
-ent-ActionVampireDarkPassage = Темный проход (20)
+ent-ActionVampireDarkPassage = Тёмный проход (20)
     .desc = Телепортирует в выбранную точку через тени.
 ent-ActionVampireExtinguish = Погасить свет (0)
     .desc = Уничтожает источники света в радиусе 3 тайлов, давая 5 крови за каждый.
@@ -290,3 +314,6 @@ ent-VampireShadowSnare = теневая ловушка
     .desc = Почти невидимая ловушка из уплотненной тьмы.
 ent-VampireShadowSnareEnsnare = теневые щупальца
     .desc = Тёмные щупальца, сковывающие ноги.
+
+ent-Vampire = Вампир
+    .desc = { ent-BaseGameRule.desc }

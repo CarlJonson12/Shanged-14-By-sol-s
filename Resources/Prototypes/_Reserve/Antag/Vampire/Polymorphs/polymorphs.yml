@@ -5,7 +5,7 @@
   configuration:
     entity: MobVampireSanguinePool
     forced: true
-    inventory: Drop
+    inventory: None # Keep the gear on the original body so it comes back after reverting
     transferName: true
     transferDamage: true
     revertOnCrit: true

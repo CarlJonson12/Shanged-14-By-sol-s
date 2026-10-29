@@ -11,6 +11,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Damage.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.DoAfter;
 using Content.Goobstation.Maths.FixedPoint;
 using Content.Shared.Humanoid;
@@ -28,6 +29,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using System.Diagnostics.CodeAnalysis;
@@ -286,6 +288,24 @@ public sealed partial class VampireSystem : EntitySystem
 
         if (comp.ActionEntities.TryGetValue("ActionVampireToggleFangs", out var actionEntity) && _actions.GetAction(actionEntity) is { } action)
             _actions.SetToggled(action.AsNullable(), comp.FangsExtended);
+
+        // Draws bloody fangs on the vampire's face
+        _appearance.SetData(uid, VampireFangsVisuals.Extended, comp.FangsExtended);
+
+        // Make the fangs state obvious to the player: a popup and a HUD alert while they are extended
+        if (comp.FangsExtended)
+        {
+            _alerts.ShowAlert(uid, "VampireFangs");
+            _popup.PopupEntity(Loc.GetString("vampire-fangs-extended"), uid, uid);
+            _popup.PopupEntity(Loc.GetString("vampire-fangs-extended-others", ("vampire", Identity.Entity(uid, EntityManager))),
+                uid, Filter.PvsExcept(uid), true);
+        }
+        else
+        {
+            _alerts.ClearAlert(uid, "VampireFangs");
+            _popup.PopupEntity(Loc.GetString("vampire-fangs-retracted"), uid, uid);
+        }
+
         Dirty(uid, comp);
         args.Handled = true;
     }
@@ -398,9 +418,14 @@ public sealed partial class VampireSystem : EntitySystem
         if (_blood.TryModifyBloodLevel(target, -actualSipAmount * 2))
         {
             comp.DrunkBlood += (int)actualSipAmount;
-            comp.TotalBlood += (int)actualSipAmount;
 
-            RaiseLocalEvent(uid, new VampireProgressionChangedEvent());
+            // Only blood of player-controlled victims counts towards progression, so it can't be farmed on monkeys
+            if (IsProgressionTarget(target))
+            {
+                comp.TotalBlood += (int)actualSipAmount;
+                comp.ProgressionVictims.Add(target);
+                RaiseLocalEvent(uid, new VampireProgressionChangedEvent());
+            }
 
             if (!comp.BloodDrunkFromTargets.ContainsKey(target))
                 comp.BloodDrunkFromTargets[target] = 0;
@@ -418,7 +443,8 @@ public sealed partial class VampireSystem : EntitySystem
             baseHealSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_burnGroupId), -FixedPoint2.New(2));
             baseHealSpec += new DamageSpecifier(_proto.Index<DamageTypePrototype>(_poisonTypeId), -FixedPoint2.New(4));
             baseHealSpec += new DamageSpecifier(_proto.Index<DamageTypePrototype>(_oxyLossTypeId), -FixedPoint2.New(10));
-            _damageableSystem.TryChangeDamage(uid, baseHealSpec, true);
+            // Heal all body parts, otherwise Woundmed puts the heal into a single random part
+            _damageableSystem.TryChangeDamage(uid, baseHealSpec, true, targetPart: TargetBodyPart.All);
 
             RaiseLocalEvent(uid, new VampireBloodDrankEvent(target, actualSipAmount));
 
@@ -489,7 +515,23 @@ public sealed partial class VampireSystem : EntitySystem
         {
             comp.IsDrinking = true;
             if (showPopup)
+            {
                 _popup.PopupEntity(Loc.GetString("vampire-drink-start", ("target", Identity.Entity(target, EntityManager))), uid, uid);
+
+                // The bite is an attack, so the victim and everyone around should see it
+                _popup.PopupEntity(Loc.GetString("vampire-drink-start-target", ("vampire", Identity.Entity(uid, EntityManager))),
+                    target, target, Shared.Popups.PopupType.MediumCaution);
+                _popup.PopupEntity(Loc.GetString("vampire-drink-start-others",
+                        ("vampire", Identity.Entity(uid, EntityManager)),
+                        ("target", Identity.Entity(target, EntityManager))),
+                    uid,
+                    Filter.PvsExcept(uid).RemoveWhereAttachedEntity(e => e == target),
+                    true,
+                    Shared.Popups.PopupType.MediumCaution);
+
+                if (!IsProgressionTarget(target))
+                    _popup.PopupEntity(Loc.GetString("vampire-drink-no-progression"), uid, uid, Shared.Popups.PopupType.SmallCaution);
+            }
         }
     }
 
@@ -656,7 +698,8 @@ public sealed partial class VampireSystem : EntitySystem
             healSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_burnGroupId), -FixedPoint2.New(4));
             healSpec += new DamageSpecifier(_proto.Index<DamageTypePrototype>(_poisonTypeId), -FixedPoint2.New(4));
             healSpec += new DamageSpecifier(_proto.Index<DamageTypePrototype>(_oxyLossTypeId), -FixedPoint2.New(5));
-            _damageableSystem.TryChangeDamage(uid, healSpec, true);
+            // Heal all body parts, otherwise Woundmed puts the heal into a single random part
+            _damageableSystem.TryChangeDamage(uid, healSpec, true, targetPart: TargetBodyPart.All);
 
             if (remaining > 1)
                 Timer.Spawn(interval, () => DoHealTick(remaining - 1));
@@ -689,8 +732,8 @@ public sealed partial class VampireSystem : EntitySystem
     private void UpdateFullPower(EntityUid uid, VampireComponent comp)
     {
         int uniqueHumanoids = 0;
-        foreach (var kv in comp.BloodDrunkFromTargets.Keys)
-            if (Exists(kv) && HasComp<HumanoidAppearanceComponent>(kv))
+        foreach (var victim in comp.ProgressionVictims)
+            if (Exists(victim) && HasComp<HumanoidAppearanceComponent>(victim))
                 uniqueHumanoids++;
         comp.UniqueHumanoidVictims = uniqueHumanoids;
         var prev = comp.FullPower;

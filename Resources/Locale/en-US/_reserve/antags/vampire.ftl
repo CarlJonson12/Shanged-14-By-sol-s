@@ -5,13 +5,27 @@ alerts-vampire-blood-desc = Shows how much blood you've drunk. Extend your fangs
 
 alerts-vampire-fed-name = Blood Fullness
 alerts-vampire-fed-desc = Your current blood fullness. Drink blood to stay fed.
+alerts-vampire-fangs-name = Fangs Extended
+alerts-vampire-fangs-desc = Your fangs are extended. Left-click a target to drink their blood.
+vampire-fangs-extended = You extend your fangs.
+vampire-fangs-extended-others = {CAPITALIZE(THE($vampire))} bares sharp fangs.
+vampire-fangs-retracted = You retract your fangs.
 
 roles-antag-vampire-name = Vampire
 roles-antag-vampire-description = Feed on the crew. Extend your fangs and drink their blood.
+roles-antag-vampire-thrall-name = Vampire Thrall
+roles-antag-vampire-thrall-description = Obey your vampire master.
+role-subtype-vampire = Vampire
+role-subtype-vampire-thrall = Thrall
+vampire-thrall-admin-note = master: { $master }
+vampire-thrall-admin-note-other-roles = { $note }, also: { $roles }
 
 vampire-roundend-name = vampire
 
 vampire-drink-start = You sink your fangs into {CAPITALIZE(THE($target))}.
+vampire-drink-start-target = {CAPITALIZE(THE($vampire))} sinks their fangs into your neck!
+vampire-drink-start-others = {CAPITALIZE(THE($vampire))} sinks their fangs into {THE($target)}'s neck!
+vampire-drink-no-progression = This blood carries no mind. It sates your hunger, but won't make you stronger.
 
 vampire-not-enough-blood = Not enough blood.
 

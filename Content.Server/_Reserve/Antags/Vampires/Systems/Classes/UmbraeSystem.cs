@@ -10,6 +10,7 @@ using Content.Server.Temperature.Systems;
 using Content.Shared._Reserve.Antags.Vampires;
 using Content.Shared._Reserve.Antags.Vampires.Components;
 using Content.Shared._Reserve.Antags.Vampires.Components.Classes;
+using Content.Shared._Reserve.Examine;
 using Content.Shared.Alert;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -591,6 +592,10 @@ public sealed class UmbraeSystem : EntitySystem
 
         _popup.PopupEntity(Loc.GetString("action-vampire-shadow-anchor-installed"), uid, uid);
 
+        // The same action is used to return, so let it be pressed right away. The cooldown starts after returning
+        if (comp.ActionEntities.TryGetValue("ActionVampireShadowAnchor", out var actionEntity))
+            _actions.ClearCooldown(actionEntity);
+
         Timer.Spawn(args.AutoReturnDelay, () => AutoReturnToShadowAnchor(uid, expectedLoopId));
     }
 
@@ -760,6 +765,8 @@ public sealed class UmbraeSystem : EntitySystem
     private void OnFullPower(EntityUid uid, UmbraeComponent umbrae, VampireFullPowerAchievedEvent args)
     {
         _eye.SetDrawFov(uid, false);
+        // Without FOV the vampire sees through walls, so let it examine what it sees
+        EnsureComp<ExamineThroughWallsComponent>(uid);
         _popup.PopupEntity(Loc.GetString("vampire-umbrae-full-power-fov"), uid, uid, PopupType.Large);
     }
 }

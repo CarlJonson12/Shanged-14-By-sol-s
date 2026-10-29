@@ -1,3 +1,3 @@
 ent-RandomHumanoidVisitorAlien = роль призрака - посетитель, пришелец
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = Случайная внешность

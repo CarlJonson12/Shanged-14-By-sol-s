@@ -125,6 +125,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnMove = true,
             DistanceThreshold = 2,
+            FaceTarget = false, // Goob
         };
 
         if (!_doAfter.TryStartDoAfter(args))
@@ -154,6 +155,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnMove = true,
             DistanceThreshold = 2,
+            FaceTarget = false, // Goob
         };
 
         if (!_doAfter.TryStartDoAfter(args))
@@ -251,6 +253,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         // If it's a part of PVS departure then don't handle it.
         if (_timing.ApplyingState)
+            return;
+
+        if (_transferringInventory.Contains(args.Equipee)) // Goobstation
             return;
 
         _clothing.SetEquippedPrefix(toggleable, null);
@@ -352,7 +357,7 @@ public sealed class ToggleableClothingSystem : EntitySystem
             args.Cancel(); // Cancel original unequip, DoAfter will handle it
         }
         else
-            UnequipClothing(args.Unequipee, new Entity<ToggleableClothingComponent>(toggleable, toggleableComp), args.UnEquipTarget, args.Slot);
+            args.Cancel(); // Goob - attempt events are also raised by CanUnequip queries (e.g. building the context menu), so retracting here unequipped the part
     }
 
     private void OnRemoveAttached(Entity<AttachedClothingComponent> attached, ref ComponentRemove args)
@@ -392,6 +397,9 @@ public sealed class ToggleableClothingSystem : EntitySystem
 
         // Let containers worry about it.
         if (_timing.ApplyingState)
+            return;
+
+        if (_transferringInventory.Contains(args.Equipee)) // Goobstation
             return;
 
         if (comp.LifeStage > ComponentLifeStage.Running)
@@ -540,6 +548,22 @@ public sealed class ToggleableClothingSystem : EntitySystem
             }
         }
     }
+
+    // <Goobstation>
+    private readonly HashSet<EntityUid> _transferringInventory = new();
+
+    /// <summary>
+    ///     While set, deployed pieces stay deployed when unequipped, so a whole-inventory
+    ///     transfer (e.g. polymorph) carries the worn state over to the new body as-is.
+    /// </summary>
+    public void SetInventoryTransferring(EntityUid wearer, bool transferring)
+    {
+        if (transferring)
+            _transferringInventory.Add(wearer);
+        else
+            _transferringInventory.Remove(wearer);
+    }
+    // </Goobstation>
 
     private bool CanToggleClothing(EntityUid user, Entity<ToggleableClothingComponent> toggleable, bool multiple)
     {

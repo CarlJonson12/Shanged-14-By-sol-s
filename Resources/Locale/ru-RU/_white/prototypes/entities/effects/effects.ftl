@@ -1,4 +1,4 @@
 ent-ExperimentalTeleporterInEffect = экспериментальный телепорт Синдиката в действии
-    .desc = { "" }
+    .desc = { ent-EffectBase.desc }
 ent-ExperimentalTeleporterOutEffect = экспериментальный эффект отключения телепорта Синдиката
-    .desc = { "" }
+    .desc = { ent-EffectBase.desc }

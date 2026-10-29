@@ -46,6 +46,7 @@ ent-ClothingOuterNunRobe = монашеская ряса
     .desc = Максимум благочестия в этой звёздной системе.
 ent-ClothingOuterGhostSheet = простыня-призрак
     .desc = Страшно!!!
+    .suffix = Хэллоуин
 ent-ClothingOuterHospitalGown = больничный халат
     .desc = Изготовлена из шерсти забитых ягнят. За счёт жестокости она приобрела мягкость.
 ent-ClothingOuterFlannelRed = красная фланелевая куртка

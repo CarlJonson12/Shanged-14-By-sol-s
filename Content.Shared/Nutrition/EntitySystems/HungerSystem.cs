@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Reserve.Mood;
 using Content.Shared.Alert;
 using Content.Shared.CCVar;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Nutrition.Components;
@@ -63,6 +63,7 @@ public sealed class HungerSystem : EntitySystem
     private void OnShutdown(EntityUid uid, HungerComponent component, ComponentShutdown args)
     {
         _alerts.ClearAlertCategory(uid, component.HungerAlertCategory);
+        _movementSpeedModifier.RefreshMovementSpeedModifiers(uid); // Goob
     }
 
     private void OnRefreshMovespeed(EntityUid uid, HungerComponent component, RefreshMovementSpeedModifiersEvent args)
@@ -72,7 +73,7 @@ public sealed class HungerSystem : EntitySystem
             return;
         // Reserve edit end: Mood System port
 
-        if (component.CurrentThreshold > HungerThreshold.Starving)
+        if (component.CurrentThreshold > HungerThreshold.Starving || component.LifeStage > ComponentLifeStage.Running) // Goob
             return;
 
         if (_jetpack.IsUserFlying(uid))

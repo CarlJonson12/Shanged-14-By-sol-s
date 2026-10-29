@@ -81,6 +81,9 @@ namespace Content.Shared.Input
         public static readonly BoundKeyFunction PosingRotateNegative = "PosingRotateNegative";
         public static readonly BoundKeyFunction PosingRotatePositive = "PosingRotatePositive";
         // Reserve edit end: Posing system port
+        public static readonly BoundKeyFunction VoicePushToTalk = "VoicePushToTalk"; // Goobstation - Voice chat
+        public static readonly BoundKeyFunction VoicePushToTalkRadio = "VoicePushToTalkRadio"; // Goobstation - Voice chat
+        public static readonly BoundKeyFunction NamePeek = "NamePeek"; // Goob
 
         // Shitmed Change Start
         public static readonly BoundKeyFunction TargetHead = "TargetHead";

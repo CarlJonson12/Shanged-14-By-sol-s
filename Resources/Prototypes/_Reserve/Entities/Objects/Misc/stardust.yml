@@ -101,9 +101,8 @@
           max: 11
 
       # Mild effects - if taken one portion - like a pill.
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectSeeingRainbow
         type: Add
         time: 4
         conditions:

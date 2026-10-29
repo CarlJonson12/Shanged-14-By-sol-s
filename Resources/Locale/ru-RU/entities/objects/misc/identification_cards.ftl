@@ -120,21 +120,22 @@ ent-UniversalIDCard = универсальная ID карта
 
 ent-SyndicateIDCard = ID карта Синдиката
     .desc = { ent-IDCardStandard.desc }
-ent-SyndiOperativeIDCard = ID-карта оперативника Синдиката
+ent-SyndiOperativeIDCard = ID карта оперативника Синдиката
     .desc = { ent-SyndicateIDCard.desc }
-ent-SyndiCorpsmanIDCard = ID-карта медика Синдиката
+ent-SyndiCorpsmanIDCard = ID карта медика Синдиката
     .desc = { ent-SyndiOperativeIDCard.desc }
-ent-SyndiCommanderIDCard = ID-карта командира Синдиката
+ent-SyndiCommanderIDCard = ID карта командира Синдиката
     .desc = { ent-SyndiOperativeIDCard.desc }
 
 ent-AgentIDCard = { ent-PassengerIDCard }
     .desc = { ent-PassengerIDCard.desc }
     .suffix = Агентская
 ent-NukieAgentIDCard = ID карта пассажира
-    .suffix = Оперативники
-
     .desc = { ent-AgentIDCard.desc }
+    .suffix = Ядерные оперативники
+
 ent-PirateIDCard = ID карта пирата
     .desc = { ent-IDCardStandard.desc }
-ent-XenoborgIDCard = ID-карта ксеноборг
+
+ent-XenoborgIDCard = ID карта ксеноборга
     .desc = { ent-IDCardStandard.desc }

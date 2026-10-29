@@ -1,3 +1,6 @@
-ent-SpawnPointPirates = { ent-BaseAntagSpawner }
-    .desc = { ent-BaseAntagSpawner.desc }
+ent-SpawnPointPirates = точка появления роли призрака
+    .desc = Разместите на карте, чтобы тут появлялись новые пираты.
     .suffix = Пират
+ent-SpawnPointPirateCaptain = точка появления роли призрака
+    .desc = Разместите на карте, чтобы тут появлялся капитан пиратов.
+    .suffix = Пират, Капитан

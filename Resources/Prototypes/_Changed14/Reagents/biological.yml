@@ -14,13 +14,23 @@
         prototype: FurryMorph
         conditions:
         - !type:ReagentCondition
-          reagent: FurryJuiceWhite
-          min: 2
+            reagent: FurryJuiceWhite
+            min: 2
 
 - type: reagent
   id: FurryJuiceBlack
   parent: FurryJuiceWhite
   color: "#000000"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.25
+      effects:
+      - !type:Polymorph
+        prototype: FurryMorph
+        conditions:
+        - !type:ReagentCondition
+            reagent: FurryJuiceBlack
+            min: 2  
 
 - type: entity
   parent: DrinkGlass

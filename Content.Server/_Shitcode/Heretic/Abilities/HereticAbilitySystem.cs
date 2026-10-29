@@ -82,10 +82,11 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
     [Dependency] private readonly SharedBodySystem _body = default!;
     // [Dependency] private readonly PhysicsSystem _phys = default!; // Reserve edit: Fix warnings
     [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly Content.Shared.StatusEffectNew.StatusEffectsSystem _statusNew = default!; // Reserve edit: rainbow status effect migration
     [Dependency] private readonly ThrowingSystem _throw = default!;
     [Dependency] private readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] private readonly StationSystem _station = default!;
-    [Dependency] private readonly IMapManager _mapMan = default!;
+    [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly IComponentFactory _compFactory = default!;
     [Dependency] private readonly ProtectiveBladeSystem _pblade = default!;
@@ -312,7 +313,7 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
             var isOnStation = targetStation != null && targetStation == ownStation;
 
             var ang = Angle.Zero;
-            if (_mapMan.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
+            if (_mapSystem.TryFindGridAt(_transform.GetMapCoordinates(Transform(uid)), out var grid, out var _))
                 ang = Transform(grid).LocalRotation;
 
             var vector = targetMapCoords.Position - ourMapCoords.Position;
@@ -554,7 +555,7 @@ public sealed partial class HereticAbilitySystem : SharedHereticAbilitySystem
                 _statusEffect.TryRemoveStatusEffect(uid, "SlowedDown", status);
                 _statusEffect.TryRemoveStatusEffect(uid, "BlurryVision", status);
                 _statusEffect.TryRemoveStatusEffect(uid, "TemporaryBlindness", status);
-                _statusEffect.TryRemoveStatusEffect(uid, "SeeingRainbows", status);
+                _statusNew.TryRemoveStatusEffect(uid, "StatusEffectSeeingRainbow"); // Reserve edit: rainbow status effect migration
             }
         }
     }

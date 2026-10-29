@@ -1,5 +1,5 @@
-ent-SurgeryBase = { "" }
-    .desc = { "" }
+ent-SurgeryBase = Хирургическая операция
+    .desc = Пошаговая медицинская процедура.
 ent-SurgeryOpenIncision = Открыть разрез
     .desc = { ent-SurgeryBase.desc }
 ent-SurgeryStopBloodOutput = Остановить постоянный выброс крови

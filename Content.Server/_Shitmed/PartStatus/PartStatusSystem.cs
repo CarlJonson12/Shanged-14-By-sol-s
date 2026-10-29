@@ -25,6 +25,8 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Verbs;
 // using Robust.Shared.Utility; // Reserve edit: Fix warnings
 using Content.Shared.HealthExaminable;
+using Robust.Shared.Prototypes;
+using Content.Shared.Damage.Components;
 
 namespace Content.Server._Shitmed.PartStatus;
 
@@ -79,7 +81,7 @@ public sealed class PartStatusSystem : EntitySystem
 
         _chat.ChatMessageToOne(
             ChatChannel.Emotes,
-            text.ToMarkup(),
+            text.ToString(),  // Reserve edit: Part Status and Chemicals show
             text.ToMarkup(),
             EntityUid.Invalid,
             false,
@@ -108,7 +110,7 @@ public sealed class PartStatusSystem : EntitySystem
             Category = VerbCategory.Examine,
             Disabled = !detailsRange,
             Message = detailsRange ? null : Loc.GetString("health-examinable-verb-disabled"),
-            Icon = new SpriteSpecifier.Texture(new ("/Textures/Interface/VerbIcons/rejuvenate.svg.192dpi.png"))
+            Icon = new SpriteSpecifier.Texture(new("/Textures/Interface/VerbIcons/rejuvenate.svg.192dpi.png"))
         };
 
         args.Verbs.Add(verb);
@@ -210,7 +212,18 @@ public sealed class PartStatusSystem : EntitySystem
             titlestring += "-styleless";
         }
 
-        message.AddText(Loc.GetString(titlestring, ("entity", Identity.Name(entity, EntityManager))));
+        // Reserve edit start: Part Status and Chemicals show
+        // message.AddText(Loc.GetString(titlestring, ("entity", Identity.Name(entity, EntityManager))));
+        var title = Loc.GetString(titlestring, ("entity", styling
+            ? FormattedMessage.EscapeText(Identity.Name(entity, EntityManager))
+            : Identity.Name(entity, EntityManager)));
+
+        if (styling)
+            message.AddMarkupPermissive(title);
+        else
+            message.AddText(title);
+        // Reserve edit end: Part Status and Chemicals show
+
         message.PushNewline();
         AddLine(message);
         CreateBodyPartMessage(partStatusSet, entity == examiner, ref message, !styling);
@@ -255,10 +268,17 @@ public sealed class PartStatusSystem : EntitySystem
                 ? localizedPart
                 : partStatus.PartName;
 
-            message.AddText("    " + Loc.GetString(locString,
+            var line = Loc.GetString(locString,  // Reserve edit: Part Status and Chemicals show
                 ("possessive", possessive),
                 ("part", partName),
-                ("status", statusDescription)));
+                ("status", statusDescription));  // Reserve edit: Part Status and Chemicals show
+
+            // Reserve edit start: Part Status and Chemicals show
+            if (styleless)
+                message.AddText("    " + line);
+            else
+                message.AddMarkupPermissive("    " + line);
+            // Reserve edit end: Part Status and Chemicals show
             // Reserve edit end: localization #359
 
             message.PushNewline();

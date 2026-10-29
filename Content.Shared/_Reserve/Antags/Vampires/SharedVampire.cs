@@ -15,6 +15,16 @@ public enum VampireVisualLayers : byte
     Digit4,
 }
 
+/// <summary>
+/// Appearance data for the extended fangs drawn on the vampire's face
+/// </summary>
+[Serializable, NetSerializable]
+public enum VampireFangsVisuals : byte
+{
+    Extended,
+    Layer,
+}
+
 [Serializable, NetSerializable]
 public sealed partial class VampireClassClosedBuiMsg : BoundUserInterfaceMessage { }
 

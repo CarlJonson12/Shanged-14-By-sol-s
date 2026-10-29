@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 
 using System.Linq;
+using Content.Server._Reserve.Administration;
 using Content.Server._Reserve.Antags.Vampires.Components;
 using Content.Goobstation.Common.Religion;
 using Content.Shared._Reserve.Antags.Vampires;
@@ -12,6 +13,7 @@ using Content.Shared._Starlight.CollectiveMind;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
+using Content.Shared._Shitmed.Targeting;
 using Content.Shared.DoAfter;
 using Content.Shared.Flash;
 using Content.Goobstation.Maths.FixedPoint;
@@ -22,6 +24,8 @@ using Content.Shared.Mindshield.Components;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Roles;
+using Content.Shared.Roles.Components;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Content.Shared.Stealth.Components;
@@ -40,6 +44,7 @@ namespace Content.Server._Reserve.Antags.Vampires.Systems;
 public sealed class DantalionSystem : EntitySystem
 {
     private const string ThrallObeyMasterObjectiveId = "VampireThrallObeyMasterObjective";
+    private static readonly EntProtoId<MindRoleComponent> _thrallMindRole = "MindRoleVampireThrall";
 
     private static readonly ProtoId<DamageGroupPrototype> _bruteGroupId = "Brute";
     private static readonly ProtoId<DamageGroupPrototype> _burnGroupId = "Burn";
@@ -52,6 +57,7 @@ public sealed class DantalionSystem : EntitySystem
     [Dependency] private readonly ObjectivesSystem _objectives = default!;
     [Dependency] private readonly Content.Shared.Mind.SharedMindSystem _mind = default!;
     [Dependency] private readonly TargetObjectiveSystem _targetObjectives = default!;
+    [Dependency] private readonly SharedRoleSystem _role = default!;
     [Dependency] private readonly VampireSystem _vampire = default!;
     [Dependency] private readonly Content.Server.Actions.ActionsSystem _actions = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -76,6 +82,7 @@ public sealed class DantalionSystem : EntitySystem
         SubscribeLocalEvent<DantalionComponent, VampireEnthrallActionEvent>(OnEnthrall);
         SubscribeLocalEvent<DantalionComponent, VampireEnthrallDoAfterEvent>(OnEnthrallDoAfter);
         SubscribeLocalEvent<VampireThrallComponent, ComponentShutdown>(OnThrallShutdown);
+        SubscribeLocalEvent<VampireThrallComponent, GetAdminAntagNoteEvent>(OnThrallAdminNote);
         SubscribeLocalEvent<DantalionComponent, ComponentShutdown>(OnDantalionShutdown);
 
         SubscribeLocalEvent<DantalionComponent, VampirePacifyActionEvent>(OnPacify);
@@ -229,6 +236,7 @@ public sealed class DantalionSystem : EntitySystem
         dantalion.ThrallSlotsUsed++;
 
         TryAssignThrallObeyObjective(uid, target);
+        TryAddThrallMindRole(target);
 
         if (TryComp<CollectiveMindComponent>(target, out var cmComp))
             _collectiveMind.UpdateCollectiveMind(target, cmComp);
@@ -249,11 +257,68 @@ public sealed class DantalionSystem : EntitySystem
             return;
 
         _targetObjectives.SetTarget(objective.Value, masterMindId);
+        // The title was built before the target was set, so rebuild it with the master's name
+        _targetObjectives.SetName(objective.Value);
         _mind.AddObjective(thrallMindId, thrallMind, objective.Value);
+    }
+
+    // Mind role makes the thrall show up as an antag (e.g. in the admin overlay)
+    private void TryAddThrallMindRole(EntityUid thrall)
+    {
+        if (!_mind.TryGetMind(thrall, out var mindId, out var mind)
+            || _role.MindHasRole<VampireThrallRoleComponent>(mindId))
+            return;
+
+        _role.MindAddRole(mindId, _thrallMindRole, mind);
+    }
+
+    // Shows admins whose thrall this is, in case there are several vampires
+    private void OnThrallAdminNote(Entity<VampireThrallComponent> ent, ref GetAdminAntagNoteEvent args)
+    {
+        if (ent.Comp.Master is not { } master || !Exists(master))
+            return;
+
+        var note = Loc.GetString("vampire-thrall-admin-note", ("master", MetaData(master).EntityName));
+
+        // Admin UI shows only the latest role, so list the other antag roles the thrall still has (e.g. a traitor)
+        var otherRoles = GetOtherAntagRoleNames(ent);
+        if (otherRoles.Count > 0)
+            note = Loc.GetString("vampire-thrall-admin-note-other-roles", ("note", note), ("roles", string.Join(", ", otherRoles)));
+
+        args.Note = note;
+    }
+
+    private List<string> GetOtherAntagRoleNames(EntityUid thrall)
+    {
+        var names = new List<string>();
+        if (!_mind.TryGetMind(thrall, out _, out var mind))
+            return names;
+
+        foreach (var role in mind.MindRoleContainer.ContainedEntities)
+        {
+            if (HasComp<VampireThrallRoleComponent>(role)
+                || !TryComp<MindRoleComponent>(role, out var roleComp)
+                || !roleComp.Antag)
+                continue;
+
+            string? name = null;
+            if (roleComp.Subtype is { } subtype)
+                name = Loc.GetString(subtype);
+            else if (_proto.TryIndex(roleComp.AntagPrototype, out var antag))
+                name = Loc.GetString(antag.Name);
+
+            if (name != null && !names.Contains(name))
+                names.Add(name);
+        }
+
+        return names;
     }
 
     private void OnThrallShutdown(EntityUid uid, VampireThrallComponent component, ComponentShutdown args)
     {
+        if (_mind.TryGetMind(uid, out var mindId, out _))
+            _role.MindRemoveRole<VampireThrallRoleComponent>(mindId);
+
         if (component.Master is not { } master || !TryComp(master, out DantalionComponent? dantalion)
             || !dantalion.Thralls.Remove(uid))
             return;
@@ -367,7 +432,8 @@ public sealed class DantalionSystem : EntitySystem
             healSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_bruteGroupId), -FixedPoint2.New(3));
             healSpec += new DamageSpecifier(_proto.Index<DamageGroupPrototype>(_burnGroupId), -FixedPoint2.New(3));
             healSpec += new DamageSpecifier(_proto.Index<DamageTypePrototype>(_asphyxiationTypeId), -FixedPoint2.New(5));
-            _damageableSystem.TryChangeDamage(thrall, healSpec, true);
+            // Heal all body parts, otherwise Woundmed puts the heal into a single random part
+            _damageableSystem.TryChangeDamage(thrall, healSpec, true, targetPart: TargetBodyPart.All);
         }
     }
 

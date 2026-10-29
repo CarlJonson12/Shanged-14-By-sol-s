@@ -58,3 +58,11 @@
     state: hudblood_rush
   name: alerts-vampire-blood-rush-name
   description: alerts-vampire-blood-rush-desc
+
+- type: alert
+  id: VampireFangs
+  icons:
+  - sprite: _Reserve/Vampire/actions_vampire.rsi
+    state: fangs_extended
+  name: alerts-vampire-fangs-name
+  description: alerts-vampire-fangs-desc

@@ -214,6 +214,7 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.SmartEquipPocket2);
             AddButton(ContentKeyFunctions.SmartEquipSuitStorage);
             AddButton(ContentKeyFunctions.SmartEquipBack); // Goobstation - Equip To Back
+            AddButton(ContentKeyFunctions.NamePeek); // Goob
             AddButton(ContentKeyFunctions.OpenBackpack);
             AddButton(ContentKeyFunctions.OpenBelt);
             AddButton(ContentKeyFunctions.ThrowItemInHand);
@@ -238,6 +239,8 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(ContentKeyFunctions.FocusConsoleChat);
             AddButton(ContentKeyFunctions.CycleChatChannelForward);
             AddButton(ContentKeyFunctions.CycleChatChannelBackward);
+            AddButton(ContentKeyFunctions.VoicePushToTalk); // Goobstation - Voice chat
+            AddButton(ContentKeyFunctions.VoicePushToTalkRadio); // Goobstation - Voice chat
             AddButton(ContentKeyFunctions.OpenCharacterMenu);
             AddButton(ContentKeyFunctions.OpenCraftingMenu);
             AddButton(ContentKeyFunctions.OpenGuidebook);

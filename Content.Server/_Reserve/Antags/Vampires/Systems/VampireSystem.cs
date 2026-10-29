@@ -73,6 +73,9 @@ public sealed partial class VampireSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly FlammableSystem _flammable = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly Content.Shared.Mind.SharedMindSystem _mind = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     private ISawmill? _sawmill;
     private static readonly ProtoId<DamageGroupPrototype> _bruteGroupId = "Brute";
@@ -119,7 +122,11 @@ public sealed partial class VampireSystem : EntitySystem
                 continue;
 
             comp.NextUpdate = _timing.CurTime + comp.UpdateDelay;
-            ProcessBloodDecay(uid, comp);
+
+            // Dead vampires don't get hungry
+            if (!_mobState.IsDead(uid))
+                ProcessBloodDecay(uid, comp);
+
             HandleHolyWater(uid, comp);
             HandleHolyPlace(uid, comp);
         }
@@ -325,6 +332,13 @@ public sealed partial class VampireSystem : EntitySystem
 
         return _turf.IsSpace(tileRef);
     }
+
+    /// <summary>
+    /// Whether blood from this victim counts towards vampire progression.
+    /// Only victims with a mind (players) count, mindless mobs like monkeys from cubes only feed the vampire.
+    /// </summary>
+    public bool IsProgressionTarget(EntityUid target)
+        => _mind.TryGetMind(target, out _, out _);
 
     private bool ProcessBloodDecay(EntityUid uid, VampireComponent comp)
     {

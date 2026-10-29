@@ -23,6 +23,7 @@ public sealed class VampiricClawsSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedBloodstreamSystem _bloodstream = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
+    [Dependency] private readonly VampireSystem _vampire = default!;
 
     public override void Initialize()
     {
@@ -56,16 +57,25 @@ public sealed class VampiricClawsSystem : EntitySystem
             return;
 
         var bloodGained = 0;
+        var progressionGained = 0;
         foreach (var hitEntity in args.HitEntities)
-            if (HasComp<HumanoidAppearanceComponent>(hitEntity)
-                && TryComp<BloodstreamComponent>(hitEntity, out var victimBlood)
-                && _bloodstream.TryModifyBloodLevel((hitEntity, victimBlood), -ent.Comp.BloodPerHit))
-                bloodGained += ent.Comp.BloodPerHit;
+        {
+            if (!HasComp<HumanoidAppearanceComponent>(hitEntity)
+                || !TryComp<BloodstreamComponent>(hitEntity, out var victimBlood)
+                || !_bloodstream.TryModifyBloodLevel((hitEntity, victimBlood), -ent.Comp.BloodPerHit))
+                continue;
+
+            bloodGained += ent.Comp.BloodPerHit;
+
+            // Mindless mobs only feed the vampire, they don't give progression
+            if (_vampire.IsProgressionTarget(hitEntity))
+                progressionGained += ent.Comp.BloodPerHit;
+        }
 
         if (bloodGained > 0 && TryComp<VampireComponent>(args.User, out var vamp))
         {
             vamp.DrunkBlood += bloodGained;
-            vamp.TotalBlood += bloodGained;
+            vamp.TotalBlood += progressionGained;
 
             vamp.BloodFullness = MathF.Min(vamp.MaxBloodFullness, vamp.BloodFullness + bloodGained);
             Dirty(args.User, vamp);

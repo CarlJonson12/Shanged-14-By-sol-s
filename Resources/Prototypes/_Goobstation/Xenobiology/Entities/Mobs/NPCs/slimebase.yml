@@ -193,6 +193,9 @@
       adult:
         sprite: _Goobstation/Xenobiology/Mobs/slimesAdult.rsi
         displayName: mob-growth-display-adult # Reserve edit: localization-fix
+  - type: EatToGrow  # Reserve edit: Chonkers! - Goobstation Eat To Grow System
+    growth: 0.05
+    maxGrowth: 1.5
 
 - type: entity
   parent: MobSlimeXenobioBaby
@@ -213,6 +216,9 @@
       adult:
         sprite: _Goobstation/Xenobiology/Mobs/slimesAdult.rsi
         displayName: mob-growth-display-adult # Reserve edit: localization-fix
+  - type: EatToGrow  # Reserve edit: Chonkers! - Goobstation Eat To Grow System
+    growth: 0.05
+    maxGrowth: 1.25
 
 - type: entity
   abstract: true

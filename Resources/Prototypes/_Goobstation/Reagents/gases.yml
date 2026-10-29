@@ -37,7 +37,7 @@
           types:
             Asphyxiation: 10
             Poison: 2.5
-      - !type:GenericStatusEffect
+      - !type:ModifyStatusEffect # Reserve edit: Fix overlay narcotics
         conditions:
         - !type:ReagentCondition
           reagent: BZ
@@ -47,8 +47,7 @@
           - Slime
           - Hydrakin # Go fuck yourself
           inverted: true
-        key: SeeingRainbows
-        component: SeeingRainbows
+        effectProto: StatusEffectSeeingRainbow # Reserve edit: Fix overlay narcotics
         type: Add
         time: 150
       - !type:Emote
@@ -155,7 +154,7 @@
           types:
             Cellular: -0.5
             Poison: -2.0
-      - !type:GenericStatusEffect
+      - !type:ModifyStatusEffect # Reserve edit: Fix overlay narcotics
         conditions:
         - !type:ReagentCondition
           reagent: BZ
@@ -164,8 +163,7 @@
           type:
           - Slime
           - Hydrakin # Go fuck yourself
-        key: SeeingRainbows
-        component: SeeingRainbows
+        effectProto: StatusEffectSeeingRainbow # Reserve edit: Fix overlay narcotics
         type: Add
         time: 150
       - !type:Emote

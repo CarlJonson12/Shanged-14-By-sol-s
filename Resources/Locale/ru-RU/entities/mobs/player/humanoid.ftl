@@ -1,10 +1,10 @@
 ent-RandomHumanoidSpawnerDeathSquad = роль призрака - оперативник эскадрона смерти
     .suffix = ОБР, Эскадрон смерти
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
 
 ent-RandomHumanoidSpawnerERTLeader = роль призрака - лидер ОБР
     .suffix = ОБР, Базовый
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
 ent-RandomHumanoidSpawnerERTLeaderEVA = { ent-RandomHumanoidSpawnerERTLeader }
     .suffix = ОБР, Бронескафандр
     .desc = { ent-RandomHumanoidSpawnerERTLeader.desc }
@@ -72,18 +72,18 @@ ent-RandomHumanoidSpawnerERTMedicalArmed = { ent-RandomHumanoidSpawnerERTMedical
     .desc = Вооружен Лектером, 4 запасных магазина разного типа.
 
 ent-RandomHumanoidSpawnerCBURNUnit = роль призрака - агент РХБЗЗ
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = ОБР
 
 ent-RandomHumanoidSpawnerCentcomOfficial = роль призрака - представитель ЦентКом
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
 
 ent-RandomHumanoidSpawnerSyndicateAgent = роль призрака - агент Синдиката
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
 ent-RandomHumanoidSpawnerNukeOp = роль призрака - ядерный оперативник
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = Синдикат
 
 ent-RandomHumanoidSpawnerCluwne = роль призрака - клувень
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = Клувень

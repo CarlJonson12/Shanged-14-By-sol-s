@@ -13,3 +13,10 @@
   icon:
     sprite: _Reserve/Vampire/actions_vampire.rsi
     state: fangs_extended
+
+- type: antag
+  id: VampireThrall
+  name: roles-antag-vampire-thrall-name
+  antagonist: true
+  setPreference: false
+  objective: roles-antag-vampire-thrall-description

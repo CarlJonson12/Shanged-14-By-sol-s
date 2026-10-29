@@ -1,2 +1,4 @@
+ent-AlertSpriteView = { "" }
+    .desc = { "" }
 ent-AlertEssenceSpriteView = { "" }
     .desc = { "" }

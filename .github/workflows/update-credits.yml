@@ -1,15 +1,15 @@
 # SPDX-License-Identifier: AGPL-3.0-or-later
 
 name: Update Contrib and Patreons in credits
-
+concurrency: commit_action
 on:
   workflow_dispatch:
   # schedule:
   #   - cron: 0 0 * * 0
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+env:
+  GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}
+  PR_NUMBER: ${{ github.event.number }}
 
 jobs:
   get_credits:
@@ -23,7 +23,13 @@ jobs:
           token: ${{ secrets.BOT_TOKEN }}
           ref: "${{ vars.CHANGELOG_BRANCH }}"
 
-      - name: Get this week's Contributors
+      - name: Setup Git
+        run: |
+          git config --global user.name "${{ vars.CHANGELOG_USER }}"
+          git config --global user.email "${{ vars.CHANGELOG_EMAIL }}"
+        shell: bash
+
+      - name: Get contributors
         shell: pwsh
         env:
           GITHUB_TOKEN: ${{ secrets.BOT_TOKEN }}

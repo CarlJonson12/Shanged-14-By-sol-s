@@ -3,7 +3,7 @@
 ent-LostFrontierSalvagerSpawner = спавнер - потерявшийся утилизатор Фронтира
     .desc = { ent-MarkerBase.desc }
 ent-RandomHumanoidLostFrontierSalvager = роль призрака - потерявшийся утилизатор Фронтира
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
 
 # Базовые тела
 
@@ -49,6 +49,9 @@ ent-MobYowieRandom = { ent-MobYowie }
 ent-MobVoxRandom = { ent-MobVox }
     .suffix = Случайная внешность, { species-name-vox }
     .desc = { ent-MobVox.desc }
+ent-MobHydrakinRandom = { ent-MobHydrakin }
+    .suffix = Случайная внешность, { species-name-hydrakin }
+    .desc = { ent-MobHydrakin.desc }
 ent-MobShadowkinRandom = { ent-MobShadowkin }
     .suffix = Случайная внешность, { species-name-shadowkin }
     .desc = { ent-MobShadowkin.desc }
@@ -108,8 +111,9 @@ ent-RandomHumanoidSpawnerERTMedicalEVANoReq = { ent-RandomHumanoidSpawnerERTMedi
     .suffix = { ent-RandomHumanoidSpawnerERTMedicalEVA.suffix }, Нет требований
 
 ent-RandomHumanoidSpawnerCBURNUnitNoReq = { ent-RandomHumanoidSpawnerCBURNUnit }
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
     .suffix = { ent-RandomHumanoidSpawnerCBURNUnit.suffix }, Нет требований
 
 ent-RandomHumanoidGreyTider = роль призрака - грейтайдер
-    .desc = { "" }
+    .desc = { ent-MobHuman.desc }
+    .suffix = Грейтайд

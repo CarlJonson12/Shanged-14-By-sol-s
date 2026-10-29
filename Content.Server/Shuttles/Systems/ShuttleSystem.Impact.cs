@@ -23,6 +23,7 @@ using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 // using System.Numerics; // Reserve edit: Fix warnings
+using Content.Shared.Damage.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -154,8 +155,8 @@ public sealed partial class ShuttleSystem
                 continue;
 
             // Convert the collision point directly to tile indices
-            var ourTile = new Vector2i((int)Math.Floor(ourPoint.X / ourGrid.TileSize), (int)Math.Floor(ourPoint.Y / ourGrid.TileSize));
-            var otherTile = new Vector2i((int)Math.Floor(otherPoint.X / otherGrid.TileSize), (int)Math.Floor(otherPoint.Y / otherGrid.TileSize));
+            var ourTile = new Vector2i((int) Math.Floor(ourPoint.X / ourGrid.TileSize), (int) Math.Floor(ourPoint.Y / ourGrid.TileSize));
+            var otherTile = new Vector2i((int) Math.Floor(otherPoint.X / otherGrid.TileSize), (int) Math.Floor(otherPoint.Y / otherGrid.TileSize));
 
             var ourMass = GetRegionMass(args.OurEntity, ourGrid, ourTile, _impactRadius, out var ourTiles);
             var otherMass = GetRegionMass(args.OtherEntity, otherGrid, otherTile, _impactRadius, out var otherTiles);
@@ -398,7 +399,7 @@ public sealed partial class ShuttleSystem
                     damageSpec.DamageDict["Blunt"] = scaledDamage;
                     damageSpec.DamageDict["Structural"] = scaledDamage * _structuralDamage;
 
-                    _damageSys.TryChangeDamage(localEnt, damageSpec, damageable: damageable);
+                    _damageSys.ChangeDamage((localEnt, damageable), damageSpec);
                 }
                 // might've been destroyed
                 if (TerminatingOrDeleted(localEnt) || EntityManager.IsQueuedForDeletion(localEnt))
@@ -409,7 +410,7 @@ public sealed partial class ShuttleSystem
 
                 // no breaking tiles under walls that haven't been destroyed
                 if ((physics.BodyType & BodyType.Static) != 0
-                    && (physics.CollisionLayer & (int)CollisionGroup.Impassable) != 0)
+                    && (physics.CollisionLayer & (int) CollisionGroup.Impassable) != 0)
                 {
                     canBreakTile = false;
                 }

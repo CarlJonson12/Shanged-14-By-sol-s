@@ -19,7 +19,7 @@ reagent-name-stardust-label = улыбнись~
 reagent-name-stardust-goddess-shared-suffix = Коктейль Богини, { reagent-name-stardust-shared-suffix }
 mood-effect-stardust = Я чувствую, как звёздная пыль наполняет меня жизнью!
 
-ent-StardustSeeds = пакет семян звёздной орхидеи
+ent-StardustSeeds = пакет семян (звёздная орхидея)
     .desc = { ent-SeedBase.desc }
     .suffix = { stardust-shared-suffix }
 ent-MaterialStardust = горка звёздной пыли

@@ -1,31 +1,37 @@
 <Document>
   # Расы
 
-  Нанотразен нанимает разнообразные разумные виды.
+  Нанотрейзен нанимает самые разные разумные расы. Разумно познакомиться с ними поближе, чтобы знать потребности своих коллег по экипажу.
 
   <Box>
-  <GuideEntityEmbed Entity="MobArachnid" Caption="Арахнид"/>
-  <GuideEntityEmbed Entity="MobDiona" Caption="Диона"/>
-  <GuideEntityEmbed Entity="MobDwarf" Caption="Дворф"/>
-  <GuideEntityEmbed Entity="MobGingerbread" Caption="Пряник"/>
+    <GuideEntityEmbed Entity="MobArachnid" Caption="Арахнид"/>
+    <GuideEntityEmbed Entity="MobDiona" Caption="Диона"/>
+    <GuideEntityEmbed Entity="MobDwarf" Caption="Дворф"/>
+    <GuideEntityEmbed Entity="MobGingerbread" Caption="Пряник"/>
     <GuideEntityEmbed Entity="MobHarpy" Caption="Гарпия"/>
   </Box>
   <Box>
-  <GuideEntityEmbed Entity="MobHuman" Caption="Человек"/>
-  <GuideEntityEmbed Entity="MobIPCDummy" Caption="КПБ"/>
-  <GuideEntityEmbed Entity="MobMoth" Caption="Ниан"/>
-  <GuideEntityEmbed Entity="MobOni" Caption="Они"/>
-  <GuideEntityEmbed Entity="MobReptilian" Caption="Унатх"/>
-  <GuideEntityEmbed Entity="MobResomi" Caption="Резоми"/>
-  <GuideEntityEmbed Entity="MobRodentia" Caption="Грызун"/>
+    <GuideEntityEmbed Entity="MobHuman" Caption="Человек"/>
+    <GuideEntityEmbed Entity="MobIPCDummy" Caption="КПБ"/>
+    <GuideEntityEmbed Entity="MobMoth" Caption="Ниан"/>
+    <GuideEntityEmbed Entity="MobOni" Caption="Они"/>
+    <GuideEntityEmbed Entity="MobReptilian" Caption="Унатх"/>
+    <GuideEntityEmbed Entity="MobResomi" Caption="Резоми"/>
+    <GuideEntityEmbed Entity="MobRodentia" Caption="Родентия"/>
   </Box>
   <Box>
-  <GuideEntityEmbed Entity="MobSlimePerson" Caption="Слаймолюд"/>
-  <GuideEntityEmbed Entity="MobTajaran" Caption="Таяр"/>
-  <GuideEntityEmbed Entity="MobVox" Caption="Вокс"/>
-  <GuideEntityEmbed Entity="MobVulpkanin" Caption="Вульпканин"/>
-  <GuideEntityEmbed Entity="MobYowie" Caption="Йоуи"/>
-  <GuideEntityEmbed Entity="MobHydrakin" Caption="Гидракин"/>
+    <GuideEntityEmbed Entity="MobSlimePerson" Caption="Слаймолюд"/>
+    <GuideEntityEmbed Entity="MobTajaran" Caption="Таяр"/>
+    <GuideEntityEmbed Entity="MobVox" Caption="Вокс"/>
+    <GuideEntityEmbed Entity="MobVulpkanin" Caption="Вульпканин"/>
+    <GuideEntityEmbed Entity="MobYowie" Caption="Йоуи"/>
+    <GuideEntityEmbed Entity="MobChitinid" Caption="Хитинид"/>
+    <GuideEntityEmbed Entity="MobFeroxi" Caption="Ферокси"/>
+  </Box>
+  <Box>
+    <GuideEntityEmbed Entity="MobShadowkin" Caption="Шэдоукин"/>
+    <GuideEntityEmbed Entity="MobHydrakin" Caption="Гидракин"/>
+    <GuideEntityEmbed Entity="MobSynth" Caption="Синт"/> <!-- Goob - Afterlight -->
   </Box>
 
 </Document>

@@ -71,6 +71,7 @@ ent-WallWood = деревянная стена
     .desc = { ent-BaseWall.desc }
 ent-WallWeb = паутинная стена
     .desc = Удерживает паучат внутри, а ассистентов снаружи.
+    .suffix = Хэллоуин
 ent-WallNecropolis = каменная стена
     .desc = { ent-BaseWall.desc }
 ent-WallMining = шахтёрская стена
@@ -107,7 +108,9 @@ ent-Cardwall = картонная стена
 
 ent-WallXenoborg = ксеноборг-стена
     .desc = { ent-WallPlastitanium.desc }
-    .suffix = { ent-WallPlastitanium.suffix }
+ent-WallXenoborgDiagonal = { ent-WallXenoborg }
+    .desc = { ent-WallXenoborg.desc }
+    .suffix = Диагональ
 
 ent-WallSolidChitin = твёрдый хитин
     .desc = { ent-BaseWall.desc }
